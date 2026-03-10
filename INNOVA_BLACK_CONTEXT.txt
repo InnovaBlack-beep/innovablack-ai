@@ -1,0 +1,457 @@
+================================================================================
+INNOVA BLACK® — CONTEXTO MAESTRO PARA CLAUDE CODE
+Generado: Marzo 2026
+Uso: Cargar este archivo al inicio de cualquier sesión de Claude Code para
+     continuar el desarrollo del sitio web y estrategia de Innova Black®
+================================================================================
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. QUIÉN ES INNOVA BLACK®
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Innova Black® es una firma mexicana de consultoría de transformación digital
+especializada en instituciones financieras reguladas. Opera en CDMX, Monterrey
+y Guadalajara.
+
+Propietario y tomador de decisiones: JUANE
+
+Contacto oficial:
+  Email:    hello@innova.black
+  Teléfono: +52 56.62.97.56.26
+  Web:      innova.black
+
+Red de socios (BEN — Business Engagement Network):
+  ForLighting, Nueve60, Dextra, Ypenza, Capem, Finex,
+  Italika, Leyenda de México, Qvic, Binkia
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. POSICIONAMIENTO ESTRATÉGICO FINAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+HEADLINE PRINCIPAL (aprobado por JUANE):
+"Innova Black® moderniza instituciones financieras reguladas
+para operar, cumplir y escalar."
+
+POSICIONAMIENTO DE UNA LÍNEA:
+"Somos los únicos en México que diseñamos e implementamos el framework
+tecnológico de instituciones financieras — no lo asesoramos, lo construimos."
+
+DIFERENCIADOR CENTRAL:
+Innova Black® NO es un despacho legal, NO es un proveedor de software,
+NO es una Big 4. Es el ARQUITECTO DEL FRAMEWORK TECNOLÓGICO FINANCIERO —
+la firma que llega, entiende la operación, y construye el sistema que falta.
+
+CLIENTE OBJETIVO PRINCIPAL (próximos 6 meses):
+→ SOFOM existente que necesita modernizarse
+→ Mercado: 1,340+ SOFOMs en México, 60% operan con Excel o sistemas genéricos
+→ Urgencia: Ley Fintech 2.0 + evaluación GAFI abril 2026
+
+CLIENTES SECUNDARIOS (también atendidos, no el mensaje principal):
+→ Perfil A: Emprendedor/fondo que quiere constituir SOFOM/SOFIPO/IFPE nueva
+→ Perfil C: Fintech autorizada que quiere escalar (SPEI, BIN sponsor, Serie A/B)
+
+FILOSOFÍA DE VENTA:
+- El sitio califica y agenda — no vende
+- Conversión principal: Diagnóstico gratuito de 45 minutos (DTX Audit™)
+- El Retainer mensual se presenta desde el primer pitch, no como upsell
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. CONTEXTO DE MERCADO (investigación realizada)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FIGURAS REGULADAS EN MÉXICO QUE ATIENDE INNOVA BLACK®:
+  SOFOM   — Sociedad Financiera de Objeto Múltiple (1,340+ en México)
+            Reguladas (ER) o No Reguladas (ENR). Dan crédito, factoraje, arrendamiento.
+  SOFIPO  — Sociedad Financiera Popular. Captan depósitos + otorgan créditos.
+            33 instituciones. Reguladas por CNBV y PROSOFIPO.
+  IFPE    — Institución de Fondos de Pago Electrónico (wallets digitales).
+            Reguladas por CNBV y Banxico bajo Ley Fintech.
+  IFC     — Institución de Financiamiento Colectivo (crowdfunding).
+  Bancos  — Instituciones de Banca Múltiple (proceso de autorización más largo).
+
+REGULADORES CLAVE:
+  CNBV    — Comisión Nacional Bancaria y de Valores (supervisor principal)
+  Banxico — Banco de México
+  UIF     — Unidad de Inteligencia Financiera (reportes PLD)
+  CONDUSEF — Protección al consumidor financiero
+  SAT     — Autoridad fiscal
+
+REGULACIÓN CRÍTICA VIGENTE:
+  Ley Fintech 2018          — Marco original para ITF (IFPE e IFC)
+  Ley Fintech 2.0           — Actualización forzando rediseño operativo completo
+  Evaluación GAFI           — Abril 2026, prueba de cumplimiento anti-lavado
+  CURP Biométrico           — Julio 2025, reforma de onboarding digital
+  LFPDPPP update            — Marzo 2025, protección de datos
+  Circulares CNBV sobre IA  — Nuevos requisitos para uso de inteligencia artificial
+
+DATOS DEL MERCADO:
+  - 990+ fintechs operando en México, crecimiento 20% anual
+  - 57% de fintechs gasta ~$35K USD/año en compliance manual
+  - 60% de SOFOMs usa Excel o sistemas no especializados (fuente: CNBV)
+  - Tiempo promedio autorización IFPE: 781 días (promedio mercado)
+  - Tiempo con Legal Paradox: 416 días (46% más rápido)
+  - CNBV prevé que 70% de financieras medianas migren a nube para 2026
+
+COMPETIDORES INVESTIGADOS:
+
+  TENET CONSULTORES (tenet.com.mx)
+  - Posición: Band 1 Chambers FinTech Latin America 2026 (4to año consecutivo)
+  - Fortaleza: Legal-regulatoria + financiera. Ex-directores CNBV en equipo.
+  - Ha acompañado 30+ fintechs y 6+ bancos en autorización.
+  - Debilidad: Asesoran pero NO implementan tecnología. No automatizan. No forman equipos.
+  - Modelo: Despacho legal con brazo tecnológico consultivo.
+
+  LEGAL PARADOX® (legalparadox.com)
+  - Posición: Única firma Chambers pure-play fintech en México. 520+ proyectos.
+  - Fortaleza: Velocidad en autorizaciones, inteligencia de mercado (Fintech Map),
+    ayudaron a redactar la Ley Fintech original.
+  - Debilidad: Solo legal. No diseñan sistemas, no implementan nada, no forman equipos.
+  - Tiene plataforma de datos: mapa de 1,000+ fintechs + dashboard regulatorio.
+
+  ARMORAML / KYC SYSTEMS
+  - Fortaleza: Software de PLD/KYC con automatización.
+  - Debilidad: Venden software, no estrategia. Sin consultoría integral.
+
+  GRUPO IBC (grupoibc.mx)
+  - Fortaleza: Constituyen SOFOMs/IFPEs llave en mano (más cercano a lo que hace IB).
+  - Debilidad: Ayudan a nacer, no a escalar ni modernizar. Sin IA, sin retainer.
+
+  BIG 4 (EY, Deloitte, KPMG, PwC)
+  - Tienen todo: regulación, tech, IA, implementación.
+  - Debilidad crítica: Precios inaccesibles para SOFOMs y fintechs medianas.
+    Lentos. No especializados en el mid-market financiero mexicano.
+
+TABLA COMPARATIVA (para usar en sitio y pitches):
+                    Tech  Implementa  IA    Forma Equipos  Retainer  Velocidad
+  Tenet             ~     ✗           ✗     ✗              ~         ~
+  Legal Paradox     ✗     ✗           ✗     ✗              ✗         ✓
+  ArmorAML/KYC      ✗     ~           ✓     ✗              ✗         ✓
+  Grupo IBC         ~     ~           ✗     ✗              ✗         ✓
+  Big 4             ✓     ✓           ✓     ~              ✓         ✗
+  INNOVA BLACK®     ✓     ✓           ✓     ✓              ✓         ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. METODOLOGÍA DTX™ FINANCIAL — LOS 5 SERVICIOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SERVICIO 01 — DTX Launch™
+  Para: Constitución de nueva SOFOM, SOFIPO o IFPE
+  Qué incluye:
+    - Arquitectura tecnológica completa
+    - Flujos operativos diseñados
+    - Manuales CNBV (onboarding, seguridad, PLD, continuidad de negocio)
+    - Setup PLD/KYC desde cero
+    - Conexión a infraestructura regulatoria
+    - Documentación lista para presentar ante CNBV
+  Precio: $150,000 – $400,000 MXN (proyecto fijo)
+  Duración: 3–6 semanas
+
+SERVICIO 02 — DTX Compliance Engine™
+  Para: Automatización de compliance en institución existente
+  Qué incluye:
+    - Automatización IA de reportes ROU/ROP a la UIF
+    - Monitoreo transaccional inteligente
+    - Reducción de falsos positivos en alertas PLD
+    - Onboarding digital KYC (minutos, no días)
+    - Integración CNBV, UIF, SAT
+  Resultado prometido: -70% en tiempo de compliance
+  Precio: $500,000 – $2,000,000 MXN (por implementación)
+  Duración: 2–5 meses
+
+SERVICIO 03 — DTX Scale™
+  Para: Institución que quiere escalar al siguiente nivel regulatorio
+  Qué incluye:
+    - Conexión a SPEI como participante directo o indirecto
+    - BIN sponsor para emisión de tarjetas
+    - Onboarding digital de clientes a escala
+    - Scoring crediticio con IA
+    - Arquitectura multi-producto (SOFOM + SOFIPO, IFPE + banco)
+  Precio: $1,500,000 – $5,000,000 MXN (proyecto integral)
+  Duración: 4–8 meses
+
+SERVICIO 04 — DTX Upgrade™
+  Para: Institución existente con sistemas legacy o procesos manuales
+  Qué incluye:
+    - Migración de sistemas legacy a plataformas modernas
+    - Rediseño de procesos manuales
+    - Preparación para Ley Fintech 2.0
+    - Preparación para evaluación GAFI
+    - Implementación de infraestructura normativa requerida
+  Precio: $400,000 – $2,000,000 MXN (por alcance definido)
+  Duración: 2–6 meses
+
+SERVICIO 05 — DTX Retainer™  [EL MÁS DIFERENCIADOR]
+  Para: Cualquier institución que quiera un equipo tech-estratégico externo
+  Descripción: El único servicio de CTO/COO externo para instituciones
+               financieras reguladas en México. No existe en el mercado.
+  Qué incluye:
+    - Monitoreo regulatorio en tiempo real (CNBV, UIF, Banxico, SAT)
+    - Actualización ante nuevas disposiciones y circulares
+    - Formación continua del equipo (compliance, operaciones, directivos)
+    - Advisory mensual directo al CEO
+    - Gestión de proveedores tecnológicos
+    - Respuesta ante visitas o requerimientos de autoridades
+  Precio: $45,000 – $120,000 MXN/mes (mínimo 12 meses)
+  Objetivo de Innova Black®: 20 clientes retainer = $1.4M MXN/mes recurrente
+
+PROCESO DE 5 FASES (para todos los servicios):
+  01 Diagnóstico      → Evaluación + reporte ejecutivo + roadmap 90 días
+  02 Diseño Framework → Arquitectura tech + flujos + estructura regulatoria
+  03 Implementación   → Sistemas + automatización + integraciones + documentación CNBV
+  04 Formación        → Capacitación equipo operativo, compliance y directivo
+  05 Retainer         → Acompañamiento mensual continuo (opcional pero recomendado)
+
+ENTRADA AL FUNNEL — DTX Audit™:
+  - Diagnóstico gratuito de 45 minutos
+  - 5 preguntas de precalificación:
+      Q1: Tipo de institución (SOFOM, SOFIPO, IFPE, IFC, Neobanco...)
+      Q2: Etapa (nueva / autorizada creciendo / Serie A/B / reestructuración)
+      Q3: Dolor principal hoy (compliance manual / KYC lento / Ley Fintech 2.0 / legacy)
+      Q4: Urgencia (inmediata / 3 meses / 6 meses / explorando)
+      Q5: ¿Iniciativas previas fallidas? → SÍ = lead más calificado
+  - Entregable al final: "Reporte de Madurez Regulatoria" con nombre propio
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. MODELO DE INGRESOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NIVELES DE TICKET:
+  DTX Launch:            $150K – $400K MXN (proyecto)
+  DTX Compliance Engine: $500K – $2M MXN (proyecto)
+  DTX Upgrade:           $400K – $2M MXN (proyecto)
+  DTX Scale:             $1.5M – $5M MXN (proyecto)
+  DTX Retainer:          $45K – $120K MXN/mes (recurrente)
+
+META 12 MESES:
+  10 clientes retainer × $60K MXN promedio = $600K MXN/mes recurrente
+  Target ambicioso: 20 retainers × $70K = $1.4M MXN/mes recurrente
+
+REGLA DE ORO:
+  El Retainer se presenta desde el primer pitch como parte de la metodología,
+  nunca como un upsell posterior. La institución debe entender desde el día 1
+  que el modelo de Innova Black® incluye acompañamiento continuo.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. SITIO WEB — ESPECIFICACIONES DE DISEÑO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TONO VISUAL APROBADO:
+  Formal claro — secciones blancas dominantes, dorado como acento de autoridad.
+  Referencia estética: Financial Times meets McKinsey.com
+  NO es startup. NO es sci-fi. ES una firma de élite financiera.
+
+PALETA DE COLORES (tokens CSS aprobados):
+  --white:      #FFFFFF          (fondo principal)
+  --paper:      #F8F6F1          (fondo secciones alternadas)
+  --paper2:     #F0EDE6          (fondo proceso)
+  --ink:        #111010          (texto principal)
+  --ink2:       #1E1C1C          (secciones oscuras)
+  --muted:      #6B6560          (texto secundario)
+  --light:      #A8A29C          (texto terciario / labels)
+  --rule:       #E2DDD6          (bordes y separadores en claro)
+  --gold:       #A8832A          (dorado principal — sobrio, tinta)
+  --gold2:      #C49B35          (dorado medio)
+  --gold3:      #D4AF54          (dorado claro — sobre fondos oscuros)
+  --gold-bg:    #FBF7EE          (fondo dorado muy suave — hover cards)
+  --gold-rule:  rgba(168,131,42,.20)  (bordes dorados)
+  --gold-pale:  rgba(168,131,42,.06)  (fondos dorados muy sutiles)
+  --neg:        #111010          (negro profundo — sección clientes y CTA)
+  --neg2:       #191717          (negro ligeramente más suave — footer)
+
+TIPOGRAFÍAS:
+  Display/Headings:  Libre Baskerville (serif de imprenta, peso, autoridad)
+                     Italic para énfasis y nombres de servicios
+  Body/UI:           Instrument Sans (weight 300/400/500/600)
+  Labels/Datos:      DM Mono (monospace para kickers, precios, tags técnicos)
+
+ESTRUCTURA DEL SITIO (secciones en orden):
+  1.  NAV              — Fixed. Logo + links + CTA "Agendar diagnóstico"
+  2.  HERO             — Blanco. Headline + subtítulo + CTA + stats panel derecho
+  3.  GOLD BAND        — Banda dorada sólida con marquee de servicios/keywords
+  4.  EL PROBLEMA      — Paper bg. 4 cards con datos duros del mercado
+  5.  DIFERENCIADOR    — Blanco. 4 puntos únicos IB + tabla comparativa competidores
+  6.  SERVICIOS        — Paper bg. 5 filas DTX™ con precios
+  7.  PROCESO          — Blanco. 5 pasos horizontales
+  8.  CLIENTES         — Negro. 3 perfiles: nacer / cumplir / escalar
+  9.  PULL QUOTE       — Fondo dorado sólido. Cita + 3 stats
+  10. CTA              — Negro. Headline grande + 2 botones + footnote
+  11. FOOTER           — Negro más suave. Logo + nav + contacto + ciudades
+
+ELEMENTOS DE DISEÑO CLAVE:
+  - Línea vertical dorada decorativa en el hero (lado izquierdo)
+  - Regla dorada de 2px en hover de cards (aparece en top del card)
+  - Fondo hover de cards: var(--gold-bg) suavísimo
+  - Tabla comparativa: última fila Innova Black® con fondo gold-bg
+  - Números grandes en cards del problema (estilo editorial)
+  - Ghost text en CTA: "Innova Black" en Libre Baskerville italic gigante,
+    opacidad 4%, posición absoluta en fondo
+  - Scroll reveal: clase .r + .in con transition delay .d1/.d2/.d3/.d4
+  - Sin cursor personalizado (versión formal no lo necesita)
+  - Sin partículas ni canvas (versión anterior lo tenía, esta no)
+
+ARCHIVO ACTUAL MÁS AVANZADO:
+  innova-black-v3.html  (versión aprobada para continuar desarrollo)
+
+VERSIONES ANTERIORES (referencia histórica):
+  innova-black.html         — Primera versión, estética dark sci-fi con partículas
+  innova-black-v2.html      — Segunda versión, dark luxury, Barlow Condensed
+  innova-black-formal.html  — Tercera versión, formal oscuro, Playfair + DM Sans
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7. SECCIONES PENDIENTES DE CONSTRUIR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PRIORIDAD ALTA:
+  [ ] Sección CASOS DE ÉXITO — JUANE tiene 2-3 proyectos con métricas reales
+      pendiente de documentar. Formato: institución → problema → solución → resultado.
+      Estructura sugerida:
+        - Tipo de institución (anonimizada o con permiso)
+        - El problema que tenían antes
+        - Qué construyó Innova Black®
+        - Métrica de resultado (tiempo reducido / multas evitadas / costo ahorrado)
+
+  [ ] DTX Audit™ — Formulario de diagnóstico de 5 preguntas integrado en el sitio
+      (actualmente solo existe como concepto, no está implementado en el HTML)
+
+  [ ] Sección SOBRE INNOVA BLACK® / Equipo
+      Quién es JUANE, credenciales, años de experiencia
+
+PRIORIDAD MEDIA:
+  [ ] Blog / Insights — Artículos SEO para posicionamiento orgánico
+      Primer artículo propuesto: "Por qué el 60% de las SOFOMs van a tener
+      un problema con la CNBV en 2026"
+      Segundo artículo: "Índice de Madurez Tecnológica para SOFOMs México 2026"
+
+  [ ] Página interna /sofom — Landing específica para SOFOMs
+  [ ] Página interna /ley-fintech-2 — Landing para urgencia regulatoria
+  [ ] Página interna /pld-automatizacion — Landing para compliance
+
+  [ ] Versión móvil refinada del sitio (responsive existe pero puede mejorar)
+
+PRIORIDAD BAJA:
+  [ ] Animaciones de entrada más elaboradas en el hero
+  [ ] Integración con Calendly para agendar diagnóstico directamente en el sitio
+  [ ] Versión EN inglés para nearshore companies
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+8. ESTRATEGIA DE CONTENIDO Y LINKEDIN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+LinkedIn es el canal B2B principal para el mercado mexicano.
+
+CADENCIA: 3 posts por semana + 10 mensajes de outreach personalizado/semana
+
+AUDIENCIA OBJETIVO EN LINKEDIN:
+  - Director de Cumplimiento / Oficial PLD de SOFOM o SOFIPO
+  - CEO / Co-Founder de fintech Serie A/B
+  - CTO / VP Tecnología de institución regulada
+  - Director de Operaciones de SOFOM
+  - CFO / Chief Risk Officer
+
+TIPOS DE CONTENIDO:
+  Educativo:  "Qué cambió en la Ley Fintech 2.0 y cómo afecta a tu SOFOM"
+  Datos:      "El 60% de las SOFOMs en México van a tener un problema regulatorio en 2026"
+  Opinión:    "Por qué contratar un despacho legal no resuelve tu problema tecnológico"
+  Proceso:    Detrás de cámaras de una implementación DTX™
+
+LEAD MAGNET PROPUESTO:
+  "Índice de Madurez Regulatoria FinTech México 2026"
+  — 8 preguntas que cualquier SOFOM puede responder
+  — Resultado: score de 1-10 con áreas de riesgo identificadas
+  — Distribución: LinkedIn + email directo a 30 directivos financieros
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+9. REGLAS NO NEGOCIABLES DE LA MARCA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. El sitio web califica y agenda — no vende. El vendedor es la sesión de diagnóstico.
+2. El DTX Retainer™ se presenta desde el primer contacto, nunca como upsell.
+3. La marca siempre va con ® — "Innova Black®" no "Innova Black"
+4. DTX™ siempre con ™ — "Metodología DTX™" no "Metodología DTX"
+5. Los colores de marca son negro (#111010) y dorado (#A8832A). Sin excepciones.
+6. El tono es de firma de élite — nunca de startup, nunca casual en exceso.
+7. Los precios se muestran en el sitio — genera confianza y filtra leads no calificados.
+8. El mensaje habla a SOFOMs primero — aunque se atienden otras figuras reguladas.
+9. Siempre "construimos" no "asesoramos" — es el diferenciador central de comunicación.
+10. LinkedIn es el canal B2B primario — no Instagram, no TikTok, no Google Ads inicialmente.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+10. PLAN DE 90 DÍAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SEMANAS 1-2:
+  - Documentar los 3 casos de éxito con métricas reales
+  - Integrar casos en el sitio web (sección pendiente)
+  - A/B test de 3 headlines en LinkedIn (ya definidos)
+
+SEMANA 3:
+  - Publicar artículo definitivo sobre Ley Fintech 2.0 (2,500 palabras)
+  - Distribuir a 30 ejecutivos financieros directamente
+
+SEMANA 4:
+  - Activar LinkedIn 3 posts/semana + 10 outreach/semana
+  - Lanzar DTX Audit™ como formulario en el sitio
+
+MES 2:
+  - Aparecer en Fintech México Festival y Finnovista
+  - Publicar "Índice de Madurez Regulatoria FinTech México 2026"
+  - Objetivo: 5 diagnósticos gratuitos agendados
+
+MES 3:
+  - Formalizar programa de referidos BEN (8-12% comisión por cliente)
+  - Cerrar primeros 2 clientes retainer
+  - Meta 12 meses: 10 retainers activos a $60K MXN/mes promedio
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+11. INSTRUCCIONES PARA CLAUDE CODE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Al continuar desarrollo del sitio, respetar siempre:
+
+TECNOLOGÍA:
+  - HTML5 / CSS3 / JavaScript vanilla (sin frameworks — sitio estático)
+  - Fuentes desde Google Fonts: Libre Baskerville + Instrument Sans + DM Mono
+  - Sin dependencias externas adicionales (sin jQuery, sin React)
+  - Responsive mobile-first
+
+ARQUITECTURA DE ARCHIVOS:
+  - Un solo archivo HTML por ahora (todo inline — CSS en <style>, JS en <script>)
+  - Cuando el sitio escale, separar en: index.html / styles.css / main.js
+  - Assets de imágenes: /assets/img/
+  - Documentos descargables: /assets/docs/
+
+CONVENCIONES DE CÓDIGO:
+  - Variables CSS definidas en :root (ya establecidas, no cambiar nombres)
+  - Clases BEM-like: .sec-nombre, .card-elemento, .btn-variante
+  - Scroll reveal: clase .r en elemento, agregar .in con IntersectionObserver
+  - Delays de animación: .d1 (.08s), .d2 (.16s), .d3 (.24s), .d4 (.32s)
+
+CUANDO AGREGAR NUEVA SECCIÓN:
+  1. Decidir si va sobre fondo claro (--white o --paper) o fondo oscuro (--neg)
+  2. Comenzar con .eyebrow + .s-h2 + .s-lead
+  3. Agregar clase .on-dark si la sección es sobre fondo negro
+  4. Todos los elementos animados llevan clase .r (reveal)
+  5. Mantener padding: 120px 64px en desktop, 80px 28px en mobile
+
+LO QUE FALTA CONSTRUIR (por orden de prioridad):
+  1. Sección de casos de éxito (datos pendientes de JUANE)
+  2. Formulario DTX Audit™ de 5 preguntas (con validación JS)
+  3. Sección "Sobre Innova Black®" con perfil de JUANE
+  4. Páginas internas /sofom, /ley-fintech-2, /pld-automatizacion
+  5. Integración Calendly en CTA
+
+================================================================================
+FIN DEL CONTEXTO MAESTRO — INNOVA BLACK® v1.0
+Última actualización: Marzo 2026
+================================================================================
