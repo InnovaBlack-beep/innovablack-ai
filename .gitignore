@@ -1,0 +1,29 @@
+# Vercel
+.vercel
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude
+.claude/
+
+# Logs
+*.log
+*.err
+
+# Agentes - datos locales y credenciales
+agentes/telegram/agente_historial.json
+agentes/telegram/agente_memoria.json
+agentes/telegram/agente-telegram.log
+agentes/telegram/agente-telegram.err
+agentes/**/venv/
+agentes/**/__pycache__/
+credentials.json
+token.json
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.env

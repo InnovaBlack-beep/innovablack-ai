@@ -95,44 +95,6 @@ DATOS DEL MERCADO:
   - Tiempo con Legal Paradox: 416 días (46% más rápido)
   - CNBV prevé que 70% de financieras medianas migren a nube para 2026
 
-COMPETIDORES INVESTIGADOS:
-
-  TENET CONSULTORES (tenet.com.mx)
-  - Posición: Band 1 Chambers FinTech Latin America 2026 (4to año consecutivo)
-  - Fortaleza: Legal-regulatoria + financiera. Ex-directores CNBV en equipo.
-  - Ha acompañado 30+ fintechs y 6+ bancos en autorización.
-  - Debilidad: Asesoran pero NO implementan tecnología. No automatizan. No forman equipos.
-  - Modelo: Despacho legal con brazo tecnológico consultivo.
-
-  LEGAL PARADOX® (legalparadox.com)
-  - Posición: Única firma Chambers pure-play fintech en México. 520+ proyectos.
-  - Fortaleza: Velocidad en autorizaciones, inteligencia de mercado (Fintech Map),
-    ayudaron a redactar la Ley Fintech original.
-  - Debilidad: Solo legal. No diseñan sistemas, no implementan nada, no forman equipos.
-  - Tiene plataforma de datos: mapa de 1,000+ fintechs + dashboard regulatorio.
-
-  ARMORAML / KYC SYSTEMS
-  - Fortaleza: Software de PLD/KYC con automatización.
-  - Debilidad: Venden software, no estrategia. Sin consultoría integral.
-
-  GRUPO IBC (grupoibc.mx)
-  - Fortaleza: Constituyen SOFOMs/IFPEs llave en mano (más cercano a lo que hace IB).
-  - Debilidad: Ayudan a nacer, no a escalar ni modernizar. Sin IA, sin retainer.
-
-  BIG 4 (EY, Deloitte, KPMG, PwC)
-  - Tienen todo: regulación, tech, IA, implementación.
-  - Debilidad crítica: Precios inaccesibles para SOFOMs y fintechs medianas.
-    Lentos. No especializados en el mid-market financiero mexicano.
-
-TABLA COMPARATIVA (para usar en sitio y pitches):
-                    Tech  Implementa  IA    Forma Equipos  Retainer  Velocidad
-  Tenet             ~     ✗           ✗     ✗              ~         ~
-  Legal Paradox     ✗     ✗           ✗     ✗              ✗         ✓
-  ArmorAML/KYC      ✗     ~           ✓     ✗              ✗         ✓
-  Grupo IBC         ~     ~           ✗     ✗              ✗         ✓
-  Big 4             ✓     ✓           ✓     ~              ✓         ✗
-  INNOVA BLACK®     ✓     ✓           ✓     ✓              ✓         ✓
-
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 4. METODOLOGÍA DTX™ FINANCIAL — LOS 5 SERVICIOS
@@ -147,7 +109,6 @@ SERVICIO 01 — DTX Launch™
     - Setup PLD/KYC desde cero
     - Conexión a infraestructura regulatoria
     - Documentación lista para presentar ante CNBV
-  Precio: $150,000 – $400,000 MXN (proyecto fijo)
   Duración: 3–6 semanas
 
 SERVICIO 02 — DTX Compliance Engine™
@@ -159,7 +120,6 @@ SERVICIO 02 — DTX Compliance Engine™
     - Onboarding digital KYC (minutos, no días)
     - Integración CNBV, UIF, SAT
   Resultado prometido: -70% en tiempo de compliance
-  Precio: $500,000 – $2,000,000 MXN (por implementación)
   Duración: 2–5 meses
 
 SERVICIO 03 — DTX Scale™
@@ -170,7 +130,6 @@ SERVICIO 03 — DTX Scale™
     - Onboarding digital de clientes a escala
     - Scoring crediticio con IA
     - Arquitectura multi-producto (SOFOM + SOFIPO, IFPE + banco)
-  Precio: $1,500,000 – $5,000,000 MXN (proyecto integral)
   Duración: 4–8 meses
 
 SERVICIO 04 — DTX Upgrade™
@@ -181,7 +140,6 @@ SERVICIO 04 — DTX Upgrade™
     - Preparación para Ley Fintech 2.0
     - Preparación para evaluación GAFI
     - Implementación de infraestructura normativa requerida
-  Precio: $400,000 – $2,000,000 MXN (por alcance definido)
   Duración: 2–6 meses
 
 SERVICIO 05 — DTX Retainer™  [EL MÁS DIFERENCIADOR]
@@ -195,8 +153,6 @@ SERVICIO 05 — DTX Retainer™  [EL MÁS DIFERENCIADOR]
     - Advisory mensual directo al CEO
     - Gestión de proveedores tecnológicos
     - Respuesta ante visitas o requerimientos de autoridades
-  Precio: $45,000 – $120,000 MXN/mes (mínimo 12 meses)
-  Objetivo de Innova Black®: 20 clientes retainer = $1.4M MXN/mes recurrente
 
 PROCESO DE 5 FASES (para todos los servicios):
   01 Diagnóstico      → Evaluación + reporte ejecutivo + roadmap 90 días
@@ -217,27 +173,6 @@ ENTRADA AL FUNNEL — DTX Audit™:
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-5. MODELO DE INGRESOS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-NIVELES DE TICKET:
-  DTX Launch:            $150K – $400K MXN (proyecto)
-  DTX Compliance Engine: $500K – $2M MXN (proyecto)
-  DTX Upgrade:           $400K – $2M MXN (proyecto)
-  DTX Scale:             $1.5M – $5M MXN (proyecto)
-  DTX Retainer:          $45K – $120K MXN/mes (recurrente)
-
-META 12 MESES:
-  10 clientes retainer × $60K MXN promedio = $600K MXN/mes recurrente
-  Target ambicioso: 20 retainers × $70K = $1.4M MXN/mes recurrente
-
-REGLA DE ORO:
-  El Retainer se presenta desde el primer pitch como parte de la metodología,
-  nunca como un upsell posterior. La institución debe entender desde el día 1
-  que el modelo de Innova Black® incluye acompañamiento continuo.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 6. SITIO WEB — ESPECIFICACIONES DE DISEÑO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -255,20 +190,43 @@ PALETA DE COLORES (tokens CSS aprobados):
   --muted:      #6B6560          (texto secundario)
   --light:      #A8A29C          (texto terciario / labels)
   --rule:       #E2DDD6          (bordes y separadores en claro)
-  --gold:       #A8832A          (dorado principal — sobrio, tinta)
-  --gold2:      #C49B35          (dorado medio)
-  --gold3:      #D4AF54          (dorado claro — sobre fondos oscuros)
-  --gold-bg:    #FBF7EE          (fondo dorado muy suave — hover cards)
-  --gold-rule:  rgba(168,131,42,.20)  (bordes dorados)
-  --gold-pale:  rgba(168,131,42,.06)  (fondos dorados muy sutiles)
+  --gold:       #f6aa36          (dorado oficial Innova Black®)
+  --gold2:      #f6aa36          (dorado medio)
+  --gold3:      #f6aa36          (dorado claro — sobre fondos oscuros)
+  --gold-bg:    #FFF8EC          (fondo dorado muy suave — hover cards)
+  --gold-rule:  rgba(246,170,54,.22)  (bordes dorados)
+  --gold-pale:  rgba(246,170,54,.07)  (fondos dorados muy sutiles)
   --neg:        #111010          (negro profundo — sección clientes y CTA)
   --neg2:       #191717          (negro ligeramente más suave — footer)
 
 TIPOGRAFÍAS:
   Display/Headings:  Libre Baskerville (serif de imprenta, peso, autoridad)
                      Italic para énfasis y nombres de servicios
-  Body/UI:           Instrument Sans (weight 300/400/500/600)
-  Labels/Datos:      DM Mono (monospace para kickers, precios, tags técnicos)
+  Body/UI:           Instrument Sans (weight 400/500/600 — NO usar 300)
+  Labels/Datos:      DM Mono (monospace para kickers, tags técnicos, datos)
+
+PESOS DE FUENTE (regla aprobada):
+  Cuerpo de texto, descripciones, leads: font-weight 400 (nunca 300)
+  Subtítulos y énfasis en body: font-weight 500
+  Botones y labels: font-weight 500–600
+  Headings Baskerville: font-weight 700 (o 400 italic para pull quotes)
+
+TAMAÑOS CLAVE APROBADOS:
+  Logo nav:          17px / 700
+  H1 hero:           clamp(40px, 4.8vw, 72px) / 700
+  H2 secciones:      clamp(34px, 4vw, 58px) / 700
+  Stat numbers hero: 48px / 700
+  Prob card numbers: 60px / 700
+  Body / lead:       17px / 400
+  Descripciones:     13–14px / 400
+  Proceso steps:     12px / 400
+  Kickers/eyebrows:  10px / DM Mono / letter-spacing 3px
+  Chips/tags:        9px / DM Mono / letter-spacing 2px
+
+GOOGLE FONTS (string de carga actualizado):
+  Libre Baskerville: ital,wght@0,400;0,700;1,400
+  Instrument Sans:   ital,wght@0,400;0,500;0,600;1,400
+  DM Mono:           wght@400
 
 ESTRUCTURA DEL SITIO (secciones en orden):
   1.  NAV              — Fixed. Logo + links + CTA "Agendar diagnóstico"
@@ -451,7 +409,56 @@ LO QUE FALTA CONSTRUIR (por orden de prioridad):
   4. Páginas internas /sofom, /ley-fintech-2, /pld-automatizacion
   5. Integración Calendly en CTA
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+12. INFRAESTRUCTURA — VERCEL + DOMINIO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DOMINIO:
+  innovablack.ai  (comprado en GoDaddy)
+
+PLATAFORMA DE DEPLOY:
+  Vercel (plan Hobby)
+  Team slug:  juane-9620s-projects
+  Team ID:    team_BMCsGeZ8YbAkx5h4pwo83waE
+  Project:    innovablack-ai
+  Project ID: prj_anSZkrE7jnSqJTVOgksFpHPr8A1w
+
+URLs DE VERCEL:
+  Producción:  innovablack-ai.vercel.app
+  Dominio:     innovablack.ai  (conectado — puede estar en propagación)
+
+CONFIGURACIÓN DNS (completada en Marzo 2026):
+  Los nameservers de GoDaddy fueron cambiados a Vercel:
+    ns1.vercel-dns.com
+    ns2.vercel-dns.com
+  Vercel ahora administra todo el DNS de innovablack.ai.
+  GoDaddy ya NO controla el DNS — solo es el registrador del dominio.
+
+REGISTRO DNS ACTIVO:
+  A  @  76.76.21.21  (IP de Vercel)
+
+INTEGRACIÓN CON GITHUB:
+  El proyecto en Vercel está conectado a un repositorio de GitHub.
+  Cada push al branch main hace deploy automático en innovablack.ai.
+  → Pendiente confirmar nombre exacto del repositorio de GitHub.
+
+ESTADO AL CIERRE DE SESIÓN (Marzo 2026):
+  - Nameservers apuntando a Vercel ✓
+  - Dominio propagándose (pantalla negra al entrar — sitio sin contenido)
+  - Pendiente: subir innova-black-v3.html al repositorio de GitHub como index.html
+
+PRÓXIMO PASO INMEDIATO:
+  1. Abrir el repositorio de GitHub conectado a Vercel
+  2. Subir el archivo innova-black-v3.html renombrado como index.html
+  3. Hacer commit → Vercel desplegará automáticamente en innovablack.ai
+
+NOTAS TÉCNICAS:
+  - El archivo HTML es completamente standalone (CSS y JS inline)
+  - No requiere build process — Vercel lo sirve como sitio estático
+  - En Vercel, asegurarse que el "Framework Preset" sea "Other" o "Static"
+  - Si el repo tiene otros archivos, el index.html debe estar en la raíz
+
 ================================================================================
-FIN DEL CONTEXTO MAESTRO — INNOVA BLACK® v1.0
+FIN DEL CONTEXTO MAESTRO — INNOVA BLACK® v1.1
 Última actualización: Marzo 2026
 ================================================================================
