@@ -590,15 +590,16 @@
       triggerObserver.observe(servicesSection);
     }
 
-    // Trigger por clic en CTAs del sitio
-    document.querySelectorAll('a[href="#cta"], a[href*="mailto:hello@innova.black"], .btn-gold').forEach(function (el) {
-      el.addEventListener('click', function (e) {
-        if (!state.isOpen) {
-          e.preventDefault();
-          openChat();
-        }
-      });
-    });
+    // Interceptar TODOS los CTAs del sitio (capture phase para ganarle al smooth scroll)
+    document.addEventListener('click', function (e) {
+      var target = e.target.closest('a[href="#cta"], a[href*="mailto:hello@innova.black"], .btn-gold, .nav-cta');
+      if (target) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        openChat();
+      }
+    }, true);
   }
 
   /* --------------------------------------------------------
