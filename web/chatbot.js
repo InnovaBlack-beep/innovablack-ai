@@ -292,7 +292,7 @@
       showOptions([
         { label: 'S\u00ed, tengo una SOFOM / SOFIPO / IFPE', action: function () { state.lead.etapa = 'existente'; goStage1A(); } },
         { label: 'Estoy en proceso de constituir una', action: function () { state.lead.etapa = 'nueva_constitucion'; goStage1B(); } },
-        { label: 'Solo estoy viendo informaci\u00f3n', action: goStageInfo; }
+        { label: 'Solo estoy viendo informaci\u00f3n', action: goStageInfo }
       ]);
     });
   }
