@@ -6,7 +6,7 @@
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const CAL_URL = process.env.CAL_URL || 'https://cal.com/innovablack';
-const FROM_EMAIL = process.env.FROM_EMAIL || 'Valeria de InnovaBlack <hello@innova.black>';
+const FROM_DOMAIN = process.env.FROM_DOMAIN || 'hello@innova.black';
 const TEAM_EMAIL = process.env.TEAM_EMAIL || 'hello@innova.black';
 
 module.exports = async function handler(req, res) {
@@ -43,11 +43,13 @@ module.exports = async function handler(req, res) {
   var urgencia = body.urgencia || '';
   var agendaCalcom = body.agenda_calcom || false;
   var notas = body.notas || '';
+  var asesora = body.asesora || 'Valeria';
 
   var tempEmoji = temperatura === 'caliente' ? '🔥' : temperatura === 'tibio' ? '🌤️' : '❄️';
+  var fromEmail = asesora + ' de InnovaBlack <' + FROM_DOMAIN + '>';
 
   // --- Email 1: Confirmation to the lead ---
-  var leadHtml = buildLeadEmail(leadName, agendaCalcom);
+  var leadHtml = buildLeadEmail(leadName, agendaCalcom, asesora);
 
   // --- Email 2: Notification to team ---
   var teamHtml = buildTeamEmail({
@@ -61,22 +63,23 @@ module.exports = async function handler(req, res) {
     dolor_principal: dolorPrincipal,
     urgencia: urgencia,
     agenda_calcom: agendaCalcom,
-    notas: notas
+    notas: notas,
+    asesora: asesora
   });
 
   try {
     // Send both emails in parallel
     var results = await Promise.allSettled([
       sendEmail({
-        from: FROM_EMAIL,
+        from: fromEmail,
         to: leadEmail,
-        subject: '¡Gracias por tu interés! — InnovaBlack®',
+        subject: '¡Gracias por tu interés! — ' + asesora + ', InnovaBlack®',
         html: leadHtml
       }),
       sendEmail({
-        from: FROM_EMAIL,
+        from: fromEmail,
         to: TEAM_EMAIL,
-        subject: tempEmoji + ' Lead ' + temperatura.toUpperCase() + ' — ' + leadName,
+        subject: tempEmoji + ' Lead ' + temperatura.toUpperCase() + ' — ' + leadName + ' (atendido por ' + asesora + ')',
         html: teamHtml
       })
     ]);
@@ -123,7 +126,7 @@ async function sendEmail(params) {
   return response.json();
 }
 
-function buildLeadEmail(nombre, agendaCalcom) {
+function buildLeadEmail(nombre, agendaCalcom, asesora) {
   var calButton = agendaCalcom
     ? '<a href="' + CAL_URL + '" style="display:inline-block;background:#C9A84C;color:#0D0D0D;padding:14px 32px;text-decoration:none;border-radius:6px;font-weight:700;font-size:16px;margin:20px 0;">Agendar mi diagnóstico gratuito</a>'
     : '';
@@ -144,7 +147,7 @@ function buildLeadEmail(nombre, agendaCalcom) {
     // Body
     '<tr><td style="padding:30px 40px;color:#e0e0e0;font-size:15px;line-height:1.7;">' +
     '<p style="color:#ffffff;font-size:20px;font-weight:700;margin:0 0 15px;">¡Hola ' + nombre + '!</p>' +
-    '<p style="margin:0 0 15px;">Soy <strong style="color:#C9A84C;">Valeria</strong>, tu asesora digital en InnovaBlack. Recibí tu información y quiero que sepas que ya estamos trabajando en tu caso.</p>' +
+    '<p style="margin:0 0 15px;">Soy <strong style="color:#C9A84C;">' + asesora + '</strong>, tu asesora en InnovaBlack. Recibí tu información y quiero que sepas que ya estamos trabajando en tu caso.</p>' +
     '<p style="margin:0 0 15px;">Nuestro equipo se pondrá en contacto contigo <strong style="color:#ffffff;">en las próximas 24 horas</strong> para platicar sobre cómo podemos ayudarte a alcanzar tus objetivos.</p>' +
 
     (agendaCalcom
@@ -187,6 +190,7 @@ function buildTeamEmail(data) {
     // Body
     '<tr><td style="padding:25px 30px;font-size:14px;line-height:1.8;color:#333;">' +
     '<table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse;">' +
+    row('Atendido por', data.asesora) +
     row('Nombre', data.nombre) +
     row('Email', '<a href="mailto:' + data.email + '">' + data.email + '</a>') +
     row('Teléfono', data.telefono) +

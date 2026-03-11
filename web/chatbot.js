@@ -663,9 +663,17 @@
       return;
     }
 
-    // Detección: agresivo
-    if (lower.indexOf('no me interesa') !== -1 || lower.indexOf('basta') !== -1 || lower.indexOf('deja') !== -1 || lower.indexOf('callate') !== -1 || lower.indexOf('c\u00e1llate') !== -1) {
-      addBotMessage('Entiendo. Si en alg\u00fan momento necesitas orientaci\u00f3n sobre regulaci\u00f3n financiera o tecnolog\u00eda, aqu\u00ed estoy. \u00a1Que tengas buen d\u00eda! \ud83d\ude42');
+    // Detección: cierre / rechazo — respetar y terminar
+    var closeWords = ['no me interesa', 'no quiero', 'no gracias', 'no, gracias', 'basta',
+      'deja', 'callate', 'c\u00e1llate', 'adios', 'adi\u00f3s', 'bye', 'chao', 'hasta luego',
+      'no necesito', 'dejame', 'd\u00e9jame', 'ya no', 'me voy', 'stop', 'para', 'suficiente'];
+    var isClose = closeWords.some(function (w) { return lower.indexOf(w) !== -1; });
+    if (isClose) {
+      state.stage = 'done';
+      if (state.inactivityTimer) clearTimeout(state.inactivityTimer);
+      addBotMessage('Entendido, sin problema. Si en alg\u00fan momento necesitas orientaci\u00f3n, aqu\u00ed estamos. \u00a1Que te vaya muy bien! \ud83d\ude42');
+      if (state.lead.email) sendLead();
+      scheduleReset();
       return;
     }
 
@@ -714,7 +722,8 @@
       dolor_principal: state.lead.dolor_principal || '',
       urgencia: state.lead.urgencia || '',
       agenda_calcom: state.lead.agenda_calcom || false,
-      notas: state.lead.notas || ''
+      notas: state.lead.notas || '',
+      asesora: ASESORA.nombre
     };
 
     fetch(CONFIG.apiUrl, {
