@@ -1,0 +1,408 @@
+/* ============================================================
+   INNOVA BLACK® — CHATBOT VALERIA
+   Widget de captura de leads conversacional
+   ============================================================ */
+
+/* --- Bubble trigger (closed state) --- */
+.vbot-bubble {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #A8832A;
+  border: none;
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,.35);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.vbot-bubble:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 32px rgba(0,0,0,.45);
+}
+.vbot-bubble-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.vbot-bubble-initials {
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111010;
+  letter-spacing: .5px;
+}
+
+/* --- Notification badge --- */
+.vbot-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #E53935;
+  color: #fff;
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.vbot-badge.show { display: flex; }
+
+/* --- Proactive preview bubble --- */
+.vbot-preview {
+  position: fixed;
+  bottom: 96px;
+  right: 28px;
+  max-width: 280px;
+  background: #1E1C1C;
+  color: #F5F2EC;
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 14px 18px;
+  border-radius: 16px 16px 4px 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.35);
+  z-index: 9998;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .3s ease, transform .3s ease;
+  pointer-events: none;
+  cursor: pointer;
+}
+.vbot-preview.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.vbot-preview-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: rgba(245,242,236,.4);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px;
+  line-height: 1;
+}
+
+/* --- Chat window --- */
+.vbot-window {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 380px;
+  height: 540px;
+  background: #111010;
+  border-radius: 20px;
+  box-shadow: 0 12px 48px rgba(0,0,0,.5);
+  z-index: 10000;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px) scale(.96);
+  transition: opacity .3s ease-out, transform .3s ease-out;
+}
+.vbot-window.open {
+  display: flex;
+}
+.vbot-window.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* --- Header --- */
+.vbot-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(245,242,236,.06);
+  flex-shrink: 0;
+}
+.vbot-header-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #A8832A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.vbot-header-avatar-text {
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111010;
+}
+.vbot-header-info {
+  flex: 1;
+  min-width: 0;
+}
+.vbot-header-name {
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #F5F2EC;
+  margin: 0;
+}
+.vbot-header-sub {
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: 11px;
+  color: rgba(245,242,236,.5);
+  margin: 2px 0 0;
+}
+.vbot-header-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 2px;
+}
+.vbot-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4CAF50;
+  animation: vbot-pulse 2s ease-in-out infinite;
+}
+@keyframes vbot-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .4; }
+}
+.vbot-status-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: rgba(245,242,236,.3);
+}
+.vbot-close {
+  background: none;
+  border: none;
+  color: rgba(245,242,236,.4);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: color .15s, background .15s;
+  flex-shrink: 0;
+}
+.vbot-close:hover {
+  color: #F5F2EC;
+  background: rgba(245,242,236,.06);
+}
+
+/* --- Messages area --- */
+.vbot-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(245,242,236,.1) transparent;
+}
+.vbot-messages::-webkit-scrollbar { width: 4px; }
+.vbot-messages::-webkit-scrollbar-track { background: transparent; }
+.vbot-messages::-webkit-scrollbar-thumb { background: rgba(245,242,236,.1); border-radius: 4px; }
+
+/* --- Message bubbles --- */
+.vbot-msg {
+  max-width: 82%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.55;
+  animation: vbot-fadein .3s ease-out;
+  word-wrap: break-word;
+}
+@keyframes vbot-fadein {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.vbot-msg.bot {
+  background: #1E1C1C;
+  color: #F5F2EC;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+.vbot-msg.user {
+  background: #A8832A;
+  color: #111010;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+  font-weight: 500;
+}
+
+/* --- Typing indicator --- */
+.vbot-typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 16px;
+  background: #1E1C1C;
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+  align-self: flex-start;
+  animation: vbot-fadein .2s ease-out;
+}
+.vbot-typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(245,242,236,.4);
+  animation: vbot-bounce .6s ease-in-out infinite;
+}
+.vbot-typing-dot:nth-child(2) { animation-delay: .15s; }
+.vbot-typing-dot:nth-child(3) { animation-delay: .3s; }
+@keyframes vbot-bounce {
+  0%, 100% { transform: translateY(0); opacity: .4; }
+  50% { transform: translateY(-4px); opacity: 1; }
+}
+
+/* --- Option buttons --- */
+.vbot-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+  animation: vbot-fadein .3s ease-out;
+}
+.vbot-opt {
+  background: transparent;
+  border: 1px solid rgba(168,131,42,.3);
+  color: #C49B35;
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 9px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: background .15s, border-color .15s;
+  line-height: 1.4;
+}
+.vbot-opt:hover {
+  background: rgba(168,131,42,.1);
+  border-color: rgba(168,131,42,.5);
+}
+.vbot-opt:active {
+  background: rgba(168,131,42,.18);
+}
+
+/* --- Input area --- */
+.vbot-input-area {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-top: 1px solid rgba(245,242,236,.06);
+  flex-shrink: 0;
+}
+.vbot-input-area.active { display: flex; }
+.vbot-input {
+  flex: 1;
+  background: #1E1C1C;
+  border: 1px solid rgba(245,242,236,.1);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: 14px;
+  color: #F5F2EC;
+  outline: none;
+  transition: border-color .15s;
+}
+.vbot-input::placeholder {
+  color: rgba(245,242,236,.3);
+}
+.vbot-input:focus {
+  border-color: rgba(168,131,42,.4);
+}
+.vbot-send {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #A8832A;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+.vbot-send:hover { background: #C49B35; }
+.vbot-send svg {
+  width: 16px;
+  height: 16px;
+  fill: #111010;
+}
+
+/* --- CTA button inside chat --- */
+.vbot-cta {
+  display: inline-block;
+  background: #A8832A;
+  color: #111010;
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: background .15s;
+  margin-top: 4px;
+  width: 100%;
+}
+.vbot-cta:hover { background: #C49B35; }
+
+/* --- Powered by --- */
+.vbot-powered {
+  text-align: center;
+  padding: 6px;
+  flex-shrink: 0;
+}
+.vbot-powered span {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  color: rgba(245,242,236,.15);
+  letter-spacing: .5px;
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+@media (max-width: 600px) {
+  .vbot-window {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 75vh;
+    border-radius: 20px 20px 0 0;
+  }
+  .vbot-bubble {
+    bottom: 20px;
+    right: 20px;
+  }
+  .vbot-preview {
+    bottom: 88px;
+    right: 20px;
+    max-width: 260px;
+  }
+}
