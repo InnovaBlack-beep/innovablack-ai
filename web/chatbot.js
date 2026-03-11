@@ -15,8 +15,35 @@
 
     triggerDelay: 15000,        // ms antes de mostrar burbuja proactiva
     typingMin: 1500,            // ms mínimo de "typing"
-    typingMax: 3000             // ms máximo de "typing"
+    typingMax: 3000,            // ms máximo de "typing"
+    inactivityTimeout: 30000,   // ms sin respuesta antes de pedir datos
+    closeAfterLead: 6000        // ms para cerrar chat después de capturar lead
   };
+
+  /* --------------------------------------------------------
+     IDENTIDAD ROTATIVA
+     Cambia de asesora en cada visita para parecer equipo real
+     -------------------------------------------------------- */
+  var ASESORAS = [
+    { nombre: 'Valeria',  iniciales: 'VR', rol: 'Asesora' },
+    { nombre: 'Andrea',   iniciales: 'AN', rol: 'Consultora' },
+    { nombre: 'Mariana',  iniciales: 'MR', rol: 'Asesora Senior' },
+    { nombre: 'Daniela',  iniciales: 'DN', rol: 'Estratega Digital' },
+    { nombre: 'Sofía',    iniciales: 'SF', rol: 'Consultora' },
+    { nombre: 'Regina',   iniciales: 'RG', rol: 'Asesora' },
+    { nombre: 'Camila',   iniciales: 'CM', rol: 'Estratega' }
+  ];
+
+  function pickAsesora() {
+    var lastIndex = -1;
+    try { lastIndex = parseInt(localStorage.getItem('vbot_asesora'), 10); } catch (e) {}
+    if (isNaN(lastIndex)) lastIndex = -1;
+    var next = (lastIndex + 1) % ASESORAS.length;
+    localStorage.setItem('vbot_asesora', next);
+    return ASESORAS[next];
+  }
+
+  var ASESORA = pickAsesora();
 
   /* --------------------------------------------------------
      ESTADO
@@ -37,7 +64,9 @@
       notas: ''
     },
     temperatura: '',
-    conversation: []
+    conversation: [],
+    inactivityTimer: null,
+    rescueAttempted: false
   };
 
   /* --------------------------------------------------------
@@ -51,6 +80,63 @@
     var d = document.createElement('div');
     d.textContent = str;
     return d.innerHTML;
+  }
+
+  /* --- Temporizador de inactividad --- */
+  function resetInactivityTimer() {
+    if (state.inactivityTimer) clearTimeout(state.inactivityTimer);
+    if (state.stage === 'done' || state.stage === 'idle' || state.rescueAttempted) return;
+    if (!state.lead.email) {
+      state.inactivityTimer = setTimeout(rescueLead, CONFIG.inactivityTimeout);
+    }
+  }
+
+  function rescueLead() {
+    if (state.rescueAttempted || state.stage === 'done' || state.lead.email) return;
+    state.rescueAttempted = true;
+    addBotMessage('Oye, no quiero quitarte tiempo. Solo d\u00e9jame tu correo y te mando la info que necesitas \u2014 sin compromiso.', function () {
+      showInput('correo@ejemplo.com', function (email) {
+        if (validateEmail(email)) {
+          state.lead.email = email;
+          addBotMessage('\u00bfY un cel para contactarte r\u00e1pido? (opcional)', function () {
+            showInput('10 d\u00edgitos\u2026', function (phone) {
+              if (phone.toLowerCase() !== 'no' && phone !== '-' && phone.toLowerCase() !== 'skip' && phone !== 'paso') {
+                state.lead.telefono = phone;
+              }
+              state.lead.nombre = state.lead.nombre || 'Lead r\u00e1pido';
+              state.temperatura = state.temperatura || 'tibio';
+              addBotMessage('\u00a1Listo! Te estaremos contactando. \ud83d\ude4c');
+              sendLead();
+      scheduleReset();
+            });
+          });
+        } else {
+          state.lead.email = email;
+          state.lead.nombre = state.lead.nombre || 'Lead r\u00e1pido';
+          state.temperatura = state.temperatura || 'frio';
+          addBotMessage('Anotado. Te estaremos contactando pronto. \ud83d\udc4b');
+          sendLead();
+      scheduleReset();
+        }
+      });
+    });
+  }
+
+  /* --- Reiniciar chat después de capturar lead --- */
+  function scheduleReset() {
+    setTimeout(function () {
+      closeChat();
+      setTimeout(function () {
+        var msgs = document.getElementById('vbot-messages');
+        if (msgs) msgs.innerHTML = '';
+        state.stage = 'idle';
+        state.lead = { nombre: '', email: '', telefono: '', tipo_institucion: '', etapa: '', dolor_principal: '', urgencia: '', notas: '' };
+        state.temperatura = '';
+        state.conversation = [];
+        state.rescueAttempted = false;
+        if (state.inactivityTimer) clearTimeout(state.inactivityTimer);
+      }, 500);
+    }, CONFIG.closeAfterLead);
   }
 
   function validateEmail(e) {
@@ -77,12 +163,12 @@
       /* Proactive preview */
       '<div class="vbot-preview" id="vbot-preview">' +
         '<button class="vbot-preview-close" id="vbot-preview-close">&times;</button>' +
-        'Hola \ud83d\udc4b Soy Valeria, del equipo de Innova Black\u00ae. \u00bfEst\u00e1s explorando opciones para tu instituci\u00f3n financiera?' +
+        'Hola \ud83d\udc4b Soy ' + ASESORA.nombre + ', del equipo de Innova Black\u00ae. \u00bfEst\u00e1s explorando opciones para tu instituci\u00f3n financiera?' +
       '</div>' +
 
       /* Floating bubble */
       '<button class="vbot-bubble" id="vbot-bubble" aria-label="Abrir chat">' +
-        '<span class="vbot-bubble-initials">VR</span>' +
+        '<span class="vbot-bubble-initials">' + ASESORA.iniciales + '</span>' +
         '<span class="vbot-badge" id="vbot-badge">1</span>' +
       '</button>' +
 
@@ -90,10 +176,10 @@
       '<div class="vbot-window" id="vbot-window">' +
         /* Header */
         '<div class="vbot-header">' +
-          '<div class="vbot-header-avatar"><span class="vbot-header-avatar-text">VR</span></div>' +
+          '<div class="vbot-header-avatar"><span class="vbot-header-avatar-text">' + ASESORA.iniciales + '</span></div>' +
           '<div class="vbot-header-info">' +
-            '<p class="vbot-header-name">Valeria</p>' +
-            '<p class="vbot-header-sub">Innova Black\u00ae \u00b7 Asesora</p>' +
+            '<p class="vbot-header-name">' + ASESORA.nombre + '</p>' +
+            '<p class="vbot-header-sub">Innova Black\u00ae \u00b7 ' + ASESORA.rol + '</p>' +
             '<div class="vbot-header-status">' +
               '<span class="vbot-status-dot"></span>' +
               '<span class="vbot-status-text">En l\u00ednea ahora</span>' +
@@ -194,6 +280,7 @@
   }
 
   function showOptions(options) {
+    resetInactivityTimer();
     var msgs = document.getElementById('vbot-messages');
     var container = document.createElement('div');
     container.className = 'vbot-options';
@@ -203,7 +290,7 @@
       btn.className = 'vbot-opt';
       btn.textContent = opt.label;
       btn.addEventListener('click', function () {
-        // Remove option buttons
+        resetInactivityTimer();
         if (container.parentNode) container.parentNode.removeChild(container);
         addUserMessage(opt.label);
         if (opt.action) opt.action();
@@ -216,6 +303,7 @@
   }
 
   function showInput(placeholder, onSubmit) {
+    resetInactivityTimer();
     var area = document.getElementById('vbot-input-area');
     var input = document.getElementById('vbot-input');
     area.classList.add('active');
@@ -226,6 +314,7 @@
     var handler = function () {
       var val = input.value.trim();
       if (!val) return;
+      resetInactivityTimer();
       input.value = '';
       addUserMessage(val);
       area.classList.remove('active');
@@ -259,6 +348,7 @@
       state.lead.agenda_calcom = true;
       addBotMessage('Excelente. Revisa tu correo \u2014 te llegar\u00e1 la confirmaci\u00f3n. Nos vemos pronto. \ud83d\ude0a');
       sendLead();
+      scheduleReset();
     });
 
     var btnB = document.createElement('button');
@@ -270,6 +360,7 @@
       state.lead.agenda_calcom = false;
       addBotMessage('Listo. Estaremos en contacto pronto. \u00a1Que tengas excelente d\u00eda! \ud83d\udc4b');
       sendLead();
+      scheduleReset();
     });
 
     container.appendChild(btnA);
@@ -283,7 +374,7 @@
      -------------------------------------------------------- */
   function startConversation() {
     state.stage = 'trigger';
-    addBotMessage('Hola \ud83d\udc4b Soy Valeria, del equipo de Innova Black\u00ae.<br>\u00bfEst\u00e1s explorando opciones para tu instituci\u00f3n financiera?', function () {
+    addBotMessage('Hola \ud83d\udc4b Soy ' + ASESORA.nombre + ', del equipo de Innova Black\u00ae.<br>\u00bfEst\u00e1s explorando opciones para tu instituci\u00f3n financiera?', function () {
       showOptions([
         { label: 'S\u00ed, tengo una SOFOM / SOFIPO / IFPE', action: function () { state.lead.etapa = 'existente'; goStage1A(); } },
         { label: 'Estoy en proceso de constituir una', action: function () { state.lead.etapa = 'nueva_constitucion'; goStage1B(); } },
@@ -470,7 +561,7 @@
 
     // Detección: bot?
     if (lower.indexOf('bot') !== -1 || lower.indexOf('robot') !== -1 || lower.indexOf('ia') !== -1 || lower.indexOf('inteligencia artificial') !== -1 || lower.indexOf('automatiz') !== -1) {
-      addBotMessage('Soy Valeria, parte del equipo de Innova Black\u00ae. Estoy aqu\u00ed para entender tu situaci\u00f3n antes de conectarte con la persona indicada. \u00bfQu\u00e9 tipo de instituci\u00f3n tienes?', function () {
+      addBotMessage('Soy ' + ASESORA.nombre + ', parte del equipo de Innova Black\u00ae. Estoy aqu\u00ed para entender tu situaci\u00f3n antes de conectarte con la persona indicada. \u00bfQu\u00e9 tipo de instituci\u00f3n tienes?', function () {
         showOptions([
           { label: 'SOFOM / SOFIPO / IFPE', action: function () { state.lead.etapa = 'existente'; goStage1A(); } },
           { label: 'Estoy constituyendo una', action: function () { state.lead.etapa = 'nueva_constitucion'; goStage1B(); } }
@@ -503,7 +594,7 @@
     state.stage = 'done';
     var leadData = {
       timestamp: new Date().toISOString(),
-      agente: 'Valeria',
+      agente: ASESORA.nombre,
       lead: state.lead,
       temperatura: state.temperatura,
       siguiente_accion: state.temperatura === 'caliente' ? 'contacto_inmediato' : state.temperatura === 'tibio' ? 'seguimiento_24h' : 'nurturing',
