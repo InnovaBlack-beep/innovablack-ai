@@ -10,13 +10,8 @@
      CONFIGURACIÓN
      -------------------------------------------------------- */
   var CONFIG = {
-    // EmailJS — crear cuenta gratis en emailjs.com y llenar estos datos
-    emailjsPublicKey: '',       // Tu Public Key de EmailJS
-    emailjsServiceId: '',       // ID del servicio de email
-    emailjsTemplateId: '',      // ID del template
-
-    recipientEmail: 'hello@innova.black',
-    calendlyUrl: '',            // URL de Calendly (ej: https://calendly.com/innovablack)
+    apiUrl: '/api/send-email',  // Vercel serverless function
+    calUrl: '',                 // URL de Cal.com (ej: https://cal.com/innovablack/30min)
 
     triggerDelay: 15000,        // ms antes de mostrar burbuja proactiva
     typingMin: 1500,            // ms mínimo de "typing"
@@ -258,10 +253,10 @@
     btnA.addEventListener('click', function () {
       if (container.parentNode) container.parentNode.removeChild(container);
       addUserMessage('S\u00ed, quiero agendar ahora');
-      if (CONFIG.calendlyUrl) {
-        window.open(CONFIG.calendlyUrl, '_blank');
+      if (CONFIG.calUrl) {
+        window.open(CONFIG.calUrl, '_blank');
       }
-      state.lead.agenda_calendly = true;
+      state.lead.agenda_calcom = true;
       addBotMessage('Excelente. Revisa tu correo \u2014 te llegar\u00e1 la confirmaci\u00f3n. Nos vemos pronto. \ud83d\ude0a');
       sendLead();
     });
@@ -272,7 +267,7 @@
     btnB.addEventListener('click', function () {
       if (container.parentNode) container.parentNode.removeChild(container);
       addUserMessage('Prefiero que me contacten');
-      state.lead.agenda_calendly = false;
+      state.lead.agenda_calcom = false;
       addBotMessage('Listo. Estaremos en contacto pronto. \u00a1Que tengas excelente d\u00eda! \ud83d\udc4b');
       sendLead();
     });
@@ -512,7 +507,7 @@
       lead: state.lead,
       temperatura: state.temperatura,
       siguiente_accion: state.temperatura === 'caliente' ? 'contacto_inmediato' : state.temperatura === 'tibio' ? 'seguimiento_24h' : 'nurturing',
-      agenda_calendly: state.lead.agenda_calendly || false,
+      agenda_calcom: state.lead.agenda_calcom || false,
       conversacion_completa: state.conversation
     };
 
@@ -524,31 +519,35 @@
     leads.push(leadData);
     localStorage.setItem('vbot_leads', JSON.stringify(leads));
 
-    // Intentar enviar por EmailJS si está configurado
-    if (CONFIG.emailjsPublicKey && CONFIG.emailjsServiceId && CONFIG.emailjsTemplateId && window.emailjs) {
-      var tempEmoji = state.temperatura === 'caliente' ? '\ud83d\udd25' : state.temperatura === 'tibio' ? '\ud83c\udf24\ufe0f' : '\u2744\ufe0f';
-      window.emailjs.send(CONFIG.emailjsServiceId, CONFIG.emailjsTemplateId, {
-        to_email: CONFIG.recipientEmail,
-        subject: tempEmoji + ' Lead ' + state.temperatura.toUpperCase() + ' \u2014 ' + state.lead.nombre,
-        nombre: state.lead.nombre,
-        email: state.lead.email,
-        telefono: state.lead.telefono || 'No proporcionado',
-        tipo_institucion: state.lead.tipo_institucion,
-        etapa: state.lead.etapa,
-        dolor_principal: state.lead.dolor_principal,
-        urgencia: state.lead.urgencia,
-        temperatura: state.temperatura,
-        notas: state.lead.notas || 'N/A',
-        conversacion: JSON.stringify(state.conversation, null, 2)
-      }).then(function () {
-        console.log('[Valeria] Lead enviado correctamente por email');
-      }).catch(function (err) {
-        console.warn('[Valeria] Error al enviar lead por email:', err);
-      });
-    } else {
-      console.log('[Valeria] Lead capturado (configurar EmailJS para env\u00edo autom\u00e1tico):');
-      console.log(JSON.stringify(leadData, null, 2));
-    }
+    // Enviar al API serverless
+    var payload = {
+      nombre: state.lead.nombre,
+      email: state.lead.email,
+      telefono: state.lead.telefono || '',
+      temperatura: state.temperatura,
+      tipo_institucion: state.lead.tipo_institucion || '',
+      etapa: state.lead.etapa || '',
+      dolor_principal: state.lead.dolor_principal || '',
+      urgencia: state.lead.urgencia || '',
+      agenda_calcom: state.lead.agenda_calcom || false,
+      notas: state.lead.notas || ''
+    };
+
+    fetch(CONFIG.apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (res) {
+      return res.json();
+    }).then(function (data) {
+      if (data.success) {
+        console.log('[Valeria] Lead enviado — email al lead: ' + data.leadEmail + ', notificación equipo: ' + data.teamEmail);
+      } else {
+        console.warn('[Valeria] Error al enviar lead:', data.error);
+      }
+    }).catch(function (err) {
+      console.warn('[Valeria] Error de red al enviar lead:', err);
+    });
   }
 
   /* --------------------------------------------------------
