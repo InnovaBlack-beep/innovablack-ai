@@ -66,7 +66,7 @@
     temperatura: '',
     conversation: [],
     inactivityTimer: null,
-    rescueAttempted: false
+    rescueStage: 0          // 0=nada, 1=pidió datos, 2=reenganche, 3=despedida
   };
 
   /* --------------------------------------------------------
@@ -82,61 +82,154 @@
     return d.innerHTML;
   }
 
-  /* --- Temporizador de inactividad --- */
+  /* --- Temporizador de inactividad (multi-etapa) --- */
   function resetInactivityTimer() {
     if (state.inactivityTimer) clearTimeout(state.inactivityTimer);
-    if (state.stage === 'done' || state.stage === 'idle' || state.rescueAttempted) return;
-    if (!state.lead.email) {
-      state.inactivityTimer = setTimeout(rescueLead, CONFIG.inactivityTimeout);
-    }
+    if (state.stage === 'done' || state.stage === 'idle') return;
+    var delay;
+    if (state.rescueStage === 0) delay = CONFIG.inactivityTimeout;        // 30s — pedir datos
+    else if (state.rescueStage === 1) delay = 45000;                       // 45s — reenganche
+    else if (state.rescueStage === 2) delay = 45000;                       // 45s — despedida
+    else return;
+    state.inactivityTimer = setTimeout(runRescueStage, delay);
   }
 
-  function rescueLead() {
-    if (state.rescueAttempted || state.stage === 'done' || state.lead.email) return;
-    state.rescueAttempted = true;
-    addBotMessage('Oye, no quiero quitarte tiempo. Solo d\u00e9jame tu correo y te mando la info que necesitas \u2014 sin compromiso.', function () {
-      showInput('correo@ejemplo.com', function (email) {
-        if (validateEmail(email)) {
+  var rescueMessages = {
+    reengage: [
+      '\u00bfSigues ah\u00ed? Sin presi\u00f3n, solo quer\u00eda saber si tienes alguna duda sobre c\u00f3mo trabajamos.',
+      'Oye, te comento que justo esta semana tuvimos un caso similar al tuyo. \u00bfTe interesa que te platique?',
+      '\u00bfTodo bien? Si prefieres, te puedo mandar un resumen por correo de lo que hablamos.',
+      'Entiendo que est\u00e1s ocupado/a. \u00bfPrefieres que te contactemos en otro momento?'
+    ],
+    goodbye: [
+      'Bueno, parece que est\u00e1s ocupado/a. Me voy a desconectar, pero cuando quieras retomar la conversaci\u00f3n aqu\u00ed vamos a estar. \u00a1\u00c9xito! \ud83d\ude4c',
+      'Voy a cerrar por ahora, pero puedes volver a escribir cuando gustes \u2014 siempre hay alguien del equipo disponible. \u00a1Que tengas excelente d\u00eda! \ud83d\udc4b',
+      'Me tengo que ir a atender otra consulta, pero en cuanto regreses te atendemos. \u00a1Hasta pronto! \ud83d\ude0a'
+    ]
+  };
+
+  function randomFrom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function runRescueStage() {
+    if (state.stage === 'done') return;
+
+    // Etapa 1: Pedir email y cel
+    if (state.rescueStage === 0 && !state.lead.email) {
+      state.rescueStage = 1;
+      addBotMessage('Oye, no quiero quitarte tiempo. D\u00e9jame tu correo y tu WhatsApp y te mando la info que necesitas \u2014 sin compromiso.', function () {
+        showInput('correo@ejemplo.com', function (email) {
           state.lead.email = email;
-          addBotMessage('\u00bfY un cel para contactarte r\u00e1pido? (opcional)', function () {
-            showInput('10 d\u00edgitos\u2026', function (phone) {
+          addBotMessage('\u00bfY tu n\u00famero de WhatsApp para contactarte r\u00e1pido?', function () {
+            showInput('+52 10 d\u00edgitos\u2026', function (phone) {
               if (phone.toLowerCase() !== 'no' && phone !== '-' && phone.toLowerCase() !== 'skip' && phone !== 'paso') {
                 state.lead.telefono = phone;
               }
               state.lead.nombre = state.lead.nombre || 'Lead r\u00e1pido';
               state.temperatura = state.temperatura || 'tibio';
-              addBotMessage('\u00a1Listo! Te estaremos contactando. \ud83d\ude4c');
+              addBotMessage('\u00a1Perfecto! Te vamos a contactar pronto por WhatsApp. \ud83d\ude4c');
               sendLead();
-      scheduleReset();
+              scheduleReset();
             });
           });
-        } else {
-          state.lead.email = email;
-          state.lead.nombre = state.lead.nombre || 'Lead r\u00e1pido';
-          state.temperatura = state.temperatura || 'frio';
-          addBotMessage('Anotado. Te estaremos contactando pronto. \ud83d\udc4b');
-          sendLead();
-      scheduleReset();
-        }
+        });
       });
-    });
+      return;
+    }
+
+    // Etapa 2: Reenganche con otro enfoque
+    if (state.rescueStage <= 1) {
+      state.rescueStage = 2;
+      addBotMessage(randomFrom(rescueMessages.reengage), function () {
+        showOptions([
+          { label: 'S\u00ed, tengo una duda', action: function () { state.rescueStage = 0; showInput('Escribe tu pregunta\u2026', handleFreeText); } },
+          { label: 'Manda info a mi correo', action: function () { goRescueEmail(); } },
+          { label: 'No gracias', action: function () { goRescueGoodbye(); } }
+        ]);
+      });
+      return;
+    }
+
+    // Etapa 3: Despedida y cierre
+    goRescueGoodbye();
   }
 
-  /* --- Reiniciar chat después de capturar lead --- */
+  function goRescueEmail() {
+    if (state.lead.email) {
+      state.lead.nombre = state.lead.nombre || 'Lead r\u00e1pido';
+      state.temperatura = state.temperatura || 'frio';
+      addBotMessage('\u00a1Sale! Te mando la info a ' + esc(state.lead.email) + '. \u00a1Que tengas buen d\u00eda! \ud83d\ude0a');
+      sendLead();
+      scheduleReset();
+    } else {
+      addBotMessage('\u00a1Claro! \u00bfA qu\u00e9 correo te lo mando?', function () {
+        showInput('correo@ejemplo.com', function (email) {
+          state.lead.email = email;
+          addBotMessage('\u00bfY tu WhatsApp por si necesitas algo m\u00e1s r\u00e1pido?', function () {
+            showInput('+52 10 d\u00edgitos\u2026', function (phone) {
+              if (phone.toLowerCase() !== 'no' && phone !== '-' && phone.toLowerCase() !== 'skip' && phone !== 'paso') {
+                state.lead.telefono = phone;
+              }
+              state.lead.nombre = state.lead.nombre || 'Lead r\u00e1pido';
+              state.temperatura = state.temperatura || 'frio';
+              addBotMessage('\u00a1Listo, te lo mando! Que tengas excelente d\u00eda. \ud83d\ude4c');
+              sendLead();
+              scheduleReset();
+            });
+          });
+        });
+      });
+    }
+  }
+
+  function goRescueGoodbye() {
+    state.rescueStage = 3;
+    if (state.lead.email) {
+      sendLead();
+    }
+    addBotMessage(randomFrom(rescueMessages.goodbye));
+    setTimeout(function () {
+      closeChat();
+      scheduleFullReset();
+    }, CONFIG.closeAfterLead);
+  }
+
+  /* --- Reiniciar chat después de capturar lead o despedida --- */
   function scheduleReset() {
     setTimeout(function () {
       closeChat();
-      setTimeout(function () {
-        var msgs = document.getElementById('vbot-messages');
-        if (msgs) msgs.innerHTML = '';
-        state.stage = 'idle';
-        state.lead = { nombre: '', email: '', telefono: '', tipo_institucion: '', etapa: '', dolor_principal: '', urgencia: '', notas: '' };
-        state.temperatura = '';
-        state.conversation = [];
-        state.rescueAttempted = false;
-        if (state.inactivityTimer) clearTimeout(state.inactivityTimer);
-      }, 500);
+      scheduleFullReset();
     }, CONFIG.closeAfterLead);
+  }
+
+  function scheduleFullReset() {
+    setTimeout(function () {
+      var msgs = document.getElementById('vbot-messages');
+      if (msgs) msgs.innerHTML = '';
+      var inputArea = document.getElementById('vbot-input-area');
+      if (inputArea) inputArea.classList.remove('active');
+      state.stage = 'idle';
+      state.lead = { nombre: '', email: '', telefono: '', tipo_institucion: '', etapa: '', dolor_principal: '', urgencia: '', notas: '' };
+      state.temperatura = '';
+      state.conversation = [];
+      state.rescueStage = 0;
+      if (state.inactivityTimer) clearTimeout(state.inactivityTimer);
+      // Rotar a nueva asesora para siguiente conversación
+      ASESORA = pickAsesora();
+      updateIdentityUI();
+    }, 500);
+  }
+
+  function updateIdentityUI() {
+    var nameEl = document.querySelector('.vbot-header-name');
+    var subEl = document.querySelector('.vbot-header-sub');
+    var avatarEl = document.querySelector('.vbot-header-avatar-text');
+    var bubbleEl = document.querySelector('.vbot-bubble-initials');
+    if (nameEl) nameEl.textContent = ASESORA.nombre;
+    if (subEl) subEl.textContent = 'Innova Black\u00ae \u00b7 ' + ASESORA.rol;
+    if (avatarEl) avatarEl.textContent = ASESORA.iniciales;
+    if (bubbleEl) bubbleEl.textContent = ASESORA.iniciales;
   }
 
   function validateEmail(e) {
