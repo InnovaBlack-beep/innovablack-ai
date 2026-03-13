@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E0Y70WW412"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E0Y70WW412');
+  </script>
+
+  <title>DTX Upgrade™ — Migración de Sistemas Legacy para SOFOMs | Innova Black®</title>
+  <meta name="description" content="Migración de sistemas legacy y rediseño de procesos manuales para instituciones financieras reguladas. Preparación integral para Ley Fintech 2.0 y evaluación GAFI 2026." />
+  <link rel="canonical" href="https://innovablack.ai/dtx-upgrade/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://innovablack.ai/dtx-upgrade/" />
+  <meta property="og:title" content="DTX Upgrade™ — Migración de Sistemas Legacy | Innova Black®" />
+  <meta property="og:description" content="Migración de sistemas legacy y rediseño de procesos manuales para SOFOMs, SOFIPOs e IFPEs. Preparación para Ley Fintech 2.0 y GAFI 2026." />
+  <meta property="og:image" content="https://innovablack.ai/og-dtx-upgrade.jpg" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:site_name" content="Innova Black®" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DTX Upgrade™ — Migración de Sistemas Legacy | Innova Black®" />
+  <meta name="twitter:description" content="Migración de sistemas legacy y rediseño de procesos manuales para SOFOMs, SOFIPOs e IFPEs. Preparación para Ley Fintech 2.0 y GAFI 2026." />
+  <meta name="twitter:image" content="https://innovablack.ai/og-dtx-upgrade.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../chatbot.css" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "DTX Upgrade™",
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "Innova Black®",
+      "url": "https://innovablack.ai"
+    },
+    "url": "https://innovablack.ai/dtx-upgrade/",
+    "description": "Migración de sistemas legacy y rediseño de procesos manuales para instituciones financieras reguladas en México. Preparación para Ley Fintech 2.0 y evaluación GAFI 2026.",
+    "areaServed": "MX",
+    "serviceType": "Migración de Sistemas Legacy"
+  }
+  </script>
+
+  <style>
+    /* ============================================================
+       TOKENS
+    ============================================================ */
+    :root {
+      --white:      #FFFFFF;
+      --paper:      #F8F6F1;
+      --ink:        #111010;
+      --muted:      #6B6560;
+      --light:      #A8A29C;
+      --rule:       #E2DDD6;
+      --gold:       #A8832A;
+      --gold2:      #C49B35;
+      --gold3:      #D4AF54;
+      --gold-bg:    #FBF7EE;
+      --gold-rule:  rgba(168,131,42,.20);
+      --gold-pale:  rgba(168,131,42,.06);
+      --neg:        #111010;
+      --neg2:       #191717;
+
+      --serif:  'Libre Baskerville', Georgia, serif;
+      --sans:   'Instrument Sans', system-ui, sans-serif;
+      --mono:   'DM Mono', monospace;
+
+      --pad-x: 64px;
+      --pad-y: 120px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ============================================================
+       TYPOGRAPHY HELPERS
+    ============================================================ */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 20px;
+    }
+    .s-h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .s-lead {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 620px;
+    }
+    .on-dark .s-h2 { color: var(--white); }
+    .on-dark .s-lead { color: rgba(255,255,255,.65); }
+    .on-dark .eyebrow { color: var(--gold3); }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .r {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .r.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: .08s; }
+    .d2 { transition-delay: .16s; }
+    .d3 { transition-delay: .24s; }
+    .d4 { transition-delay: .32s; }
+    .d5 { transition-delay: .40s; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all .2s ease;
+      border: none;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+    }
+    .btn-gold:hover { background: var(--gold2); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.3);
+    }
+    .btn-outline:hover { border-color: var(--gold3); color: var(--gold3); }
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+    }
+    .btn-outline-dark:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 0 var(--pad-x);
+      transition: box-shadow .2s;
+    }
+    #nav.scrolled { box-shadow: 0 2px 24px rgba(17,16,16,.06); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -.01em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: .02em;
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--gold);
+      padding: 10px 20px;
+      border-radius: 2px;
+      transition: background .15s;
+      cursor: pointer;
+    }
+    .nav-cta:hover { background: var(--gold2); }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      transition: all .2s;
+    }
+
+    /* ============================================================
+       HERO (DARK)
+    ============================================================ */
+    #hero {
+      background: var(--neg);
+      padding: 160px var(--pad-x) var(--pad-y);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-ghost {
+      position: absolute;
+      right: -60px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--serif);
+      font-size: clamp(100px, 18vw, 280px);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--white);
+      opacity: .03;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: var(--gold-pale);
+      color: var(--gold3);
+      border: 1px solid var(--gold-rule);
+      padding: 6px 12px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+    .hero-h1 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 68px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--gold3);
+    }
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,.6);
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .hero-meta-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+    }
+    .hero-meta-value {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold3);
+    }
+
+    /* ============================================================
+       BREADCRUMBS
+    ============================================================ */
+    .breadcrumbs {
+      padding: 20px var(--pad-x);
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+    }
+    .breadcrumbs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--light);
+      letter-spacing: .04em;
+    }
+    .breadcrumbs-inner a {
+      color: var(--muted);
+      transition: color .15s;
+    }
+    .breadcrumbs-inner a:hover { color: var(--gold); }
+    .breadcrumbs-inner span { margin: 0 8px; }
+
+    /* ============================================================
+       SECTIONS
+    ============================================================ */
+    .sec {
+      padding: var(--pad-y) var(--pad-x);
+    }
+    .sec-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .sec-header {
+      max-width: 680px;
+      margin-bottom: 64px;
+    }
+    .sec-bg-paper { background: var(--paper); }
+    .sec-bg-white { background: var(--white); }
+    .sec-bg-dark { background: var(--neg); }
+
+    /* ============================================================
+       CONTENT BLOCKS
+    ============================================================ */
+    .content-block {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 720px;
+    }
+    .content-block p { margin-bottom: 20px; }
+    .content-block strong {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* ============================================================
+       PROBLEM GRID
+    ============================================================ */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .problem-card {
+      background: var(--white);
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: background .2s;
+    }
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .problem-card:hover::before { transform: scaleX(1); }
+    .problem-card:hover { background: var(--gold-bg); }
+    .problem-icon {
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .problem-label {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .problem-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       INCLUDES GRID
+    ============================================================ */
+    .includes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .include-card {
+      background: var(--white);
+      padding: 44px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: background .2s;
+    }
+    .include-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .include-card:hover::before { transform: scaleX(1); }
+    .include-card:hover { background: var(--gold-bg); }
+    .include-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: .1em;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .include-title {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .include-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .include-list {
+      list-style: none;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .include-list li {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .include-list li::before {
+      content: '\2014';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      opacity: .6;
+    }
+
+    /* ============================================================
+       RELATED SERVICES
+    ============================================================ */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .related-card {
+      background: var(--neg);
+      padding: 44px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: background .2s;
+      display: block;
+    }
+    .related-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .related-card:hover::before { transform: scaleX(1); }
+    .related-card:hover { background: #171515; }
+    .related-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold3);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .related-name {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .related-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.5);
+      line-height: 1.65;
+    }
+    .related-arrow {
+      margin-top: 20px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--gold3);
+      letter-spacing: .06em;
+    }
+
+    /* ============================================================
+       CTA
+    ============================================================ */
+    #cta {
+      padding: var(--pad-y) var(--pad-x);
+      background: var(--neg);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-ghost {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--serif);
+      font-size: clamp(80px, 14vw, 220px);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--white);
+      opacity: .03;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .cta-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-h2 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .cta-h2 em { font-style: italic; color: var(--gold3); }
+    .cta-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,.55);
+      line-height: 1.6;
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .cta-note {
+      margin-top: 20px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(255,255,255,.3);
+      letter-spacing: .04em;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer {
+      padding: 64px var(--pad-x) 40px;
+      background: var(--neg2);
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-top {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .footer-logo span { color: var(--gold3); }
+    .footer-tagline {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.4);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .footer-cities {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: rgba(255,255,255,.25);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .footer-col-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.5);
+      transition: color .15s;
+    }
+    .footer-links a:hover { color: var(--gold3); }
+    .footer-contact a {
+      display: block;
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 8px;
+      transition: color .15s;
+    }
+    .footer-contact a:hover { color: var(--gold3); }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 24px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(255,255,255,.2);
+      letter-spacing: .04em;
+    }
+
+    /* ============================================================
+       MOBILE NAV
+    ============================================================ */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+      padding: 24px var(--pad-x);
+      z-index: 99;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      :root { --pad-x: 40px; --pad-y: 96px; }
+      #hero { padding: 140px var(--pad-x) var(--pad-y); }
+      .problem-grid { grid-template-columns: repeat(2, 1fr); }
+      .includes-grid { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --pad-x: 28px; --pad-y: 80px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      #hero { padding: 120px var(--pad-x) var(--pad-y); }
+      .hero-meta { flex-direction: column; gap: 20px; align-items: flex-start; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .includes-grid { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Innova Black<span>®</span></a>
+      <ul class="nav-links">
+        <li><a href="/#servicios">Servicios</a></li>
+        <li><a href="/#proceso">Proceso</a></li>
+        <li><a href="/#clientes">Clientes</a></li>
+        <li><a href="/blog">Blog</a></li>
+      </ul>
+      <a href="#" class="nav-cta" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;">Hablar con un asesor</a>
+      <div class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/#servicios" class="mobile-link">Servicios</a>
+    <a href="/#proceso" class="mobile-link">Proceso</a>
+    <a href="/#clientes" class="mobile-link">Clientes</a>
+    <a href="/blog" class="mobile-link">Blog</a>
+    <a href="#" class="mobile-link" style="color:var(--gold);font-weight:600;" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;">Hablar con un asesor</a>
+  </div>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero">
+    <div class="hero-ghost">Upgrade</div>
+    <div class="hero-inner">
+      <div class="hero-badge r">Metodologia DTX™ — Servicio 04</div>
+      <h1 class="hero-h1 r d1">Moderniza tu institucion financiera.<br /><em>Sin detener</em> la operacion.</h1>
+      <p class="hero-sub r d2">DTX Upgrade™ migra tus sistemas legacy, elimina procesos manuales y prepara tu SOFOM, SOFIPO o IFPE para la Ley Fintech 2.0 y la evaluacion GAFI 2026.</p>
+      <div class="r d3">
+        <a href="#" class="btn btn-gold" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;">Solicitar diagnostico gratuito</a>
+      </div>
+      <div class="hero-meta r d4">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Duracion</span>
+          <span class="hero-meta-value">2 - 6 meses</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Para</span>
+          <span class="hero-meta-value">Instituciones existentes</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Entrada</span>
+          <span class="hero-meta-value">DTX Audit™ gratuito</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BREADCRUMBS
+  ============================================================ -->
+  <div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/">Inicio</a> <span>›</span> <a href="/#servicios">Servicios</a> <span>›</span> DTX Upgrade™
+    </div>
+  </div>
+
+  <!-- ============================================================
+       QUE ES
+  ============================================================ -->
+  <section class="sec sec-bg-white" id="que-es">
+    <div class="sec-inner">
+      <div class="sec-header">
+        <span class="eyebrow r">¿Que es DTX Upgrade™?</span>
+        <h2 class="s-h2 r d1">Migracion integral de sistemas legacy para instituciones financieras reguladas.</h2>
+      </div>
+      <div class="content-block r d2">
+        <p>DTX Upgrade™ es el servicio de la Metodologia DTX™ diseñado para <strong>instituciones financieras que ya operan pero dependen de sistemas obsoletos, hojas de calculo y procesos manuales</strong> que ponen en riesgo su cumplimiento regulatorio y limitan su crecimiento.</p>
+        <p>El servicio abarca desde la auditoria profunda de tu infraestructura actual hasta la implementacion completa de sistemas modernos: automatizacion de compliance, digitalizacion de flujos operativos y preparacion integral para los <strong>nuevos requerimientos de la Ley Fintech 2.0 y la evaluacion mutua del GAFI programada para 2026</strong>.</p>
+        <p>A diferencia de una simple actualizacion de software, DTX Upgrade™ rediseña la arquitectura completa de tu institucion — procesos, tecnologia y documentacion regulatoria — sin detener tu operacion diaria.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EL PROBLEMA DE LOS SISTEMAS LEGACY
+  ============================================================ -->
+  <section class="sec sec-bg-paper" id="problema-legacy">
+    <div class="sec-inner">
+      <div class="sec-header">
+        <span class="eyebrow r">El problema</span>
+        <h2 class="s-h2 r d1">Los sistemas legacy son una bomba de tiempo regulatoria.</h2>
+        <p class="s-lead r d2">Cada dia que tu institucion opera con Excel, archivos en carpetas compartidas o software generico, acumula riesgo operativo y regulatorio.</p>
+      </div>
+      <div class="problem-grid">
+        <div class="problem-card r">
+          <div class="problem-icon">01</div>
+          <div class="problem-label">Reportes regulatorios manuales con alto margen de error</div>
+          <div class="problem-desc">Preparar reportes ROU, ROP y alertas para la UIF manualmente consume semanas y genera errores que pueden derivar en sanciones de la CNBV.</div>
+        </div>
+        <div class="problem-card r d1">
+          <div class="problem-icon">02</div>
+          <div class="problem-label">Datos criticos dispersos en hojas de calculo sin respaldo</div>
+          <div class="problem-desc">Informacion de clientes, expedientes KYC y registros transaccionales en archivos Excel sin trazabilidad ni control de versiones. Un riesgo ante cualquier visita de inspeccion.</div>
+        </div>
+        <div class="problem-card r d2">
+          <div class="problem-icon">03</div>
+          <div class="problem-label">Incapacidad de escalar sin duplicar personal</div>
+          <div class="problem-desc">Los procesos manuales obligan a contratar mas personas para cada nuevo producto o volumen de operacion, haciendo el crecimiento insostenible.</div>
+        </div>
+        <div class="problem-card r d3">
+          <div class="problem-icon">04</div>
+          <div class="problem-label">Ley Fintech 2.0 y GAFI 2026 exigen infraestructura digital</div>
+          <div class="problem-desc">Los nuevos requerimientos regulatorios demandan sistemas automatizados de monitoreo, reporteo y trazabilidad que los procesos manuales no pueden cumplir.</div>
+        </div>
+        <div class="problem-card r d4">
+          <div class="problem-icon">05</div>
+          <div class="problem-label">Vulnerabilidad ante ciberamenazas y perdida de datos</div>
+          <div class="problem-desc">Los sistemas legacy carecen de actualizaciones de seguridad, cifrado moderno y protocolos de respaldo, exponiendo informacion sensible de tu institucion y tus clientes.</div>
+        </div>
+        <div class="problem-card r d5">
+          <div class="problem-icon">06</div>
+          <div class="problem-label">Dependencia de conocimiento no documentado</div>
+          <div class="problem-desc">Los procesos viven en la cabeza de una o dos personas clave. Si se van, la operacion se detiene. Sin manuales, sin flujos estandarizados, sin continuidad.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       QUE INCLUYE
+  ============================================================ -->
+  <section class="sec sec-bg-white" id="que-incluye">
+    <div class="sec-inner">
+      <div class="sec-header">
+        <span class="eyebrow r">¿Que incluye?</span>
+        <h2 class="s-h2 r d1">Cuatro fases de transformacion. Un solo equipo responsable.</h2>
+        <p class="s-lead r d2">DTX Upgrade™ se ejecuta en 2 a 6 meses dependiendo de la complejidad de tu institucion. Cada fase tiene entregables concretos y medibles.</p>
+      </div>
+      <div class="includes-grid">
+        <div class="include-card r">
+          <span class="include-num">FASE 01</span>
+          <div class="include-title">Auditoria de sistemas y procesos</div>
+          <div class="include-desc">Evaluacion completa de tu infraestructura actual, identificando cada sistema, flujo manual y brecha regulatoria.</div>
+          <ul class="include-list">
+            <li>Inventario de sistemas, bases de datos y herramientas</li>
+            <li>Mapeo de procesos operativos criticos</li>
+            <li>Analisis de brechas vs. normativa CNBV vigente</li>
+            <li>Reporte ejecutivo con hallazgos y prioridades</li>
+          </ul>
+        </div>
+        <div class="include-card r d1">
+          <span class="include-num">FASE 02</span>
+          <div class="include-title">Plan de migracion y arquitectura</div>
+          <div class="include-desc">Diseño de la nueva arquitectura tecnologica y roadmap detallado de migracion sin interrupciones operativas.</div>
+          <ul class="include-list">
+            <li>Arquitectura de sistemas objetivo</li>
+            <li>Estrategia de migracion de datos con rollback</li>
+            <li>Cronograma por fases con dependencias</li>
+            <li>Plan de contingencia y operacion paralela</li>
+          </ul>
+        </div>
+        <div class="include-card r d2">
+          <span class="include-num">FASE 03</span>
+          <div class="include-title">Rediseño de procesos y automatizacion</div>
+          <div class="include-desc">Implementacion de flujos automatizados que reemplazan procesos manuales y reducen errores operativos.</div>
+          <ul class="include-list">
+            <li>Automatizacion de reportes regulatorios (ROU/ROP)</li>
+            <li>Digitalizacion de onboarding y expedientes KYC</li>
+            <li>Flujos de monitoreo transaccional con alertas</li>
+            <li>Dashboards de operacion y compliance en tiempo real</li>
+          </ul>
+        </div>
+        <div class="include-card r d3">
+          <span class="include-num">FASE 04</span>
+          <div class="include-title">Preparacion regulatoria Ley Fintech 2.0 y GAFI</div>
+          <div class="include-desc">Actualizacion de toda la documentacion y sistemas para cumplir con los nuevos requerimientos regulatorios de 2026.</div>
+          <ul class="include-list">
+            <li>Actualizacion de manuales PLD/FT</li>
+            <li>Implementacion de controles GAFI requeridos</li>
+            <li>Documentacion para inspeccion CNBV y UIF</li>
+            <li>Capacitacion al equipo en nuevos procesos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICIOS RELACIONADOS
+  ============================================================ -->
+  <section class="sec sec-bg-dark on-dark" id="relacionados">
+    <div class="sec-inner">
+      <div class="sec-header">
+        <span class="eyebrow r">Servicios relacionados</span>
+        <h2 class="s-h2 r d1">Complementa tu transformacion con otros modulos DTX™.</h2>
+        <p class="s-lead r d2">DTX Upgrade™ se integra con el resto de la Metodologia DTX™ para cubrir todas las necesidades de tu institucion.</p>
+      </div>
+      <div class="related-grid">
+        <a href="/dtx-audit" class="related-card r">
+          <span class="related-tag">Diagnostico gratuito</span>
+          <div class="related-name">DTX Audit™</div>
+          <div class="related-desc">Evaluacion de 45 minutos del estado actual de tu institucion. El punto de entrada para cualquier servicio DTX™.</div>
+          <div class="related-arrow">Ver servicio →</div>
+        </a>
+        <a href="/dtx-compliance" class="related-card r d1">
+          <span class="related-tag">Automatizacion de compliance</span>
+          <div class="related-name">DTX Compliance Engine™</div>
+          <div class="related-desc">Motor de compliance automatizado con IA. Reportes ROU/ROP, monitoreo transaccional y KYC digital en minutos.</div>
+          <div class="related-arrow">Ver servicio →</div>
+        </a>
+        <a href="/dtx-retainer" class="related-card r d2">
+          <span class="related-tag">Soporte continuo</span>
+          <div class="related-name">DTX Retainer™</div>
+          <div class="related-desc">CTO/COO externo especializado en instituciones financieras reguladas. Monitoreo regulatorio y advisory continuo.</div>
+          <div class="related-arrow">Ver servicio →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA
+  ============================================================ -->
+  <section id="cta">
+    <div class="cta-ghost">Upgrade</div>
+    <div class="cta-inner">
+      <span class="eyebrow r" style="color:var(--gold3)">Primer paso: diagnostico gratuito</span>
+      <h2 class="cta-h2 r d1">Tu institucion no puede esperar a <em>2026</em> para modernizarse.</h2>
+      <p class="cta-sub r d2">Agenda un DTX Audit™ gratuito de 45 minutos. Evaluamos tu infraestructura actual y te entregamos un roadmap accionable — sin compromisos.</p>
+      <div class="cta-actions r d3">
+        <a href="#" class="btn btn-gold" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;">Agendar diagnostico gratuito</a>
+        <a href="/#servicios" class="btn btn-outline">Ver todos los servicios</a>
+      </div>
+      <p class="cta-note r d4">45 min · Sin costo · CDMX · MTY · GDL · Remoto</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Innova Black<span>®</span></div>
+        <p class="footer-tagline">Transformacion tecnologica para instituciones financieras reguladas en Mexico.</p>
+        <div class="footer-cities">CDMX · MTY · GDL</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Servicios DTX™</div>
+        <ul class="footer-links">
+          <li><a href="/dtx-launch">DTX Launch™</a></li>
+          <li><a href="/dtx-compliance">DTX Compliance Engine™</a></li>
+          <li><a href="/dtx-scale">DTX Scale™</a></li>
+          <li><a href="/dtx-upgrade">DTX Upgrade™</a></li>
+          <li><a href="/dtx-retainer">DTX Retainer™</a></li>
+          <li><a href="/dtx-audit">DTX Audit™</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Recursos</div>
+        <ul class="footer-links">
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/#proceso">Proceso</a></li>
+          <li><a href="/#clientes">Clientes</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <div class="footer-contact">
+          <a href="mailto:hello@innova.black">hello@innova.black</a>
+          <a href="tel:+525662975626">+52 56 6297 5626</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Innova Black®. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+  <script>
+    // Scroll reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.r').forEach(el => obs.observe(el));
+
+    // Nav scroll shadow
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+      mobileMenu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+      });
+    }
+  </script>
+  <script src="../chatbot.js"></script>
+</body>
+</html>

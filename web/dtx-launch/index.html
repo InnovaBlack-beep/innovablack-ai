@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E0Y70WW412"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E0Y70WW412');
+  </script>
+
+  <title>DTX Launch™ — Constitución Tecnológica de SOFOMs e IFPEs | Innova Black®</title>
+  <meta name="description" content="Construimos el framework tecnológico completo para nuevas instituciones financieras. Arquitectura, manuales CNBV, PLD/KYC desde cero. SOFOMs, SOFIPOs e IFPEs." />
+  <link rel="canonical" href="https://innovablack.ai/dtx-launch/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://innovablack.ai/dtx-launch/" />
+  <meta property="og:title" content="DTX Launch™ — Constitución Tecnológica de SOFOMs e IFPEs | Innova Black®" />
+  <meta property="og:description" content="Framework tecnológico completo para constituir nuevas SOFOMs, SOFIPOs e IFPEs. Arquitectura, compliance y PLD/KYC desde cero." />
+  <meta property="og:image" content="https://innovablack.ai/og-home.jpg" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:site_name" content="Innova Black®" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DTX Launch™ — Constitución Tecnológica de SOFOMs e IFPEs | Innova Black®" />
+  <meta name="twitter:description" content="Framework tecnológico completo para constituir nuevas SOFOMs, SOFIPOs e IFPEs. Arquitectura, compliance y PLD/KYC desde cero." />
+  <meta name="twitter:image" content="https://innovablack.ai/og-home.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../chatbot.css" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "DTX Launch™",
+    "description": "Servicio de constitución tecnológica integral para nuevas SOFOMs, SOFIPOs e IFPEs en México. Incluye arquitectura tecnológica, flujos operativos, manuales CNBV, setup PLD/KYC y documentación regulatoria.",
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "Innova Black®",
+      "url": "https://innovablack.ai"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "MX"
+    },
+    "serviceType": "Constitución Tecnológica de Instituciones Financieras",
+    "url": "https://innovablack.ai/dtx-launch/"
+  }
+  </script>
+
+  <style>
+    /* ============================================================
+       TOKENS
+    ============================================================ */
+    :root {
+      --white:      #FFFFFF;
+      --paper:      #F8F6F1;
+      --paper2:     #F0EDE6;
+      --ink:        #111010;
+      --ink2:       #1E1C1C;
+      --muted:      #6B6560;
+      --light:      #A8A29C;
+      --rule:       #E2DDD6;
+      --gold:       #A8832A;
+      --gold2:      #C49B35;
+      --gold3:      #D4AF54;
+      --gold-bg:    #FBF7EE;
+      --gold-rule:  rgba(168,131,42,.20);
+      --gold-pale:  rgba(168,131,42,.06);
+      --neg:        #111010;
+      --neg2:       #191717;
+
+      --serif:  'Libre Baskerville', Georgia, serif;
+      --sans:   'Instrument Sans', system-ui, sans-serif;
+      --mono:   'DM Mono', monospace;
+
+      --pad-x: 64px;
+      --pad-y: 120px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ============================================================
+       TYPOGRAPHY HELPERS
+    ============================================================ */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 20px;
+    }
+    .s-h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .s-lead {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 620px;
+    }
+    .on-dark .s-h2 { color: var(--white); }
+    .on-dark .s-lead { color: rgba(255,255,255,.65); }
+    .on-dark .eyebrow { color: var(--gold3); }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .r {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .r.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: .08s; }
+    .d2 { transition-delay: .16s; }
+    .d3 { transition-delay: .24s; }
+    .d4 { transition-delay: .32s; }
+    .d5 { transition-delay: .40s; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all .2s ease;
+      border: none;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+    }
+    .btn-gold:hover { background: var(--gold2); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.3);
+    }
+    .btn-outline:hover { border-color: var(--gold3); color: var(--gold3); }
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+    }
+    .btn-outline-dark:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 0 var(--pad-x);
+      transition: box-shadow .2s;
+    }
+    #nav.scrolled { box-shadow: 0 2px 24px rgba(17,16,16,.06); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -.01em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: .02em;
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--gold);
+      padding: 10px 20px;
+      border-radius: 2px;
+      transition: background .15s;
+      cursor: pointer;
+      border: none;
+    }
+    .nav-cta:hover { background: var(--gold2); }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      transition: all .2s;
+    }
+
+    /* ============================================================
+       MOBILE NAV
+    ============================================================ */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+      padding: 24px var(--pad-x);
+      z-index: 99;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ============================================================
+       HERO (short, dark bg, no video)
+    ============================================================ */
+    #hero {
+      position: relative;
+      background: var(--neg);
+      padding: 160px var(--pad-x) 96px;
+      overflow: hidden;
+    }
+    .hero-bg-accent {
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168,131,42,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-left { position: relative; padding-left: 28px; }
+    .hero-line {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .hero-h1 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--gold3);
+    }
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,.65);
+      max-width: 580px;
+      margin-bottom: 40px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-footnote {
+      margin-top: 16px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(255,255,255,.3);
+      letter-spacing: .04em;
+    }
+
+    /* ============================================================
+       BREADCRUMBS
+    ============================================================ */
+    .breadcrumbs {
+      padding: 20px var(--pad-x);
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+    }
+    .breadcrumbs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .06em;
+      color: var(--light);
+    }
+    .breadcrumbs-inner a {
+      color: var(--muted);
+      transition: color .15s;
+    }
+    .breadcrumbs-inner a:hover { color: var(--gold); }
+    .breadcrumbs-inner span { margin: 0 8px; color: var(--rule); }
+
+    /* ============================================================
+       SECTIONS (shared)
+    ============================================================ */
+    .sec-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .sec-header {
+      max-width: 600px;
+      margin-bottom: 64px;
+    }
+
+    /* ============================================================
+       WHAT IS
+    ============================================================ */
+    #que-es {
+      padding: var(--pad-y) var(--pad-x);
+      background: var(--white);
+    }
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .what-text p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .what-text p strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .what-aside {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      padding: 40px;
+    }
+    .what-aside-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .what-aside ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .what-aside li {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ink2);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .what-aside li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 8px; height: 8px;
+      border: 1.5px solid var(--gold);
+      border-radius: 1px;
+    }
+
+    /* ============================================================
+       INCLUDES (que incluye)
+    ============================================================ */
+    #incluye {
+      padding: var(--pad-y) var(--pad-x);
+      background: var(--paper);
+    }
+    .includes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .include-card {
+      background: var(--white);
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: background .2s;
+    }
+    .include-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .include-card:hover::before { transform: scaleX(1); }
+    .include-card:hover { background: var(--gold-bg); }
+    .include-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: .08em;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .include-title {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .include-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       DURATION (duracion y proceso)
+    ============================================================ */
+    #duracion {
+      padding: var(--pad-y) var(--pad-x);
+      background: var(--white);
+    }
+    .phases-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--rule);
+      margin-top: 56px;
+    }
+    .phase {
+      padding: 40px 32px;
+      border-right: 1px solid var(--rule);
+      position: relative;
+    }
+    .phase:last-child { border-right: none; }
+    .phase-week {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .phase-name {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .phase-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .phase-bar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--gold), var(--gold3));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .4s ease;
+    }
+    .phase:hover .phase-bar { transform: scaleX(1); }
+
+    /* ============================================================
+       RELATED SERVICES
+    ============================================================ */
+    #relacionados {
+      padding: var(--pad-y) var(--pad-x);
+      background: var(--paper);
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .related-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      padding: 40px 32px;
+      transition: border-color .2s, background .2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .related-card:hover {
+      border-color: var(--gold-rule);
+      background: var(--gold-bg);
+    }
+    .related-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .related-name {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .related-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+    .related-link {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: color .15s;
+    }
+    .related-link:hover { color: var(--gold2); }
+
+    /* ============================================================
+       CTA
+    ============================================================ */
+    #cta {
+      padding: var(--pad-y) var(--pad-x);
+      background: var(--neg);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-ghost {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--serif);
+      font-size: clamp(80px, 14vw, 220px);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--white);
+      opacity: .03;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .cta-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-h2 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .cta-h2 em { font-style: italic; color: var(--gold3); }
+    .cta-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,.55);
+      line-height: 1.6;
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .cta-note {
+      margin-top: 20px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(255,255,255,.3);
+      letter-spacing: .04em;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer {
+      padding: 64px var(--pad-x) 40px;
+      background: var(--neg2);
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-top {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .footer-logo span { color: var(--gold3); }
+    .footer-tagline {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.4);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .footer-cities {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: rgba(255,255,255,.25);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .footer-col-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.5);
+      transition: color .15s;
+    }
+    .footer-links a:hover { color: var(--gold3); }
+    .footer-contact a {
+      display: block;
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 8px;
+      transition: color .15s;
+    }
+    .footer-contact a:hover { color: var(--gold3); }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 24px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(255,255,255,.2);
+      letter-spacing: .04em;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      :root { --pad-x: 40px; --pad-y: 96px; }
+      .what-grid { grid-template-columns: 1fr; gap: 48px; }
+      .includes-grid { grid-template-columns: repeat(2, 1fr); }
+      .phases-row { grid-template-columns: repeat(2, 1fr); }
+      .phase { border-bottom: 1px solid var(--rule); }
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --pad-x: 28px; --pad-y: 80px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      #hero { padding: 140px var(--pad-x) 72px; }
+      .includes-grid { grid-template-columns: 1fr; }
+      .phases-row { grid-template-columns: 1fr; }
+      .phase { border-right: none; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Innova Black<span>®</span></a>
+      <ul class="nav-links">
+        <li><a href="/#servicios">Servicios</a></li>
+        <li><a href="/#proceso">Proceso</a></li>
+        <li><a href="/#clientes">Clientes</a></li>
+        <li><a href="/blog">Blog</a></li>
+      </ul>
+      <a href="#" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;" class="nav-cta">Agendar Diagnóstico</a>
+      <div class="nav-hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/#servicios" class="mobile-link">Servicios</a>
+    <a href="/#proceso" class="mobile-link">Proceso</a>
+    <a href="/#clientes" class="mobile-link">Clientes</a>
+    <a href="/blog" class="mobile-link">Blog</a>
+    <a href="#" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;" class="mobile-link" style="color:var(--gold);font-weight:600;">Agendar Diagnóstico</a>
+  </div>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero" class="on-dark">
+    <div class="hero-bg-accent" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-line"></div>
+        <span class="eyebrow r" style="color:var(--gold3)">DTX Launch™</span>
+        <h1 class="hero-h1 r d1">
+          Constituye tu institución<br />
+          financiera con la <em>arquitectura<br />
+          tecnológica correcta</em> desde el día uno.
+        </h1>
+        <p class="hero-sub r d2">
+          Diseñamos e implementamos el framework tecnológico completo que SOFOMs,
+          SOFIPOs e IFPEs necesitan para obtener autorización y operar desde la
+          primera semana.
+        </p>
+        <div class="hero-actions r d3">
+          <a href="#" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;" class="btn btn-gold">Solicitar DTX Audit™ gratuito</a>
+          <a href="#incluye" class="btn btn-outline">Ver entregables</a>
+        </div>
+        <p class="hero-footnote r d4">3 – 6 semanas de implementación · Diagnóstico gratuito de 45 min</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BREADCRUMBS
+  ============================================================ -->
+  <div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/">Inicio</a>
+      <span>/</span>
+      <a href="/#servicios">Servicios</a>
+      <span>/</span>
+      DTX Launch™
+    </div>
+  </div>
+
+  <!-- ============================================================
+       QUE ES DTX LAUNCH
+  ============================================================ -->
+  <section id="que-es">
+    <div class="sec-inner">
+      <div class="sec-header">
+        <span class="eyebrow r">El servicio</span>
+        <h2 class="s-h2 r d1">¿Qué es DTX Launch™?</h2>
+      </div>
+      <div class="what-grid">
+        <div class="what-text">
+          <p class="r">
+            DTX Launch™ es el servicio de <strong>constitución tecnológica integral</strong> para instituciones financieras nuevas en México. No se trata solo de documentación legal — construimos la arquitectura tecnológica, los flujos operativos y la infraestructura de compliance que el regulador exige para autorizar y operar una SOFOM, SOFIPO o IFPE.
+          </p>
+          <p class="r d1">
+            El problema más común en la constitución de una nueva entidad financiera es que los fundadores resuelven lo legal y lo corporativo, pero <strong>llegan a la CNBV sin un framework tecnológico</strong> que soporte la operación real. Los manuales están incompletos, el sistema PLD no existe, y el onboarding de clientes se hace a mano.
+          </p>
+          <p class="r d2">
+            Con DTX Launch™, tu institución nace con la misma infraestructura que una entidad que lleva años operando: <strong>arquitectura de sistemas definida, procesos PLD/KYC automatizados desde cero, manuales CNBV listos para presentar</strong> y flujos operativos documentados. Todo en 3 a 6 semanas.
+          </p>
+        </div>
+        <div class="what-aside r d3">
+          <div class="what-aside-title">Ideal para</div>
+          <ul>
+            <li>Emprendedores y fondos que constituyen una SOFOM nueva</li>
+            <li>Grupos empresariales creando su brazo financiero</li>
+            <li>Fintechs en proceso de solicitud IFPE ante la CNBV</li>
+            <li>SOFIPOs en formación que necesitan infraestructura tecnológica</li>
+            <li>Instituciones que ya iniciaron trámites pero no tienen framework tech</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       QUE INCLUYE
+  ============================================================ -->
+  <section id="incluye">
+    <div class="sec-inner">
+      <div class="sec-header">
+        <span class="eyebrow r">Entregables</span>
+        <h2 class="s-h2 r d1">¿Qué incluye DTX Launch™?</h2>
+        <p class="s-lead r d2">Cada entregable está diseñado para que tu institución pueda presentarse ante el regulador y operar desde el primer día.</p>
+      </div>
+      <div class="includes-grid">
+        <div class="include-card r">
+          <span class="include-num">01</span>
+          <div class="include-title">Arquitectura tecnológica completa</div>
+          <div class="include-desc">Diseño de la infraestructura de sistemas: core bancario o de crédito, bases de datos, servidores, APIs, ambientes de desarrollo, staging y producción. Documentación técnica lista para auditoría.</div>
+        </div>
+        <div class="include-card r d1">
+          <span class="include-num">02</span>
+          <div class="include-title">Flujos operativos documentados</div>
+          <div class="include-desc">Procesos de originación, dispersión, cobranza, conciliación y atención al cliente mapeados de principio a fin con diagramas de flujo y matrices de responsabilidad.</div>
+        </div>
+        <div class="include-card r d2">
+          <span class="include-num">03</span>
+          <div class="include-title">Manuales CNBV</div>
+          <div class="include-desc">Manual de PLD/FT, manual de operación, manual de riesgos, código de ética y políticas internas alineados a las Disposiciones de Carácter General vigentes.</div>
+        </div>
+        <div class="include-card r d3">
+          <span class="include-num">04</span>
+          <div class="include-title">Setup PLD/KYC desde cero</div>
+          <div class="include-desc">Configuración del sistema de Prevención de Lavado de Dinero y Know Your Customer: alertas transaccionales, listas negras, perfiles de riesgo, reportes ROU/ROP y conexión con la UIF.</div>
+        </div>
+        <div class="include-card r d4">
+          <span class="include-num">05</span>
+          <div class="include-title">Documentación regulatoria</div>
+          <div class="include-desc">Expediente técnico completo para presentar ante la CNBV: diagramas de arquitectura, políticas de seguridad de la información, plan de continuidad de negocio y matrices de control.</div>
+        </div>
+        <div class="include-card r d5">
+          <span class="include-num">06</span>
+          <div class="include-title">Capacitación del equipo fundador</div>
+          <div class="include-desc">Sesiones de formación para el equipo directivo y operativo sobre el uso de los sistemas implementados, protocolos PLD y procedimientos de operación diaria.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DURACION Y PROCESO
+  ============================================================ -->
+  <section id="duracion">
+    <div class="sec-inner">
+      <div class="sec-header">
+        <span class="eyebrow r">Duración y proceso</span>
+        <h2 class="s-h2 r d1">De cero a operación en 3 a 6 semanas.</h2>
+        <p class="s-lead r d2">El proceso se adapta al tipo de institución y al estado actual de la constitución. Cada fase tiene entregables concretos y revisiones con el equipo fundador.</p>
+      </div>
+      <div class="phases-row">
+        <div class="phase r">
+          <span class="phase-week">Semana 1</span>
+          <div class="phase-name">Diagnóstico y levantamiento</div>
+          <div class="phase-desc">Evaluación del modelo de negocio, revisión del expediente legal existente, identificación de brechas tecnológicas y regulatorias. Entregable: roadmap de implementación.</div>
+          <div class="phase-bar"></div>
+        </div>
+        <div class="phase r d1">
+          <span class="phase-week">Semanas 2 – 3</span>
+          <div class="phase-name">Diseño de arquitectura</div>
+          <div class="phase-desc">Definición de la infraestructura tecnológica, diseño de flujos operativos, selección de proveedores tecnológicos y estructuración de manuales CNBV.</div>
+          <div class="phase-bar"></div>
+        </div>
+        <div class="phase r d2">
+          <span class="phase-week">Semanas 3 – 5</span>
+          <div class="phase-name">Implementación y configuración</div>
+          <div class="phase-desc">Setup de sistemas PLD/KYC, configuración de alertas y reportes regulatorios, integración de herramientas operativas y documentación técnica completa.</div>
+          <div class="phase-bar"></div>
+        </div>
+        <div class="phase r d3">
+          <span class="phase-week">Semana 5 – 6</span>
+          <div class="phase-name">Entrega y capacitación</div>
+          <div class="phase-desc">Entrega formal del expediente tecnológico, capacitación del equipo fundador, simulacro de operación y plan de acompañamiento post-lanzamiento.</div>
+          <div class="phase-bar"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICIOS RELACIONADOS
+  ============================================================ -->
+  <section id="relacionados">
+    <div class="sec-inner">
+      <div class="sec-header">
+        <span class="eyebrow r">Siguiente paso</span>
+        <h2 class="s-h2 r d1">Servicios complementarios</h2>
+        <p class="s-lead r d2">DTX Launch™ es el punto de partida. Estos servicios extienden tu framework tecnológico conforme tu institución crece.</p>
+      </div>
+      <div class="related-grid">
+        <a href="/dtx-audit" class="related-card r">
+          <div class="related-tag">Punto de entrada</div>
+          <div class="related-name">DTX Audit™</div>
+          <div class="related-desc">Diagnóstico gratuito de 45 minutos. Evaluamos tu situación tecnológica y regulatoria y te entregamos un Reporte de Madurez Regulatoria con áreas de riesgo identificadas.</div>
+          <span class="related-link">Solicitar diagnóstico &rarr;</span>
+        </a>
+        <a href="/dtx-compliance" class="related-card r d1">
+          <div class="related-tag">Automatización</div>
+          <div class="related-name">DTX Compliance Engine™</div>
+          <div class="related-desc">Automatización IA de reportes regulatorios, monitoreo transaccional inteligente y onboarding digital KYC. Para instituciones que ya operan y necesitan escalar su compliance.</div>
+          <span class="related-link">Conocer más &rarr;</span>
+        </a>
+        <a href="/dtx-retainer" class="related-card r d2">
+          <div class="related-tag">Acompañamiento</div>
+          <div class="related-name">DTX Retainer™</div>
+          <div class="related-desc">CTO/COO externo especializado en instituciones financieras reguladas. Monitoreo regulatorio en tiempo real, advisory al CEO y respuesta ante autoridades.</div>
+          <span class="related-link">Conocer más &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA
+  ============================================================ -->
+  <section id="cta" class="on-dark">
+    <div class="cta-ghost" aria-hidden="true">DTX Launch</div>
+    <div class="cta-inner">
+      <span class="eyebrow r">Comienza aquí</span>
+      <h2 class="cta-h2 r d1">¿Listo para constituir tu<br /><em>institución financiera</em>?</h2>
+      <p class="cta-sub r d2">Agenda un diagnóstico gratuito de 45 minutos. Evaluamos tu modelo de negocio, tu estado regulatorio y te entregamos un roadmap tecnológico personalizado para tu constitución.</p>
+      <div class="cta-actions r d3">
+        <a href="#" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;" class="btn btn-gold">Solicitar DTX Audit™ gratuito</a>
+      </div>
+      <p class="cta-note r d4">Sin costo · Sin compromiso · 45 minutos · Reporte de Madurez Regulatoria incluido</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Innova Black<span>®</span></div>
+        <p class="footer-tagline">Arquitectos del framework tecnológico para instituciones financieras reguladas en México.</p>
+        <div class="footer-cities">CDMX · Monterrey · Guadalajara</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Servicios</div>
+        <ul class="footer-links">
+          <li><a href="/dtx-launch">DTX Launch™</a></li>
+          <li><a href="/dtx-compliance">DTX Compliance Engine™</a></li>
+          <li><a href="/dtx-scale">DTX Scale™</a></li>
+          <li><a href="/dtx-upgrade">DTX Upgrade™</a></li>
+          <li><a href="/dtx-retainer">DTX Retainer™</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Recursos</div>
+        <ul class="footer-links">
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/#proceso">Proceso</a></li>
+          <li><a href="/#clientes">Clientes</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <div class="footer-contact">
+          <a href="mailto:hello@innova.black">hello@innova.black</a>
+          <a href="https://innova.black">innova.black</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Innova Black®. Todos los derechos reservados. DTX™ es marca registrada.</p>
+      <p class="footer-copy">Metodología DTX™ · innova.black</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // --- Nav scroll shadow ---
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // --- Mobile hamburger ---
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // --- Scroll reveal ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.r').forEach(el => observer.observe(el));
+
+    // --- Smooth scroll for anchor links ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 72;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+  <script src="../chatbot.js"></script>
+</body>
+</html>

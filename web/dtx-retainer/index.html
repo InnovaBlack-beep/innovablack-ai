@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E0Y70WW412"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E0Y70WW412');
+  </script>
+
+  <title>DTX Retainer™ — CTO/COO Externo para Instituciones Financieras | Innova Black®</title>
+  <meta name="description" content="DTX Retainer™ es el único servicio de CTO/COO externo especializado en instituciones financieras reguladas en México. Monitoreo regulatorio, asesoría estratégica y gestión de proveedores tecnológicos para SOFOMs, SOFIPOs e IFPEs." />
+  <link rel="canonical" href="https://innovablack.ai/dtx-retainer/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://innovablack.ai/dtx-retainer/" />
+  <meta property="og:title" content="DTX Retainer™ — CTO/COO Externo para Instituciones Financieras" />
+  <meta property="og:description" content="Único en el mercado: servicio recurrente de dirección tecnológica y operativa para instituciones financieras reguladas en México." />
+  <meta property="og:image" content="https://innovablack.ai/og-home.jpg" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:site_name" content="Innova Black®" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DTX Retainer™ — CTO/COO Externo para Instituciones Financieras" />
+  <meta name="twitter:description" content="Único en el mercado: servicio recurrente de dirección tecnológica y operativa para instituciones financieras reguladas en México." />
+  <meta name="twitter:image" content="https://innovablack.ai/og-home.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../chatbot.css" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "DTX Retainer™",
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "Innova Black®",
+      "url": "https://innovablack.ai"
+    },
+    "description": "Servicio recurrente de CTO/COO externo especializado en instituciones financieras reguladas en México. Monitoreo regulatorio continuo, asesoría estratégica al CEO, gestión de proveedores tecnológicos y respuesta ante autoridades.",
+    "areaServed": "MX",
+    "url": "https://innovablack.ai/dtx-retainer/",
+    "category": "Technology Consulting"
+  }
+  </script>
+
+  <style>
+    /* ============================================================
+       TOKENS
+    ============================================================ */
+    :root {
+      --white:      #FFFFFF;
+      --paper:      #F8F6F1;
+      --paper2:     #F0EDE6;
+      --ink:        #111010;
+      --ink2:       #1E1C1C;
+      --muted:      #6B6560;
+      --light:      #A8A29C;
+      --rule:       #E2DDD6;
+      --gold:       #A8832A;
+      --gold2:      #C49B35;
+      --gold3:      #D4AF54;
+      --gold-bg:    #FBF7EE;
+      --gold-rule:  rgba(168,131,42,.20);
+      --gold-pale:  rgba(168,131,42,.06);
+      --neg:        #111010;
+      --neg2:       #191717;
+
+      --serif:  'Libre Baskerville', Georgia, serif;
+      --sans:   'Instrument Sans', system-ui, sans-serif;
+      --mono:   'DM Mono', monospace;
+
+      --pad-x: 64px;
+      --pad-y: 120px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ============================================================
+       TYPOGRAPHY HELPERS
+    ============================================================ */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 20px;
+    }
+    .s-h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .s-lead {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 620px;
+    }
+    .on-dark .s-h2 { color: var(--white); }
+    .on-dark .s-lead { color: rgba(255,255,255,.65); }
+    .on-dark .eyebrow { color: var(--gold3); }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .r {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .r.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: .08s; }
+    .d2 { transition-delay: .16s; }
+    .d3 { transition-delay: .24s; }
+    .d4 { transition-delay: .32s; }
+    .d5 { transition-delay: .40s; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all .2s ease;
+      border: none;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+    }
+    .btn-gold:hover { background: var(--gold2); }
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+    }
+    .btn-outline-dark:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.3);
+    }
+    .btn-outline:hover { border-color: var(--gold3); color: var(--gold3); }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 0 var(--pad-x);
+      transition: box-shadow .2s;
+    }
+    #nav.scrolled { box-shadow: 0 2px 24px rgba(17,16,16,.06); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -.01em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: .02em;
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--gold);
+      padding: 10px 20px;
+      border-radius: 2px;
+      transition: background .15s;
+      cursor: pointer;
+    }
+    .nav-cta:hover { background: var(--gold2); }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      transition: all .2s;
+    }
+
+    /* ============================================================
+       MOBILE NAV
+    ============================================================ */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+      padding: 24px var(--pad-x);
+      z-index: 99;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ============================================================
+       HERO (dark)
+    ============================================================ */
+    .hero {
+      background: var(--neg);
+      padding: calc(var(--pad-y) + 64px) var(--pad-x) var(--pad-y);
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold3);
+      border: 1px solid var(--gold-rule);
+      background: rgba(168,131,42,.08);
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold3);
+    }
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,.55);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* ============================================================
+       BREADCRUMBS
+    ============================================================ */
+    .breadcrumbs {
+      padding: 20px var(--pad-x);
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+    }
+    .breadcrumbs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--light);
+      letter-spacing: .06em;
+    }
+    .breadcrumbs-inner a {
+      color: var(--muted);
+      transition: color .15s;
+    }
+    .breadcrumbs-inner a:hover { color: var(--gold); }
+    .breadcrumbs-inner span { margin: 0 8px; }
+
+    /* ============================================================
+       SECTIONS
+    ============================================================ */
+    .section {
+      padding: var(--pad-y) var(--pad-x);
+    }
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section--alt { background: var(--paper); }
+    .section--dark { background: var(--neg2); }
+
+    /* ============================================================
+       CONTENT BLOCKS
+    ============================================================ */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .content-prose {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+    .content-prose p + p { margin-top: 20px; }
+
+    /* Feature list */
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .feature-item {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .feature-item:first-child { padding-top: 0; }
+    .feature-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--gold);
+      font-weight: 500;
+      min-width: 28px;
+      padding-top: 2px;
+    }
+    .feature-title {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .feature-desc {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* Unique / highlight box */
+    .highlight-box {
+      background: var(--gold-bg);
+      border: 1px solid var(--gold-rule);
+      border-radius: 4px;
+      padding: 48px;
+    }
+    .highlight-box .eyebrow { color: var(--gold); }
+    .highlight-box h3 {
+      font-family: var(--serif);
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .highlight-box p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* Modelo recurrente */
+    .model-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .model-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 32px;
+    }
+    .model-card-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .model-card h4 {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .model-card p {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* Related services */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .related-card {
+      display: block;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 32px;
+      transition: all .2s ease;
+    }
+    .related-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 24px rgba(168,131,42,.08);
+    }
+    .related-card-name {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .related-card h4 {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .related-card p {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .related-card .arrow {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    /* CTA section */
+    .cta-section {
+      padding: var(--pad-y) var(--pad-x);
+      background: var(--neg);
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .cta-section p {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,.55);
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer {
+      padding: 64px var(--pad-x) 40px;
+      background: var(--neg2);
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-top {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .footer-logo span { color: var(--gold3); }
+    .footer-tagline {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.4);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .footer-cities {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: rgba(255,255,255,.25);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .footer-col-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.5);
+      transition: color .15s;
+    }
+    .footer-links a:hover { color: var(--gold3); }
+    .footer-contact a {
+      display: block;
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 8px;
+      transition: color .15s;
+    }
+    .footer-contact a:hover { color: var(--gold3); }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 24px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(255,255,255,.2);
+      letter-spacing: .04em;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      :root { --pad-x: 40px; --pad-y: 96px; }
+      .content-grid { grid-template-columns: 1fr; gap: 48px; }
+      .model-grid { grid-template-columns: repeat(2, 1fr); }
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --pad-x: 28px; --pad-y: 80px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .content-grid { grid-template-columns: 1fr; gap: 36px; }
+      .model-grid { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .highlight-box { padding: 32px 24px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Innova Black<span>&reg;</span></a>
+      <ul class="nav-links">
+        <li><a href="/#servicios">Servicios</a></li>
+        <li><a href="/#proceso">Proceso</a></li>
+        <li><a href="/#clientes">Clientes</a></li>
+        <li><a href="/blog">Blog</a></li>
+      </ul>
+      <a class="nav-cta" onclick="if(window.openChatbot)window.openChatbot()">Agendar Diagn&oacute;stico</a>
+      <div class="nav-hamburger" id="hamburger" aria-label="Men&uacute;">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/#servicios" class="mobile-link">Servicios</a>
+    <a href="/#proceso" class="mobile-link">Proceso</a>
+    <a href="/#clientes" class="mobile-link">Clientes</a>
+    <a href="/blog" class="mobile-link">Blog</a>
+    <a class="mobile-link" style="color:var(--gold);font-weight:600;cursor:pointer;" onclick="if(window.openChatbot)window.openChatbot()">Agendar Diagn&oacute;stico</a>
+  </div>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero on-dark">
+    <div class="hero-badge r">Unico en el mercado</div>
+    <h1 class="r d1">
+      DTX Retainer&trade;<br />
+      El &uacute;nico <em>CTO/COO externo</em><br />
+      para instituciones reguladas
+    </h1>
+    <p class="hero-sub r d2">
+      Direcci&oacute;n tecnol&oacute;gica y operativa continua, dise&ntilde;ada exclusivamente
+      para SOFOMs, SOFIPOs e IFPEs que necesitan liderazgo especializado
+      sin incorporar un C-level de tiempo completo.
+    </p>
+  </section>
+
+  <!-- ============================================================
+       BREADCRUMBS
+  ============================================================ -->
+  <div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/">Inicio</a><span>&rsaquo;</span><a href="/#servicios">Servicios</a><span>&rsaquo;</span>DTX Retainer&trade;
+    </div>
+  </div>
+
+  <!-- ============================================================
+       &iquest;QU&Eacute; ES?
+  ============================================================ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="content-grid">
+        <div>
+          <span class="eyebrow r">&iquest;Qu&eacute; es DTX Retainer&trade;?</span>
+          <h2 class="s-h2 r d1">Asesor&iacute;a estrat&eacute;gica mensual continua para tu instituci&oacute;n financiera</h2>
+        </div>
+        <div class="content-prose r d2">
+          <p>
+            DTX Retainer&trade; es un servicio de direcci&oacute;n tecnol&oacute;gica y operativa recurrente
+            que funciona como tu CTO y COO externo. En lugar de contratar un ejecutivo de alto nivel
+            a tiempo completo &mdash;con los costos y la curva de aprendizaje regulatorio que eso implica&mdash;
+            tu instituci&oacute;n accede a un equipo senior que ya domina el ecosistema normativo mexicano.
+          </p>
+          <p>
+            Cada mes, nuestro equipo realiza monitoreo regulatorio en tiempo real, sesiones de asesor&iacute;a
+            directa con el CEO o director general, gesti&oacute;n estrat&eacute;gica de proveedores tecnol&oacute;gicos
+            y respuesta coordinada ante requerimientos de autoridades como la CNBV y la UIF.
+            No es consultor&iacute;a puntual: es acompa&ntilde;amiento permanente.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       &iquest;QU&Eacute; INCLUYE?
+  ============================================================ -->
+  <section class="section section--alt">
+    <div class="section-inner">
+      <span class="eyebrow r">&iquest;Qu&eacute; incluye?</span>
+      <h2 class="s-h2 r d1">Todo lo que necesitas para operar con tranquilidad regulatoria</h2>
+
+      <ul class="feature-list">
+        <li class="feature-item r d1">
+          <span class="feature-num">01</span>
+          <div>
+            <div class="feature-title">Monitoreo regulatorio mensual</div>
+            <div class="feature-desc">
+              Vigilancia continua de cambios normativos, circulares de la CNBV,
+              disposiciones de la UIF y actualizaciones de Banxico que impactan
+              directamente tu operaci&oacute;n. Recibes alertas y an&aacute;lisis de impacto antes
+              de que los cambios entren en vigor.
+            </div>
+          </div>
+        </li>
+        <li class="feature-item r d2">
+          <span class="feature-num">02</span>
+          <div>
+            <div class="feature-title">Actualizaciones CNBV y UIF</div>
+            <div class="feature-desc">
+              Interpretaci&oacute;n t&eacute;cnica de cada nueva disposici&oacute;n aplicable a tu tipo
+              de entidad, con recomendaciones concretas de implementaci&oacute;n en tus
+              sistemas y procesos operativos.
+            </div>
+          </div>
+        </li>
+        <li class="feature-item r d3">
+          <span class="feature-num">03</span>
+          <div>
+            <div class="feature-title">Asesor&iacute;a estrat&eacute;gica al CEO</div>
+            <div class="feature-desc">
+              Sesiones mensuales de direcci&oacute;n con el m&aacute;ximo responsable de tu instituci&oacute;n.
+              Revisamos roadmap tecnol&oacute;gico, priorizamos inversiones, evaluamos riesgos
+              operativos y alineamos la estrategia de negocio con los requisitos regulatorios.
+            </div>
+          </div>
+        </li>
+        <li class="feature-item r d4">
+          <span class="feature-num">04</span>
+          <div>
+            <div class="feature-title">Gesti&oacute;n de proveedores tecnol&oacute;gicos</div>
+            <div class="feature-desc">
+              Evaluaci&oacute;n, negociaci&oacute;n y supervisi&oacute;n de tus proveedores de tecnolog&iacute;a:
+              core bancario, sistemas PLD, plataformas KYC, servicios cloud y m&aacute;s.
+              Nos aseguramos de que cada proveedor cumpla con los est&aacute;ndares regulatorios.
+            </div>
+          </div>
+        </li>
+        <li class="feature-item r d5">
+          <span class="feature-num">05</span>
+          <div>
+            <div class="feature-title">Soporte en respuesta ante autoridades</div>
+            <div class="feature-desc">
+              Cuando la CNBV, la UIF o cualquier autoridad env&iacute;a un requerimiento,
+              coordinamos la respuesta t&eacute;cnica: recopilamos evidencia, preparamos
+              documentaci&oacute;n y supervisamos que los plazos se cumplan sin contratiempos.
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       &iquest;POR QU&Eacute; ES &Uacute;NICO?
+  ============================================================ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="highlight-box r">
+        <span class="eyebrow">&iquest;Por qu&eacute; es &uacute;nico?</span>
+        <h3>El &uacute;nico servicio de CTO/COO externo para instituciones financieras reguladas en M&eacute;xico</h3>
+        <p>
+          En M&eacute;xico, las instituciones financieras reguladas no ten&iacute;an acceso a un servicio
+          de direcci&oacute;n tecnol&oacute;gica y operativa continua que combinara conocimiento profundo
+          de la regulaci&oacute;n financiera (CNBV, UIF, Banxico) con experiencia real en arquitectura
+          de sistemas cr&iacute;ticos. Las opciones eran dos: contratar un CTO o COO interno &mdash;con
+          salarios superiores a $180,000 MXN mensuales y sin garant&iacute;a de expertise regulatorio&mdash;
+          o depender de consultores puntuales que desaparecen despu&eacute;s de entregar un PDF.
+          DTX Retainer&trade; elimina esa brecha. Es el primer y &uacute;nico servicio en el mercado
+          mexicano dise&ntilde;ado como un retainer mensual de direcci&oacute;n tecnol&oacute;gica especializada,
+          con continuidad, responsabilidad y conocimiento acumulado de tu operaci&oacute;n.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MODELO RECURRENTE
+  ============================================================ -->
+  <section class="section section--alt">
+    <div class="section-inner">
+      <span class="eyebrow r">Modelo recurrente</span>
+      <h2 class="s-h2 r d1">Acompa&ntilde;amiento continuo, no proyectos puntuales</h2>
+      <p class="s-lead r d2">
+        DTX Retainer&trade; opera bajo un esquema de suscripci&oacute;n mensual. Cada mes
+        acumulamos m&aacute;s contexto sobre tu instituci&oacute;n, lo que nos permite anticipar
+        riesgos y tomar mejores decisiones estrat&eacute;gicas.
+      </p>
+
+      <div class="model-grid">
+        <div class="model-card r d1">
+          <div class="model-card-num">01</div>
+          <h4>Onboarding inicial</h4>
+          <p>
+            Realizamos un diagn&oacute;stico completo de tu stack tecnol&oacute;gico, situaci&oacute;n regulatoria
+            y estructura operativa. Esto nos permite actuar desde el primer d&iacute;a con contexto real.
+          </p>
+        </div>
+        <div class="model-card r d2">
+          <div class="model-card-num">02</div>
+          <h4>Ciclos mensuales</h4>
+          <p>
+            Cada mes entregamos monitoreo regulatorio, sesiones de asesor&iacute;a, reportes de proveedores
+            y un plan de acci&oacute;n priorizado. Sin sorpresas, sin lagunas de informaci&oacute;n.
+          </p>
+        </div>
+        <div class="model-card r d3">
+          <div class="model-card-num">03</div>
+          <h4>Escalamiento por demanda</h4>
+          <p>
+            Si surge un requerimiento urgente de la CNBV, una auditor&iacute;a o un proyecto cr&iacute;tico,
+            escalamos recursos sin necesidad de renegociar contratos. Tu retainer es la base;
+            los picos se manejan con flexibilidad.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICIOS RELACIONADOS
+  ============================================================ -->
+  <section class="section">
+    <div class="section-inner">
+      <span class="eyebrow r">Servicios complementarios</span>
+      <h2 class="s-h2 r d1">Potencia tu retainer con servicios DTX&trade; especializados</h2>
+
+      <div class="related-grid">
+        <a href="/dtx-audit/" class="related-card r d1">
+          <div class="related-card-name">DTX Audit&trade;</div>
+          <h4>Diagn&oacute;stico tecnol&oacute;gico</h4>
+          <p>Auditor&iacute;a completa de tu stack, procesos y cumplimiento regulatorio en 45 minutos.</p>
+          <span class="arrow">Conocer m&aacute;s &rarr;</span>
+        </a>
+        <a href="/dtx-compliance/" class="related-card r d2">
+          <div class="related-card-name">DTX Compliance Engine&trade;</div>
+          <h4>Motor de cumplimiento</h4>
+          <p>Automatizaci&oacute;n de PLD, KYC y reportes regulatorios para operar sin fricci&oacute;n normativa.</p>
+          <span class="arrow">Conocer m&aacute;s &rarr;</span>
+        </a>
+        <a href="/dtx-scale/" class="related-card r d3">
+          <div class="related-card-name">DTX Scale&trade;</div>
+          <h4>Escalamiento operativo</h4>
+          <p>Infraestructura, integraciones y arquitectura para crecer sin romper el cumplimiento.</p>
+          <span class="arrow">Conocer m&aacute;s &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA
+  ============================================================ -->
+  <section class="cta-section on-dark">
+    <h2 class="r">Tu instituci&oacute;n merece direcci&oacute;n tecnol&oacute;gica especializada</h2>
+    <p class="r d1">
+      Agenda una sesi&oacute;n inicial sin costo para evaluar c&oacute;mo DTX Retainer&trade;
+      puede fortalecer la operaci&oacute;n y el cumplimiento de tu instituci&oacute;n.
+    </p>
+    <button class="btn btn-gold r d2" onclick="if(window.openChatbot)window.openChatbot()">Agendar sesi&oacute;n inicial</button>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Innova Black<span>&reg;</span></div>
+        <p class="footer-tagline">Arquitectos del framework tecnol&oacute;gico para instituciones financieras reguladas en M&eacute;xico.</p>
+        <div class="footer-cities">CDMX &middot; Monterrey &middot; Guadalajara</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Servicios DTX&trade;</div>
+        <ul class="footer-links">
+          <li><a href="/dtx-audit/">DTX Audit&trade;</a></li>
+          <li><a href="/dtx-compliance/">DTX Compliance Engine&trade;</a></li>
+          <li><a href="/dtx-scale/">DTX Scale&trade;</a></li>
+          <li><a href="/dtx-launch/">DTX Launch&trade;</a></li>
+          <li><a href="/dtx-upgrade/">DTX Upgrade&trade;</a></li>
+          <li><a href="/dtx-intelligence/">DTX Intelligence&trade;</a></li>
+          <li><a href="/dtx-retainer/">DTX Retainer&trade;</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Recursos</div>
+        <ul class="footer-links">
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <div class="footer-contact">
+          <a href="mailto:hello@innova.black">hello@innova.black</a>
+          <a href="https://innova.black">innova.black</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Innova Black&reg;. Todos los derechos reservados. DTX&trade; es marca registrada.</p>
+      <p class="footer-copy">Metodolog&iacute;a DTX&trade; &middot; innova.black</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // --- Nav scroll shadow ---
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // --- Mobile hamburger ---
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // --- Scroll reveal ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.r').forEach(el => observer.observe(el));
+  </script>
+
+  <script src="../chatbot.js"></script>
+</body>
+</html>

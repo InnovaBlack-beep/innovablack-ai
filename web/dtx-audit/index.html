@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E0Y70WW412"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E0Y70WW412');
+  </script>
+
+  <title>DTX Audit™ — Diagnóstico Tecnológico Gratuito para SOFOMs | Innova Black®</title>
+  <meta name="description" content="Diagnóstico tecnológico y regulatorio gratuito de 45 minutos para SOFOMs, SOFIPOs e IFPEs. Recibe un Reporte de Madurez Regulatoria sin costo ni compromiso." />
+  <link rel="canonical" href="https://innovablack.ai/dtx-audit/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://innovablack.ai/dtx-audit/" />
+  <meta property="og:title" content="DTX Audit™ — Diagnóstico Tecnológico Gratuito para SOFOMs | Innova Black®" />
+  <meta property="og:description" content="Diagnóstico tecnológico y regulatorio gratuito de 45 min para SOFOMs, SOFIPOs e IFPEs. Reporte de Madurez Regulatoria incluido." />
+  <meta property="og:image" content="https://innovablack.ai/og-dtx-audit.jpg" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:site_name" content="Innova Black®" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DTX Audit™ — Diagnóstico Tecnológico Gratuito | Innova Black®" />
+  <meta name="twitter:description" content="Diagnóstico tecnológico y regulatorio gratuito de 45 min para SOFOMs, SOFIPOs e IFPEs." />
+  <meta name="twitter:image" content="https://innovablack.ai/og-dtx-audit.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../chatbot.css" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "DTX Audit™",
+    "description": "Diagnóstico tecnológico y regulatorio gratuito de 45 minutos para instituciones financieras reguladas en México. Incluye Reporte de Madurez Regulatoria, áreas de riesgo identificadas y roadmap de 90 días.",
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "Innova Black®",
+      "url": "https://innovablack.ai"
+    },
+    "areaServed": "MX",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "MXN",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <style>
+    /* ============================================================
+       TOKENS
+    ============================================================ */
+    :root {
+      --white:      #FFFFFF;
+      --paper:      #F8F6F1;
+      --paper2:     #F0EDE6;
+      --ink:        #111010;
+      --ink2:       #1E1C1C;
+      --muted:      #6B6560;
+      --light:      #A8A29C;
+      --rule:       #E2DDD6;
+      --gold:       #A8832A;
+      --gold2:      #C49B35;
+      --gold3:      #D4AF54;
+      --gold-bg:    #FBF7EE;
+      --gold-rule:  rgba(168,131,42,.20);
+      --gold-pale:  rgba(168,131,42,.06);
+      --neg:        #111010;
+      --neg2:       #191717;
+
+      --serif:  'Libre Baskerville', Georgia, serif;
+      --sans:   'Instrument Sans', system-ui, sans-serif;
+      --mono:   'DM Mono', monospace;
+
+      --pad-x: 64px;
+      --pad-y: 120px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ============================================================
+       TYPOGRAPHY HELPERS
+    ============================================================ */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 20px;
+    }
+    .s-h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .s-lead {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 620px;
+    }
+    .on-dark .s-h2 { color: var(--white); }
+    .on-dark .s-lead { color: rgba(255,255,255,.65); }
+    .on-dark .eyebrow { color: var(--gold3); }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .r {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .r.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: .08s; }
+    .d2 { transition-delay: .16s; }
+    .d3 { transition-delay: .24s; }
+    .d4 { transition-delay: .32s; }
+    .d5 { transition-delay: .40s; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all .2s ease;
+      border: none;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+    }
+    .btn-gold:hover { background: var(--gold2); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.3);
+    }
+    .btn-outline:hover { border-color: var(--gold3); color: var(--gold3); }
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+    }
+    .btn-outline-dark:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 0 var(--pad-x);
+      transition: box-shadow .2s;
+    }
+    #nav.scrolled { box-shadow: 0 2px 24px rgba(17,16,16,.06); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -.01em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: .02em;
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--gold);
+      padding: 10px 20px;
+      border-radius: 2px;
+      transition: background .15s;
+    }
+    .nav-cta:hover { background: var(--gold2); }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      transition: all .2s;
+    }
+
+    /* ============================================================
+       HERO (short, dark, no video)
+    ============================================================ */
+    #hero {
+      position: relative;
+      width: 100%;
+      min-height: 480px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--neg);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        135deg,
+        rgba(10,9,9,.95) 0%,
+        rgba(17,16,16,.90) 50%,
+        rgba(25,23,23,.92) 100%
+      );
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      width: 100%;
+      padding: 0 var(--pad-x);
+      margin: 0 auto;
+      padding-top: 120px;
+      padding-bottom: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hero-left { position: relative; padding-left: 28px; }
+    .hero-line {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .hero-h1 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--gold3);
+    }
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,.7);
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-footnote {
+      margin-top: 16px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(255,255,255,.35);
+      letter-spacing: .04em;
+    }
+
+    /* ============================================================
+       BREADCRUMBS
+    ============================================================ */
+    .breadcrumbs {
+      padding: 16px var(--pad-x);
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+    }
+    .breadcrumbs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .06em;
+      color: var(--light);
+    }
+    .breadcrumbs-inner a {
+      color: var(--muted);
+      transition: color .15s;
+    }
+    .breadcrumbs-inner a:hover { color: var(--gold); }
+    .breadcrumbs-inner span { margin: 0 8px; color: var(--rule); }
+
+    /* ============================================================
+       CONTENT SECTIONS
+    ============================================================ */
+    .sec-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .sec-header {
+      max-width: 600px;
+      margin-bottom: 64px;
+    }
+
+    /* Section: Que es */
+    #que-es {
+      padding: var(--pad-y) var(--pad-x);
+      background: var(--white);
+    }
+    .que-es-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .que-es-text p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .que-es-text p strong {
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .audit-areas {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--rule);
+    }
+    .audit-area {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--white);
+      transition: background .2s;
+    }
+    .audit-area:last-child { border-bottom: none; }
+    .audit-area:hover { background: var(--gold-bg); }
+    .audit-area-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: .08em;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .audit-area-label {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+    .audit-area-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: 4px;
+    }
+
+    /* Section: Entregable */
+    #entregable {
+      padding: var(--pad-y) var(--pad-x);
+      background: var(--paper);
+    }
+    .entregable-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: 56px;
+    }
+    .entregable-card {
+      background: var(--white);
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: background .2s;
+    }
+    .entregable-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .entregable-card:hover::before { transform: scaleX(1); }
+    .entregable-card:hover { background: var(--gold-bg); }
+    .entregable-num {
+      font-family: var(--serif);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 16px;
+      opacity: .9;
+    }
+    .entregable-title {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .entregable-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* Section: Para quien */
+    #para-quien {
+      padding: var(--pad-y) var(--pad-x);
+      background: var(--white);
+    }
+    .perfiles-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: 56px;
+    }
+    .perfil-card {
+      background: var(--white);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: background .2s;
+    }
+    .perfil-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .perfil-card:hover::before { transform: scaleX(1); }
+    .perfil-card:hover { background: var(--gold-bg); }
+    .perfil-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .perfil-title {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .perfil-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .perfil-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: .06em;
+      transition: color .15s;
+    }
+    .perfil-link:hover { color: var(--gold2); }
+
+    /* Next steps */
+    .next-steps {
+      margin-top: 56px;
+      padding: 40px;
+      background: var(--gold-bg);
+      border: 1px solid var(--gold-rule);
+      border-radius: 2px;
+    }
+    .next-steps-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .next-steps p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .next-steps a {
+      color: var(--gold);
+      font-weight: 500;
+      border-bottom: 1px solid var(--gold-rule);
+      transition: color .15s, border-color .15s;
+    }
+    .next-steps a:hover { color: var(--gold2); border-color: var(--gold2); }
+
+    /* ============================================================
+       CTA
+    ============================================================ */
+    #cta {
+      padding: var(--pad-y) var(--pad-x);
+      background: var(--neg);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-ghost {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--serif);
+      font-size: clamp(80px, 14vw, 220px);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--white);
+      opacity: .03;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .cta-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-h2 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .cta-h2 em { font-style: italic; color: var(--gold3); }
+    .cta-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,.55);
+      line-height: 1.6;
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .cta-note {
+      margin-top: 20px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(255,255,255,.3);
+      letter-spacing: .04em;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer {
+      padding: 64px var(--pad-x) 40px;
+      background: var(--neg2);
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-top {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .footer-logo span { color: var(--gold3); }
+    .footer-tagline {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.4);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .footer-cities {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: rgba(255,255,255,.25);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .footer-col-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.5);
+      transition: color .15s;
+    }
+    .footer-links a:hover { color: var(--gold3); }
+    .footer-contact a {
+      display: block;
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 8px;
+      transition: color .15s;
+    }
+    .footer-contact a:hover { color: var(--gold3); }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 24px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(255,255,255,.2);
+      letter-spacing: .04em;
+    }
+
+    /* ============================================================
+       MOBILE NAV
+    ============================================================ */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+      padding: 24px var(--pad-x);
+      z-index: 99;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      :root { --pad-x: 40px; --pad-y: 96px; }
+      .que-es-grid { grid-template-columns: 1fr; gap: 48px; }
+      .entregable-grid { grid-template-columns: 1fr; }
+      .perfiles-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --pad-x: 28px; --pad-y: 80px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .perfiles-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .next-steps { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Innova Black<span>®</span></a>
+      <ul class="nav-links">
+        <li><a href="/#servicios">Servicios</a></li>
+        <li><a href="/#proceso">Proceso</a></li>
+        <li><a href="/#clientes">Clientes</a></li>
+        <li><a href="/blog">Blog</a></li>
+      </ul>
+      <a href="#" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;" class="nav-cta">Agendar Diagn&oacute;stico</a>
+      <div class="nav-hamburger" id="hamburger" aria-label="Men&uacute;"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/#servicios" class="mobile-link">Servicios</a>
+    <a href="/#proceso" class="mobile-link">Proceso</a>
+    <a href="/#clientes" class="mobile-link">Clientes</a>
+    <a href="/blog" class="mobile-link">Blog</a>
+    <a href="#" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;" class="mobile-link" style="color:var(--gold);font-weight:600;">Agendar Diagn&oacute;stico</a>
+  </div>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-line"></div>
+        <span class="eyebrow r" style="color:var(--gold3)">DTX Audit&#8482; &middot; Diagn&oacute;stico gratuito</span>
+        <h1 class="hero-h1 r d1">
+          Conoce el estado real<br />
+          de tu instituci&oacute;n en<br />
+          <em>45 minutos.</em>
+        </h1>
+        <p class="hero-sub r d2">
+          Un diagn&oacute;stico tecnol&oacute;gico y regulatorio sin costo, dise&ntilde;ado para SOFOMs, SOFIPOs e IFPEs que necesitan claridad antes de invertir en transformaci&oacute;n.
+        </p>
+        <div class="hero-actions r d3">
+          <a href="#" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;" class="btn btn-gold">Solicitar DTX Audit&#8482; gratuito</a>
+          <a href="#que-es" class="btn btn-outline">Conocer m&aacute;s</a>
+        </div>
+        <p class="hero-footnote r d4">Sin costo &middot; Sin compromiso &middot; Entregable incluido &middot; 45 minutos</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BREADCRUMBS
+  ============================================================ -->
+  <div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/">Inicio</a>
+      <span>&rsaquo;</span>
+      <a href="/#servicios">Servicios</a>
+      <span>&rsaquo;</span>
+      DTX Audit&#8482;
+    </div>
+  </div>
+
+  <!-- ============================================================
+       QUE ES DTX AUDIT
+  ============================================================ -->
+  <section id="que-es">
+    <div class="sec-inner">
+      <div class="sec-header">
+        <span class="eyebrow r">Diagn&oacute;stico integral</span>
+        <h2 class="s-h2 r d1">&iquest;Qu&eacute; es DTX Audit&#8482;?</h2>
+        <p class="s-lead r d2">Una sesi&oacute;n de evaluaci&oacute;n de 45 minutos con nuestro equipo especializado, donde analizamos la situaci&oacute;n tecnol&oacute;gica, operativa y regulatoria de tu instituci&oacute;n financiera.</p>
+      </div>
+
+      <div class="que-es-grid">
+        <div class="que-es-text">
+          <p class="r">
+            <strong>DTX Audit&#8482; es el punto de entrada gratuito a la Metodolog&iacute;a DTX&#8482; de Innova Black&reg;.</strong>
+            Antes de proponer cualquier soluci&oacute;n, necesitamos entender d&oacute;nde est&aacute; tu instituci&oacute;n hoy: qu&eacute; sistemas utiliza, c&oacute;mo cumple con la regulaci&oacute;n vigente, qu&eacute; procesos son manuales y cu&aacute;les son las brechas cr&iacute;ticas que necesitan atenci&oacute;n inmediata.
+          </p>
+          <p class="r d1">
+            Durante la sesi&oacute;n, nuestro equipo eval&uacute;a seis &aacute;reas fundamentales de tu operaci&oacute;n. No se trata de una llamada comercial &mdash; es un ejercicio t&eacute;cnico estructurado que genera un entregable concreto con hallazgos y recomendaciones priorizadas.
+          </p>
+          <p class="r d2">
+            Al finalizar, recibes un <strong>Reporte de Madurez Regulatoria</strong> que puedes utilizar internamente para tomar decisiones, presentar ante tu consejo o compartir con tu equipo de compliance &mdash; con o sin nosotros.
+          </p>
+        </div>
+
+        <div class="audit-areas r d2">
+          <div class="audit-area">
+            <span class="audit-area-num">01</span>
+            <div>
+              <div class="audit-area-label">Infraestructura tecnol&oacute;gica</div>
+              <div class="audit-area-desc">Core bancario, servidores, integraciones y arquitectura actual.</div>
+            </div>
+          </div>
+          <div class="audit-area">
+            <span class="audit-area-num">02</span>
+            <div>
+              <div class="audit-area-label">Compliance y PLD/FT</div>
+              <div class="audit-area-desc">Procesos de prevenci&oacute;n de lavado, reportes regulatorios y cumplimiento CNBV/UIF.</div>
+            </div>
+          </div>
+          <div class="audit-area">
+            <span class="audit-area-num">03</span>
+            <div>
+              <div class="audit-area-label">Onboarding y KYC</div>
+              <div class="audit-area-desc">Flujo de alta de clientes, verificaci&oacute;n de identidad y expediente digital.</div>
+            </div>
+          </div>
+          <div class="audit-area">
+            <span class="audit-area-num">04</span>
+            <div>
+              <div class="audit-area-label">Procesos operativos</div>
+              <div class="audit-area-desc">Flujos manuales vs. automatizados, cuellos de botella y eficiencia operativa.</div>
+            </div>
+          </div>
+          <div class="audit-area">
+            <span class="audit-area-num">05</span>
+            <div>
+              <div class="audit-area-label">Seguridad de la informaci&oacute;n</div>
+              <div class="audit-area-desc">Pol&iacute;ticas de ciberseguridad, respaldos, accesos y gesti&oacute;n de datos sensibles.</div>
+            </div>
+          </div>
+          <div class="audit-area">
+            <span class="audit-area-num">06</span>
+            <div>
+              <div class="audit-area-label">Preparaci&oacute;n regulatoria</div>
+              <div class="audit-area-desc">Ley Fintech 2.0, evaluaci&oacute;n GAFI y disposiciones vigentes de CNBV.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ENTREGABLE
+  ============================================================ -->
+  <section id="entregable">
+    <div class="sec-inner">
+      <div class="sec-header">
+        <span class="eyebrow r">Entregable</span>
+        <h2 class="s-h2 r d1">&iquest;Qu&eacute; incluye el entregable?</h2>
+        <p class="s-lead r d2">Al finalizar el DTX Audit&#8482;, recibes un Reporte de Madurez Regulatoria &mdash; un documento ejecutivo dise&ntilde;ado para que tomes decisiones informadas sobre la transformaci&oacute;n tecnol&oacute;gica de tu instituci&oacute;n.</p>
+      </div>
+
+      <div class="entregable-grid">
+        <div class="entregable-card r">
+          <div class="entregable-num">01</div>
+          <div class="entregable-title">Reporte de Madurez Regulatoria</div>
+          <div class="entregable-desc">Evaluaci&oacute;n del nivel de cumplimiento actual de tu instituci&oacute;n frente a las disposiciones vigentes de CNBV, UIF y Banxico. Incluye un score de madurez en cada &aacute;rea evaluada y comparativa contra est&aacute;ndares del sector.</div>
+        </div>
+        <div class="entregable-card r d1">
+          <div class="entregable-num">02</div>
+          <div class="entregable-title">&Aacute;reas de riesgo identificadas</div>
+          <div class="entregable-desc">Listado priorizado de brechas cr&iacute;ticas que representan riesgo regulatorio, operativo o de seguridad. Cada hallazgo incluye nivel de urgencia y recomendaci&oacute;n espec&iacute;fica de remediaci&oacute;n.</div>
+        </div>
+        <div class="entregable-card r d2">
+          <div class="entregable-num">03</div>
+          <div class="entregable-title">Roadmap de 90 d&iacute;as</div>
+          <div class="entregable-desc">Plan de acci&oacute;n ejecutable con fases, prioridades y estimaciones de tiempo. Dise&ntilde;ado para que tu equipo pueda ejecutar internamente o con el acompa&ntilde;amiento de Innova Black&reg; a trav&eacute;s de los servicios <a href="/dtx-launch" style="color:var(--gold);">DTX Launch&#8482;</a>, <a href="/dtx-compliance" style="color:var(--gold);">DTX Compliance Engine&#8482;</a> o <a href="/dtx-upgrade" style="color:var(--gold);">DTX Upgrade&#8482;</a>.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PARA QUIEN
+  ============================================================ -->
+  <section id="para-quien">
+    <div class="sec-inner">
+      <div class="sec-header">
+        <span class="eyebrow r">Alcance</span>
+        <h2 class="s-h2 r d1">&iquest;Para qui&eacute;n es DTX Audit&#8482;?</h2>
+        <p class="s-lead r d2">Cualquier instituci&oacute;n financiera regulada o en proceso de constituci&oacute;n en M&eacute;xico puede solicitar un diagn&oacute;stico sin costo.</p>
+      </div>
+
+      <div class="perfiles-grid">
+        <div class="perfil-card r">
+          <span class="perfil-tag">SOFOM</span>
+          <div class="perfil-title">Sociedad Financiera de Objeto M&uacute;ltiple</div>
+          <div class="perfil-desc">SOFOMs reguladas y no reguladas que necesitan modernizar su infraestructura tecnol&oacute;gica y prepararse para los nuevos requerimientos de la CNBV.</div>
+          <a href="/dtx-upgrade" class="perfil-link">Ver DTX Upgrade&#8482; &rarr;</a>
+        </div>
+        <div class="perfil-card r d1">
+          <span class="perfil-tag">SOFIPO</span>
+          <div class="perfil-title">Sociedad Financiera Popular</div>
+          <div class="perfil-desc">SOFIPOs que buscan automatizar procesos de compliance, mejorar su onboarding digital y cumplir con las disposiciones de PLD de manera eficiente.</div>
+          <a href="/dtx-compliance" class="perfil-link">Ver DTX Compliance&#8482; &rarr;</a>
+        </div>
+        <div class="perfil-card r d2">
+          <span class="perfil-tag">IFPE</span>
+          <div class="perfil-title">Instituci&oacute;n de Fondos de Pago Electr&oacute;nico</div>
+          <div class="perfil-desc">IFPEs autorizadas o en proceso de autorizaci&oacute;n ante la CNBV que requieren arquitectura tecnol&oacute;gica robusta y documentaci&oacute;n regulatoria completa.</div>
+          <a href="/dtx-launch" class="perfil-link">Ver DTX Launch&#8482; &rarr;</a>
+        </div>
+        <div class="perfil-card r d3">
+          <span class="perfil-tag">Fintech</span>
+          <div class="perfil-title">Fintechs y nuevas instituciones</div>
+          <div class="perfil-desc">Empresas fintech que quieren constituir su propia figura regulada, o instituciones nuevas que necesitan arrancar con la arquitectura correcta desde el d&iacute;a uno.</div>
+          <a href="/dtx-launch" class="perfil-link">Ver DTX Launch&#8482; &rarr;</a>
+        </div>
+      </div>
+
+      <div class="next-steps r">
+        <div class="next-steps-title">Despu&eacute;s del diagn&oacute;stico</div>
+        <p>
+          El Reporte de Madurez Regulatoria es tuyo sin compromiso. Si decides avanzar con Innova Black&reg;, el roadmap de 90 d&iacute;as se convierte en el punto de partida de la implementaci&oacute;n a trav&eacute;s de nuestros servicios especializados:
+          <a href="/dtx-launch">DTX Launch&#8482;</a> para instituciones nuevas,
+          <a href="/dtx-compliance">DTX Compliance Engine&#8482;</a> para automatizaci&oacute;n de cumplimiento, o
+          <a href="/dtx-upgrade">DTX Upgrade&#8482;</a> para modernizaci&oacute;n de sistemas existentes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA
+  ============================================================ -->
+  <section id="cta" class="on-dark">
+    <div class="cta-ghost" aria-hidden="true">Innova Black</div>
+    <div class="cta-inner">
+      <span class="eyebrow r">DTX Audit&#8482;</span>
+      <h2 class="cta-h2 r d1">&iquest;Tu instituci&oacute;n est&aacute; lista<br />para <em>operar, cumplir y escalar</em>?</h2>
+      <p class="cta-sub r d2">Agenda un diagn&oacute;stico gratuito de 45 minutos.</p>
+      <div class="cta-actions r d3">
+        <a href="#" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;" class="btn btn-gold">Solicitar DTX Audit&#8482; gratuito</a>
+      </div>
+      <p class="cta-note r d4">Sin costo &middot; Sin compromiso &middot; 45 minutos</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Innova Black<span>&reg;</span></div>
+        <p class="footer-tagline">Arquitectos del framework tecnol&oacute;gico para instituciones financieras reguladas en M&eacute;xico.</p>
+        <div class="footer-cities">CDMX &middot; Monterrey &middot; Guadalajara</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Servicios</div>
+        <ul class="footer-links">
+          <li><a href="/dtx-audit">DTX Audit&#8482;</a></li>
+          <li><a href="/dtx-launch">DTX Launch&#8482;</a></li>
+          <li><a href="/dtx-compliance">DTX Compliance Engine&#8482;</a></li>
+          <li><a href="/dtx-scale">DTX Scale&#8482;</a></li>
+          <li><a href="/dtx-upgrade">DTX Upgrade&#8482;</a></li>
+          <li><a href="/dtx-retainer">DTX Retainer&#8482;</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Recursos</div>
+        <ul class="footer-links">
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/#proceso">Proceso</a></li>
+          <li><a href="/#clientes">Clientes</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <div class="footer-contact">
+          <a href="mailto:hello@innova.black">hello@innova.black</a>
+          <a href="https://innova.black">innova.black</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Innova Black&reg;. Todos los derechos reservados. DTX&#8482; es marca registrada.</p>
+      <p class="footer-copy">Metodolog&iacute;a DTX&#8482; &middot; innova.black</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // --- Nav scroll shadow ---
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // --- Mobile hamburger ---
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // --- Scroll reveal ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.r').forEach(el => observer.observe(el));
+
+    // --- Smooth scroll for anchor links ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const offset = 72;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+  <script src="../chatbot.js"></script>
+</body>
+</html>

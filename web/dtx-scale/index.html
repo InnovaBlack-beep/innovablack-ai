@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E0Y70WW412"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E0Y70WW412');
+  </script>
+
+  <title>DTX Scale™ — Escalamiento SPEI y Emisión de Tarjetas para Fintechs | Innova Black®</title>
+  <meta name="description" content="Escala tu institución financiera al siguiente nivel: conexión SPEI, emisión de tarjetas con BIN sponsor, scoring crediticio con IA y arquitectura multi-producto. DTX Scale™ de Innova Black®." />
+  <link rel="canonical" href="https://innovablack.ai/dtx-scale/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://innovablack.ai/dtx-scale/" />
+  <meta property="og:title" content="DTX Scale™ — Escalamiento SPEI y Emisión de Tarjetas | Innova Black®" />
+  <meta property="og:description" content="Conexión SPEI, BIN sponsor, scoring crediticio IA y arquitectura multi-producto para instituciones financieras autorizadas." />
+  <meta property="og:image" content="https://innovablack.ai/og-home.jpg" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:site_name" content="Innova Black®" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DTX Scale™ — Escalamiento SPEI y Emisión de Tarjetas | Innova Black®" />
+  <meta name="twitter:description" content="Conexión SPEI, BIN sponsor, scoring crediticio IA y arquitectura multi-producto para instituciones financieras autorizadas." />
+  <meta name="twitter:image" content="https://innovablack.ai/og-home.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../chatbot.css" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "DTX Scale™",
+    "description": "Servicio de escalamiento tecnológico para instituciones financieras autorizadas: conexión SPEI, emisión de tarjetas con BIN sponsor, scoring crediticio con IA y arquitectura multi-producto.",
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "Innova Black®",
+      "url": "https://innovablack.ai",
+      "telephone": "+52-56-6297-5626",
+      "email": "hello@innova.black",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Guadalajara",
+        "addressRegion": "Jalisco",
+        "addressCountry": "MX"
+      }
+    },
+    "areaServed": "MX",
+    "url": "https://innovablack.ai/dtx-scale/"
+  }
+  </script>
+
+  <style>
+    /* ============================================================
+       TOKENS
+    ============================================================ */
+    :root {
+      --white:      #FFFFFF;
+      --paper:      #F8F6F1;
+      --ink:        #111010;
+      --muted:      #6B6560;
+      --light:      #A8A29C;
+      --rule:       #E2DDD6;
+      --gold:       #A8832A;
+      --gold2:      #C49B35;
+      --gold3:      #D4AF54;
+      --gold-bg:    #FBF7EE;
+      --neg:        #111010;
+      --neg2:       #191717;
+
+      --serif:  'Libre Baskerville', Georgia, serif;
+      --sans:   'Instrument Sans', system-ui, sans-serif;
+      --mono:   'DM Mono', monospace;
+
+      --pad-x: 64px;
+      --pad-y: 120px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ============================================================
+       TYPOGRAPHY HELPERS
+    ============================================================ */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 20px;
+    }
+    .s-h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .s-lead {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 620px;
+    }
+    .on-dark .s-h2 { color: var(--white); }
+    .on-dark .s-lead { color: rgba(255,255,255,.65); }
+    .on-dark .eyebrow { color: var(--gold3); }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .r {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .r.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: .08s; }
+    .d2 { transition-delay: .16s; }
+    .d3 { transition-delay: .24s; }
+    .d4 { transition-delay: .32s; }
+    .d5 { transition-delay: .40s; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all .2s ease;
+      border: none;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+    }
+    .btn-gold:hover { background: var(--gold2); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.3);
+    }
+    .btn-outline:hover { border-color: var(--gold3); color: var(--gold3); }
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+    }
+    .btn-outline-dark:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 0 var(--pad-x);
+      transition: box-shadow .2s;
+    }
+    #nav.scrolled { box-shadow: 0 2px 24px rgba(17,16,16,.06); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -.01em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: .02em;
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--gold);
+      padding: 10px 20px;
+      border-radius: 2px;
+      transition: background .15s;
+      cursor: pointer;
+      border: none;
+    }
+    .nav-cta:hover { background: var(--gold2); }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      transition: all .2s;
+    }
+
+    /* ============================================================
+       MOBILE NAV
+    ============================================================ */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+      padding: 24px var(--pad-x);
+      z-index: 99;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ============================================================
+       HERO (dark)
+    ============================================================ */
+    .hero {
+      padding: 160px var(--pad-x) var(--pad-y);
+      background: var(--neg);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-ghost {
+      position: absolute;
+      right: -5%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--serif);
+      font-size: clamp(100px, 18vw, 280px);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--white);
+      opacity: .03;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-product {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold3);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold3); }
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,.55);
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 40px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .hero-meta-item {}
+    .hero-meta-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      margin-bottom: 6px;
+    }
+    .hero-meta-value {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* ============================================================
+       BREADCRUMBS
+    ============================================================ */
+    .breadcrumbs {
+      padding: 20px var(--pad-x);
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+    }
+    .breadcrumbs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .04em;
+      color: var(--light);
+    }
+    .breadcrumbs-inner a {
+      color: var(--muted);
+      transition: color .15s;
+    }
+    .breadcrumbs-inner a:hover { color: var(--gold); }
+    .breadcrumbs-inner span { margin: 0 8px; }
+
+    /* ============================================================
+       SECTIONS
+    ============================================================ */
+    .section {
+      padding: var(--pad-y) var(--pad-x);
+    }
+    .section--paper { background: var(--paper); }
+    .section--gold-bg { background: var(--gold-bg); }
+    .section--dark { background: var(--neg); }
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-header {
+      margin-bottom: 56px;
+    }
+
+    /* ============================================================
+       QUE ES - two columns
+    ============================================================ */
+    .quees-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .quees-text p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .quees-text p strong {
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .quees-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .quees-item {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .quees-item:last-child { border-bottom: none; }
+    .quees-icon {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: .06em;
+      min-width: 28px;
+      padding-top: 2px;
+    }
+    .quees-item-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .quees-item-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       CAPABILITIES GRID
+    ============================================================ */
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .cap-card {
+      padding: 40px 36px;
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .cap-card:nth-child(3n) { border-right: none; }
+    .cap-card:nth-child(n+4) { border-bottom: none; }
+    .cap-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: .08em;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .cap-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+    .cap-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       PARA QUIEN
+    ============================================================ */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .audience-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 36px 32px;
+      transition: border-color .2s;
+    }
+    .audience-card:hover { border-color: var(--gold); }
+    .audience-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .audience-title {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .audience-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       DURATION BAND
+    ============================================================ */
+    .duration-band {
+      padding: 56px var(--pad-x);
+      background: var(--gold);
+      text-align: center;
+    }
+    .duration-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .duration-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 12px;
+    }
+    .duration-value {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .duration-note {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,.7);
+      margin-top: 12px;
+    }
+
+    /* ============================================================
+       RELATED SERVICES
+    ============================================================ */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .related-card {
+      display: block;
+      padding: 32px 28px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      transition: all .2s;
+    }
+    .related-card:hover {
+      border-color: var(--gold);
+      background: var(--gold-bg);
+    }
+    .related-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .related-name {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .related-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .related-arrow {
+      display: inline-block;
+      margin-top: 16px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: .04em;
+    }
+
+    /* ============================================================
+       CTA
+    ============================================================ */
+    .cta {
+      padding: var(--pad-y) var(--pad-x);
+      background: var(--neg);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-ghost {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--serif);
+      font-size: clamp(80px, 14vw, 220px);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--white);
+      opacity: .03;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .cta-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .cta-h2 em { font-style: italic; color: var(--gold3); }
+    .cta-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,.55);
+      line-height: 1.6;
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .cta-note {
+      margin-top: 20px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(255,255,255,.3);
+      letter-spacing: .04em;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer {
+      padding: 64px var(--pad-x) 40px;
+      background: var(--neg2);
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-top {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .footer-logo span { color: var(--gold3); }
+    .footer-tagline {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.4);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .footer-cities {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: rgba(255,255,255,.25);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .footer-col-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.5);
+      transition: color .15s;
+    }
+    .footer-links a:hover { color: var(--gold3); }
+    .footer-contact a {
+      display: block;
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 8px;
+      transition: color .15s;
+    }
+    .footer-contact a:hover { color: var(--gold3); }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 24px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(255,255,255,.2);
+      letter-spacing: .04em;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      :root { --pad-x: 40px; --pad-y: 96px; }
+      .quees-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cap-grid { grid-template-columns: repeat(2, 1fr); }
+      .cap-card:nth-child(3n) { border-right: 1px solid var(--rule); }
+      .cap-card:nth-child(2n) { border-right: none; }
+      .cap-card:nth-child(n+4) { border-bottom: 1px solid var(--rule); }
+      .cap-card:last-child { border-bottom: none; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --pad-x: 28px; --pad-y: 80px; }
+      .nav-links, .nav-cta-link { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero { padding-top: 120px; }
+      .hero-meta { flex-direction: column; gap: 20px; }
+      .cap-grid { grid-template-columns: 1fr; }
+      .cap-card { border-right: none !important; border-bottom: 1px solid var(--rule) !important; }
+      .cap-card:last-child { border-bottom: none !important; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Innova Black<span>®</span></a>
+      <ul class="nav-links">
+        <li><a href="/#servicios">Servicios</a></li>
+        <li><a href="/#proceso">Proceso</a></li>
+        <li><a href="/#clientes">Clientes</a></li>
+        <li><a href="/blog">Blog</a></li>
+      </ul>
+      <a href="#" class="nav-cta nav-cta-link" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;">Hablar con un asesor</a>
+      <div class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/#servicios" class="mobile-link">Servicios</a>
+    <a href="/#proceso" class="mobile-link">Proceso</a>
+    <a href="/#clientes" class="mobile-link">Clientes</a>
+    <a href="/blog" class="mobile-link">Blog</a>
+    <a href="#" class="mobile-link" style="color:var(--gold);font-weight:600;" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;">Hablar con un asesor</a>
+  </div>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero">
+    <div class="hero-ghost" aria-hidden="true">Scale</div>
+    <div class="hero-inner">
+      <span class="hero-product r">Metodologia DTX™ · Servicio 03</span>
+      <h1 class="r d1">Escala tu institucion autorizada al <em>siguiente nivel regulatorio</em></h1>
+      <p class="hero-sub r d2">
+        Conexion SPEI, emision de tarjetas, scoring crediticio con IA y arquitectura multi-producto.
+        DTX Scale™ lleva a instituciones financieras autorizadas del cumplimiento basico a la operacion de alto volumen.
+      </p>
+      <div class="r d3">
+        <a href="#" class="btn btn-gold" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;">Solicitar diagnostico</a>
+        <a href="#quees" class="btn btn-outline">Conocer mas</a>
+      </div>
+      <div class="hero-meta r d4">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Duracion</div>
+          <div class="hero-meta-value">4 - 8 meses</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Para</div>
+          <div class="hero-meta-value">IFPEs y Fintechs autorizadas</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Resultado</div>
+          <div class="hero-meta-value">Operacion a escala</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BREADCRUMBS
+  ============================================================ -->
+  <div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/">Inicio</a>
+      <span>/</span>
+      <a href="/#servicios">Servicios</a>
+      <span>/</span>
+      DTX Scale™
+    </div>
+  </div>
+
+  <!-- ============================================================
+       QUE ES
+  ============================================================ -->
+  <section id="quees" class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="eyebrow r">¿Que es DTX Scale™?</span>
+        <h2 class="s-h2 r d1">El servicio que transforma una institucion autorizada en una operacion de alto volumen.</h2>
+      </div>
+      <div class="quees-grid">
+        <div class="quees-text r d2">
+          <p>
+            Muchas instituciones financieras en Mexico obtienen su autorizacion, pero se estancan al intentar escalar. Los retos no son legales — son tecnologicos y arquitectonicos: <strong>conectarse a SPEI</strong>, negociar un <strong>BIN sponsor para emitir tarjetas</strong>, implementar un <strong>onboarding a escala</strong> que soporte miles de solicitudes diarias, y construir un <strong>scoring crediticio con inteligencia artificial</strong> que minimice el riesgo de cartera.
+          </p>
+          <p>
+            DTX Scale™ es el servicio de Innova Black® disenado para resolver exactamente estos retos. Trabajamos con la institucion para disenar e implementar una <strong>arquitectura multi-producto</strong> que soporte credito, ahorro, pagos y transferencias en una sola plataforma — con la infraestructura tecnica necesaria para cumplir con los requerimientos de Banxico, CNBV y los procesadores de pago.
+          </p>
+          <p>
+            No entregamos documentos ni planes estrategicos. <strong>Construimos la infraestructura</strong>: integraciones API con SPEI, modelos de scoring entrenados con datos reales, flujos de onboarding optimizados y la arquitectura de microservicios que permite lanzar nuevos productos financieros sin reescribir el core.
+          </p>
+        </div>
+        <div class="quees-highlights r d3">
+          <div class="quees-item">
+            <div class="quees-icon">01</div>
+            <div>
+              <div class="quees-item-title">Conexion SPEI</div>
+              <div class="quees-item-desc">Integracion directa o via participante indirecto para transferencias interbancarias en tiempo real.</div>
+            </div>
+          </div>
+          <div class="quees-item">
+            <div class="quees-icon">02</div>
+            <div>
+              <div class="quees-item-title">BIN Sponsor y emision de tarjetas</div>
+              <div class="quees-item-desc">Negociacion con procesadores, diseno del programa de tarjetas y arquitectura de emision.</div>
+            </div>
+          </div>
+          <div class="quees-item">
+            <div class="quees-icon">03</div>
+            <div>
+              <div class="quees-item-title">Onboarding a escala</div>
+              <div class="quees-item-desc">Flujos de alta masiva con verificacion KYC automatizada, biometria y validacion contra listas negras.</div>
+            </div>
+          </div>
+          <div class="quees-item">
+            <div class="quees-icon">04</div>
+            <div>
+              <div class="quees-item-title">Scoring crediticio con IA</div>
+              <div class="quees-item-desc">Modelos de machine learning entrenados con datos del mercado mexicano para evaluar riesgo en segundos.</div>
+            </div>
+          </div>
+          <div class="quees-item">
+            <div class="quees-icon">05</div>
+            <div>
+              <div class="quees-item-title">Arquitectura multi-producto</div>
+              <div class="quees-item-desc">Microservicios que soportan credito, ahorro, pagos y transferencias en una sola plataforma escalable.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CAPACIDADES
+  ============================================================ -->
+  <section class="section section--paper">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="eyebrow r">Capacidades</span>
+        <h2 class="s-h2 r d1">Todo lo que necesitas para operar a escala.</h2>
+        <p class="s-lead r d2">Cada capacidad esta disenada para resolver un cuello de botella especifico en el crecimiento de instituciones financieras reguladas.</p>
+      </div>
+      <div class="cap-grid">
+        <div class="cap-card r">
+          <span class="cap-num">01</span>
+          <div class="cap-title">Integracion SPEI</div>
+          <div class="cap-desc">Conexion al Sistema de Pagos Electronicos Interbancarios de Banxico — directa o como participante indirecto. Incluye reconciliacion automatica, monitoreo de transacciones en tiempo real y cumplimiento de las disposiciones de Banxico para participantes.</div>
+        </div>
+        <div class="cap-card r d1">
+          <span class="cap-num">02</span>
+          <div class="cap-title">Programa de tarjetas</div>
+          <div class="cap-desc">Diseno completo del programa de emision: seleccion de BIN sponsor, integracion con procesadores (Prosa, E-Global, Visa Direct), personalizacion de plasticos o tarjetas virtuales, y gestion del ciclo de vida de cada tarjeta.</div>
+        </div>
+        <div class="cap-card r d2">
+          <span class="cap-num">03</span>
+          <div class="cap-title">Onboarding escalable</div>
+          <div class="cap-desc">Flujos de alta disenados para procesar miles de solicitudes diarias con verificacion KYC en menos de 3 minutos: biometria facial, validacion de INE contra el INE, cruce con listas PLD y scoring inicial automatico.</div>
+        </div>
+        <div class="cap-card r d3">
+          <span class="cap-num">04</span>
+          <div class="cap-title">Scoring crediticio IA</div>
+          <div class="cap-desc">Modelos de machine learning calibrados con datos del mercado mexicano. Evaluacion de riesgo en segundos usando datos alternativos, buro de credito, historial transaccional y variables comportamentales para maximizar aprobacion y minimizar morosidad.</div>
+        </div>
+        <div class="cap-card r d4">
+          <span class="cap-num">05</span>
+          <div class="cap-title">Arquitectura multi-producto</div>
+          <div class="cap-desc">Infraestructura basada en microservicios que permite operar credito, cuentas de ahorro, pagos de servicios y transferencias desde un solo core. Cada producto es un modulo independiente que se activa sin afectar la operacion existente.</div>
+        </div>
+        <div class="cap-card r d5">
+          <span class="cap-num">06</span>
+          <div class="cap-title">Monitoreo y analytics</div>
+          <div class="cap-desc">Dashboards en tiempo real de volumen transaccional, cartera vencida, conversion de onboarding, tasas de aprobacion y metricas regulatorias. Alertas automaticas ante desviaciones y reportes ejecutivos para el consejo directivo.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PARA QUIEN
+  ============================================================ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="eyebrow r">¿Para quien es DTX Scale™?</span>
+        <h2 class="s-h2 r d1">Tres perfiles que necesitan escalar.</h2>
+      </div>
+      <div class="audience-grid">
+        <div class="audience-card r">
+          <span class="audience-tag">Perfil A</span>
+          <div class="audience-title">IFPEs autorizadas que quieren ampliar servicios</div>
+          <div class="audience-desc">Ya tienes la autorizacion de la CNBV. Ahora necesitas la infraestructura tecnologica para ofrecer transferencias SPEI, emitir tarjetas y operar multiples productos financieros desde una sola plataforma.</div>
+        </div>
+        <div class="audience-card r d1">
+          <span class="audience-tag">Perfil B</span>
+          <div class="audience-title">Fintechs levantando Serie A o Serie B</div>
+          <div class="audience-desc">Los inversionistas quieren ver infraestructura escalable, scoring crediticio robusto y capacidad de procesamiento de alto volumen. DTX Scale™ construye la arquitectura que los fondos esperan antes de firmar el term sheet.</div>
+        </div>
+        <div class="audience-card r d2">
+          <span class="audience-tag">Perfil C</span>
+          <div class="audience-title">Instituciones que quieren SPEI o BIN sponsor</div>
+          <div class="audience-desc">La conexion a SPEI y la emision de tarjetas requieren integraciones tecnicas complejas con Banxico y procesadores. Construimos toda la capa tecnologica necesaria para que la institucion opere estos servicios con solidez.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DURATION BAND
+  ============================================================ -->
+  <div class="duration-band">
+    <div class="duration-inner">
+      <div class="duration-label r">Duracion tipica del proyecto</div>
+      <div class="duration-value r d1">4 — 8 meses</div>
+      <div class="duration-note r d2">Dependiendo del alcance de productos y la madurez tecnologica de la institucion.</div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       RELATED SERVICES
+  ============================================================ -->
+  <section class="section section--paper">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="eyebrow r">Servicios relacionados</span>
+        <h2 class="s-h2 r d1">DTX Scale™ se complementa con otros modulos de la Metodologia DTX™.</h2>
+      </div>
+      <div class="related-grid">
+        <a href="/dtx-audit/" class="related-card r">
+          <span class="related-tag">Diagnostico</span>
+          <div class="related-name">DTX Audit™</div>
+          <div class="related-desc">Diagnostico gratuito de 45 minutos para evaluar el estado tecnologico y regulatorio de tu institucion. El punto de partida recomendado.</div>
+          <span class="related-arrow">Conocer mas →</span>
+        </a>
+        <a href="/dtx-compliance/" class="related-card r d1">
+          <span class="related-tag">Compliance</span>
+          <div class="related-name">DTX Compliance Engine™</div>
+          <div class="related-desc">Automatizacion de reportes regulatorios, monitoreo PLD con IA y onboarding KYC digital. Ideal para complementar la operacion a escala.</div>
+          <span class="related-arrow">Conocer mas →</span>
+        </a>
+        <a href="/dtx-retainer/" class="related-card r d2">
+          <span class="related-tag">Acompanamiento</span>
+          <div class="related-name">DTX Retainer™</div>
+          <div class="related-desc">CTO/COO externo especializado en instituciones financieras reguladas. Monitoreo regulatorio continuo y advisory estrategico post-escalamiento.</div>
+          <span class="related-arrow">Conocer mas →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA
+  ============================================================ -->
+  <section class="cta on-dark">
+    <div class="cta-ghost" aria-hidden="true">Scale</div>
+    <div class="cta-inner">
+      <span class="eyebrow r" style="color:var(--gold3)">DTX Scale™</span>
+      <h2 class="cta-h2 r d1">¿Lista tu institucion para <em>escalar al siguiente nivel</em>?</h2>
+      <p class="cta-sub r d2">Agenda una sesion con nuestro equipo. Evaluamos tu infraestructura actual y disenamos el roadmap de escalamiento — SPEI, tarjetas, multi-producto.</p>
+      <div class="cta-actions r d3">
+        <a href="#" class="btn btn-gold" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;">Solicitar diagnostico gratuito</a>
+      </div>
+      <p class="cta-note r d4">Sin costo · Sin compromiso · 45 minutos · Entregable: Roadmap de escalamiento</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Innova Black<span>®</span></div>
+        <p class="footer-tagline">Arquitectos del framework tecnologico para instituciones financieras reguladas en Mexico.</p>
+        <div class="footer-cities">CDMX · Monterrey · Guadalajara</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Servicios DTX™</div>
+        <ul class="footer-links">
+          <li><a href="/dtx-audit/">DTX Audit™</a></li>
+          <li><a href="/dtx-launch/">DTX Launch™</a></li>
+          <li><a href="/dtx-compliance/">DTX Compliance Engine™</a></li>
+          <li><a href="/dtx-scale/">DTX Scale™</a></li>
+          <li><a href="/dtx-upgrade/">DTX Upgrade™</a></li>
+          <li><a href="/dtx-retainer/">DTX Retainer™</a></li>
+          <li><a href="/dtx-intelligence/">DTX Intelligence™</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Recursos</div>
+        <ul class="footer-links">
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/#proceso">Proceso</a></li>
+          <li><a href="/#clientes">Clientes</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <div class="footer-contact">
+          <a href="mailto:hello@innova.black">hello@innova.black</a>
+          <a href="https://innova.black">innova.black</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Innova Black®. Todos los derechos reservados. DTX™ es marca registrada.</p>
+      <p class="footer-copy">Metodologia DTX™ · innova.black</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // --- Nav scroll shadow ---
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // --- Mobile hamburger ---
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // --- Scroll reveal ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.r').forEach(el => observer.observe(el));
+
+    // --- Smooth scroll for anchor links ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const offset = 72;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+  <script src="../chatbot.js"></script>
+</body>
+</html>
