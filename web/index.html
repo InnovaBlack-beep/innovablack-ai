@@ -30,9 +30,10 @@
   <meta name="twitter:title" content="Innova Black® | Transformación Tecnológica Financiera" />
   <meta name="twitter:description" content="Construimos el framework tecnológico de tu SOFOM o IFPE." />
   <meta name="twitter:image" content="https://innovablack.ai/og-home.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="chatbot.css" />
 
   <!-- Schema.org JSON-LD -->
@@ -62,29 +63,30 @@
        TOKENS
     ============================================================ */
     :root {
-      --white:      #FFFFFF;
-      --paper:      #F8F6F1;
-      --paper2:     #F0EDE6;
-      --ink:        #111010;
-      --ink2:       #1E1C1C;
-      --muted:      #6B6560;
-      --light:      #A8A29C;
-      --rule:       #E2DDD6;
-      --gold:       #A8832A;
-      --gold2:      #C49B35;
-      --gold3:      #D4AF54;
-      --gold-bg:    #FBF7EE;
-      --gold-rule:  rgba(168,131,42,.20);
-      --gold-pale:  rgba(168,131,42,.06);
-      --neg:        #111010;
-      --neg2:       #191717;
+      --bg:         #060606;
+      --bg2:        #0C0C0C;
+      --bg3:        #111111;
+      --surface:    #161616;
+      --surface2:   #1C1C1C;
+      --border:     rgba(255,255,255,.06);
+      --border2:    rgba(255,255,255,.10);
+      --white:      #F0ECE6;
+      --white2:     rgba(240,236,230,.7);
+      --white3:     rgba(240,236,230,.45);
+      --white4:     rgba(240,236,230,.25);
+      --white5:     rgba(240,236,230,.10);
+      --gold:       #C8A44E;
+      --gold2:      #DAB95F;
+      --gold-glow:  rgba(200,164,78,.15);
+      --gold-glow2: rgba(200,164,78,.06);
 
-      --serif:  'Libre Baskerville', Georgia, serif;
-      --sans:   'Instrument Sans', system-ui, sans-serif;
-      --mono:   'DM Mono', monospace;
+      --display: 'Syne', sans-serif;
+      --body:    'Plus Jakarta Sans', system-ui, sans-serif;
+      --mono:    'JetBrains Mono', monospace;
 
-      --pad-x: 64px;
-      --pad-y: 120px;
+      --pad-x: 80px;
+      --max-w: 1280px;
+      --ease:  cubic-bezier(.16,1,.3,1);
     }
 
     /* ============================================================
@@ -93,62 +95,80 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: var(--sans);
+      font-family: var(--body);
       font-weight: 400;
-      color: var(--ink);
-      background: var(--white);
+      color: var(--white);
+      background: var(--bg);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
 
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: .035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 180px;
+    }
+
     /* ============================================================
-       TYPOGRAPHY HELPERS
+       TYPOGRAPHY
     ============================================================ */
-    .eyebrow {
+    .tag {
       font-family: var(--mono);
       font-size: 11px;
-      font-weight: 500;
-      letter-spacing: .14em;
+      font-weight: 400;
+      letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--gold);
-      display: block;
-      margin-bottom: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
     }
-    .s-h2 {
-      font-family: var(--serif);
-      font-size: clamp(32px, 4vw, 52px);
+    .tag::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .h2 {
+      font-family: var(--display);
+      font-size: clamp(36px, 4.5vw, 64px);
       font-weight: 700;
-      line-height: 1.15;
-      color: var(--ink);
-      margin-bottom: 20px;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      color: var(--white);
     }
-    .s-lead {
+    .lead {
       font-size: 17px;
       font-weight: 300;
-      line-height: 1.7;
-      color: var(--muted);
-      max-width: 620px;
+      line-height: 1.75;
+      color: var(--white3);
+      max-width: 540px;
     }
-    .on-dark .s-h2 { color: var(--white); }
-    .on-dark .s-lead { color: rgba(255,255,255,.65); }
-    .on-dark .eyebrow { color: var(--gold3); }
 
     /* ============================================================
        SCROLL REVEAL
     ============================================================ */
-    .r {
+    .rv {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .55s ease, transform .55s ease;
+      transform: translateY(30px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
     }
-    .r.in { opacity: 1; transform: none; }
-    .d1 { transition-delay: .08s; }
-    .d2 { transition-delay: .16s; }
-    .d3 { transition-delay: .24s; }
-    .d4 { transition-delay: .32s; }
-    .d5 { transition-delay: .40s; }
+    .rv.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: .07s; }
+    .d2 { transition-delay: .14s; }
+    .d3 { transition-delay: .21s; }
+    .d4 { transition-delay: .28s; }
+    .d5 { transition-delay: .35s; }
+    .d6 { transition-delay: .42s; }
 
     /* ============================================================
        BUTTONS
@@ -156,35 +176,56 @@
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-family: var(--sans);
+      gap: 10px;
+      font-family: var(--body);
       font-size: 13px;
       font-weight: 600;
-      letter-spacing: .04em;
+      letter-spacing: .06em;
       text-transform: uppercase;
-      padding: 14px 28px;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: all .2s ease;
+      padding: 16px 32px;
       border: none;
+      cursor: pointer;
+      transition: all .35s var(--ease);
+      position: relative;
+      overflow: hidden;
     }
     .btn-gold {
       background: var(--gold);
-      color: var(--white);
+      color: var(--bg);
     }
-    .btn-gold:hover { background: var(--gold2); }
-    .btn-outline {
+    .btn-gold:hover {
+      background: var(--gold2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(200,164,78,.25);
+    }
+    .btn-ghost {
       background: transparent;
       color: var(--white);
-      border: 1px solid rgba(255,255,255,.3);
+      border: 1px solid var(--border2);
     }
-    .btn-outline:hover { border-color: var(--gold3); color: var(--gold3); }
-    .btn-outline-dark {
-      background: transparent;
-      color: var(--ink);
-      border: 1px solid var(--rule);
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
     }
-    .btn-outline-dark:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-arrow::after {
+      content: '→';
+      transition: transform .3s var(--ease);
+    }
+    .btn-arrow:hover::after { transform: translateX(4px); }
+
+    /* ============================================================
+       SECTION UTILITIES
+    ============================================================ */
+    .sec-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
+    .sec-head {
+      margin-bottom: 72px;
+    }
+    .sec-head .tag { margin-bottom: 24px; }
+    .sec-head .lead { margin-top: 20px; }
 
     /* ============================================================
        1. NAV
@@ -193,59 +234,75 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(255,255,255,.96);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--rule);
-      height: 64px;
+      height: 72px;
       display: flex;
       align-items: center;
       padding: 0 var(--pad-x);
-      transition: box-shadow .2s;
+      transition: background .4s, backdrop-filter .4s, border-color .4s;
+      border-bottom: 1px solid transparent;
     }
-    #nav.scrolled { box-shadow: 0 2px 24px rgba(17,16,16,.06); }
+    #nav.scrolled {
+      background: rgba(6,6,6,.85);
+      backdrop-filter: blur(16px);
+      border-bottom-color: var(--border);
+    }
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      max-width: 1200px;
+      max-width: var(--max-w);
       margin: 0 auto;
     }
     .nav-logo {
-      font-family: var(--serif);
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--ink);
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--white);
       letter-spacing: -.01em;
     }
-    .nav-logo span { color: var(--gold); }
+    .nav-logo span { color: var(--gold); font-weight: 800; }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 36px;
       list-style: none;
     }
     .nav-links a {
       font-size: 13px;
       font-weight: 500;
-      color: var(--muted);
+      color: var(--white3);
       letter-spacing: .02em;
-      transition: color .15s;
+      transition: color .2s;
+      position: relative;
     }
-    .nav-links a:hover { color: var(--ink); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width .3s var(--ease);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
     .nav-cta {
-      font-family: var(--sans);
+      font-family: var(--body);
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: .05em;
+      letter-spacing: .06em;
       text-transform: uppercase;
-      color: var(--white);
+      color: var(--bg);
       background: var(--gold);
-      padding: 10px 20px;
-      border-radius: 2px;
-      transition: background .15s;
+      padding: 10px 22px;
+      transition: all .3s var(--ease);
     }
-    .nav-cta:hover { background: var(--gold2); }
+    .nav-cta:hover {
+      background: var(--gold2);
+      box-shadow: 0 4px 20px rgba(200,164,78,.2);
+    }
     .nav-hamburger {
       display: none;
       flex-direction: column;
@@ -255,25 +312,22 @@
     }
     .nav-hamburger span {
       display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--ink);
-      transition: all .2s;
+      width: 24px;
+      height: 1.5px;
+      background: var(--white);
+      transition: all .3s var(--ease);
     }
 
     /* ============================================================
        2. HERO
     ============================================================ */
-    /* Hero video fullscreen */
     #hero {
       position: relative;
       width: 100%;
-      height: 100vh;
-      min-height: 640px;
-      overflow: hidden;
+      min-height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: center;
+      overflow: hidden;
     }
     .hero-video {
       position: absolute;
@@ -281,58 +335,67 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
       z-index: 0;
     }
     .hero-overlay {
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(
-        to bottom,
-        rgba(10,9,9,.55) 0%,
-        rgba(10,9,9,.65) 50%,
-        rgba(10,9,9,.80) 100%
-      );
+      background:
+        radial-gradient(ellipse 70% 60% at 20% 50%, rgba(200,164,78,.06) 0%, transparent 70%),
+        linear-gradient(to bottom, rgba(6,6,6,.5) 0%, rgba(6,6,6,.7) 40%, rgba(6,6,6,.92) 100%);
     }
-    .hero-inner {
+    .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 1200px;
+      max-width: var(--max-w);
       width: 100%;
       padding: 0 var(--pad-x);
       margin: 0 auto;
-      padding-top: 64px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      padding-top: 160px;
+      padding-bottom: 180px;
     }
-    .hero-left { position: relative; padding-left: 28px; }
-    .hero-line {
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+      display: block;
     }
     .hero-h1 {
-      font-family: var(--serif);
-      font-size: clamp(40px, 5.5vw, 76px);
-      font-weight: 700;
-      line-height: 1.08;
+      font-family: var(--display);
+      font-size: clamp(44px, 6vw, 88px);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -.03em;
       color: var(--white);
-      margin-bottom: 24px;
+      margin-bottom: 28px;
+      max-width: 900px;
     }
-    .hero-h1 em {
-      font-style: italic;
-      color: var(--gold3);
+    .hero-h1 .gold {
+      color: var(--gold);
+      position: relative;
+    }
+    .hero-h1 .gold::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gold);
+      opacity: .3;
     }
     .hero-sub {
       font-size: 18px;
       font-weight: 300;
       line-height: 1.7;
-      color: rgba(255,255,255,.7);
-      max-width: 560px;
-      margin-bottom: 40px;
+      color: var(--white3);
+      max-width: 520px;
+      margin-bottom: 44px;
     }
     .hero-actions {
       display: flex;
@@ -340,78 +403,98 @@
       gap: 16px;
       flex-wrap: wrap;
     }
-    .hero-footnote {
-      margin-top: 16px;
+    .hero-note {
+      margin-top: 20px;
       font-family: var(--mono);
       font-size: 11px;
-      color: rgba(255,255,255,.35);
+      color: var(--white4);
       letter-spacing: .04em;
     }
-    /* Stats bar at bottom of hero */
-    .hero-stats-bar {
+
+    /* Hero stats strip */
+    .hero-stats {
       position: absolute;
       bottom: 0; left: 0; right: 0;
       z-index: 2;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid rgba(255,255,255,.1);
-      background: rgba(10,9,9,.55);
-      backdrop-filter: blur(8px);
+      border-top: 1px solid var(--border);
+      background: rgba(6,6,6,.65);
+      backdrop-filter: blur(12px);
     }
-    .stat-row {
-      padding: 28px var(--pad-x);
-      border-right: 1px solid rgba(255,255,255,.08);
+    .hero-stat {
+      padding: 32px var(--pad-x);
+      border-right: 1px solid var(--border);
     }
-    .stat-row:last-child { border-right: none; }
-    .stat-num {
-      font-family: var(--serif);
-      font-size: 36px;
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num {
+      font-family: var(--display);
+      font-size: 40px;
       font-weight: 700;
-      color: var(--gold3);
+      color: var(--gold);
       line-height: 1;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
+      letter-spacing: -.02em;
     }
-    .stat-label {
+    .hero-stat-label {
       font-size: 13px;
       font-weight: 300;
-      color: rgba(255,255,255,.55);
+      color: var(--white4);
       line-height: 1.4;
     }
 
+    /* Ghost text */
+    .hero-ghost {
+      position: absolute;
+      bottom: 100px;
+      right: -40px;
+      z-index: 1;
+      font-family: var(--display);
+      font-size: clamp(100px, 15vw, 240px);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(200,164,78,.07);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+
     /* ============================================================
-       3. GOLD BAND
+       3. MARQUEE BAND
     ============================================================ */
-    #gold-band {
-      background: var(--gold);
-      padding: 18px 0;
+    #marquee-band {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
       overflow: hidden;
     }
     .marquee-track {
       display: flex;
-      gap: 0;
       width: max-content;
-      animation: marquee 28s linear infinite;
+      animation: marquee 35s linear infinite;
     }
     .marquee-item {
       display: flex;
       align-items: center;
-      gap: 0;
       white-space: nowrap;
     }
     .marquee-text {
       font-family: var(--mono);
       font-size: 11px;
-      font-weight: 500;
-      letter-spacing: .12em;
+      font-weight: 400;
+      letter-spacing: .14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.9);
-      padding: 0 32px;
+      color: var(--white4);
+      padding: 0 28px;
     }
     .marquee-dot {
-      width: 4px;
-      height: 4px;
+      width: 3px;
+      height: 3px;
       border-radius: 50%;
-      background: rgba(255,255,255,.4);
+      background: var(--gold);
+      opacity: .5;
       flex-shrink: 0;
     }
     @keyframes marquee {
@@ -423,296 +506,282 @@
        4. EL PROBLEMA
     ============================================================ */
     #problema {
-      padding: var(--pad-y) var(--pad-x);
-      background: var(--paper);
+      padding: 140px 0;
+      position: relative;
     }
-    .sec-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .sec-header {
-      max-width: 600px;
-      margin-bottom: 64px;
+    #problema::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--gold-glow2) 0%, transparent 70%);
+      pointer-events: none;
     }
     .problem-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
+      background: var(--border);
+      margin-top: 0;
     }
     .problem-card {
-      background: var(--white);
-      padding: 40px 32px;
+      background: var(--bg);
+      padding: 48px 32px;
       position: relative;
-      overflow: hidden;
-      transition: background .2s;
+      transition: background .3s var(--ease);
     }
-    .problem-card::before {
+    .problem-card::after {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      bottom: 0; left: 0;
+      width: 0;
       height: 2px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .3s ease;
+      background: linear-gradient(to right, var(--gold), transparent);
+      transition: width .5s var(--ease);
     }
-    .problem-card:hover::before { transform: scaleX(1); }
-    .problem-card:hover { background: var(--gold-bg); }
+    .problem-card:hover { background: var(--surface); }
+    .problem-card:hover::after { width: 100%; }
     .problem-num {
-      font-family: var(--serif);
-      font-size: 64px;
-      font-weight: 700;
+      font-family: var(--display);
+      font-size: 56px;
+      font-weight: 800;
       color: var(--gold);
       line-height: 1;
-      margin-bottom: 12px;
-      opacity: .9;
+      margin-bottom: 16px;
+      letter-spacing: -.03em;
     }
     .problem-label {
       font-size: 15px;
       font-weight: 500;
-      color: var(--ink);
+      color: var(--white);
       line-height: 1.4;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .problem-desc {
       font-size: 13px;
       font-weight: 300;
-      color: var(--muted);
-      line-height: 1.6;
+      color: var(--white4);
+      line-height: 1.65;
     }
 
-
     /* ============================================================
-       6. SERVICIOS
+       5. SERVICIOS
     ============================================================ */
     #servicios {
-      padding: var(--pad-y) var(--pad-x);
-      background: var(--paper);
+      padding: 140px 0;
+      background: var(--bg2);
+      position: relative;
     }
     .services-list {
       display: flex;
       flex-direction: column;
-      gap: 0;
-      border: 1px solid var(--rule);
-      margin-top: 56px;
+      border: 1px solid var(--border);
     }
     .service-row {
       display: grid;
-      grid-template-columns: 60px 1fr;
-      gap: 0;
-      align-items: stretch;
-      border-bottom: 1px solid var(--rule);
-      background: var(--white);
-      transition: background .2s;
-      cursor: default;
+      grid-template-columns: 72px 1fr auto;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      transition: background .3s var(--ease);
+      cursor: pointer;
       position: relative;
     }
     .service-row:last-child { border-bottom: none; }
     .service-row::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
+      top: 0; left: 0;
+      width: 2px;
+      height: 0;
       background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .3s ease;
+      transition: height .4s var(--ease);
     }
-    .service-row:hover::before { transform: scaleX(1); }
-    .service-row:hover { background: var(--gold-bg); }
-    .service-num-col {
+    .service-row:hover { background: var(--surface); }
+    .service-row:hover::before { height: 100%; }
+    .service-idx {
       display: flex;
       align-items: center;
       justify-content: center;
-      border-right: 1px solid var(--rule);
-      padding: 32px 0;
-    }
-    .service-num {
+      border-right: 1px solid var(--border);
       font-family: var(--mono);
-      font-size: 11px;
-      color: var(--light);
-      letter-spacing: .08em;
+      font-size: 12px;
+      color: var(--white4);
+      letter-spacing: .06em;
     }
     .service-body {
-      padding: 32px 40px;
-    }
-    .service-name {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 700;
-      font-style: italic;
-      color: var(--ink);
-      margin-bottom: 4px;
+      padding: 36px 40px;
     }
     .service-for {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10px;
       color: var(--gold);
-      letter-spacing: .08em;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
+    }
+    .service-name {
+      font-family: var(--display);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -.01em;
+      margin-bottom: 8px;
     }
     .service-desc {
       font-size: 14px;
       font-weight: 300;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 600px;
+      color: var(--white3);
+      line-height: 1.7;
+      max-width: 560px;
     }
-    .service-price-col {
+    .service-arrow {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: center;
-      padding: 32px 40px;
-      border-left: 1px solid var(--rule);
-      min-width: 220px;
-    }
-    .service-price {
-      font-family: var(--serif);
+      align-items: center;
+      padding: 0 40px;
+      border-left: 1px solid var(--border);
       font-size: 20px;
-      font-weight: 700;
-      color: var(--ink);
-      text-align: right;
-      line-height: 1.2;
-      margin-bottom: 4px;
+      color: var(--white4);
+      transition: color .3s, transform .3s var(--ease);
     }
-    .service-duration {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--light);
-      letter-spacing: .06em;
-      text-align: right;
-    }
-    .service-badge {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      background: var(--gold-pale);
+    .service-row:hover .service-arrow {
       color: var(--gold);
-      border: 1px solid var(--gold-rule);
-      padding: 4px 8px;
-      border-radius: 2px;
-      margin-top: 8px;
-      display: inline-block;
+      transform: translateX(4px);
     }
 
     /* ============================================================
-       7. PROCESO
+       6. PROCESO
     ============================================================ */
     #proceso {
-      padding: var(--pad-y) var(--pad-x);
-      background: var(--white);
+      padding: 140px 0;
+      position: relative;
     }
-    .proceso-steps {
+    .proceso-track {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 0;
-      margin-top: 64px;
-      border-top: 1px solid var(--rule);
       position: relative;
+      margin-top: 8px;
     }
-    .proceso-steps::before {
+    /* Golden progress line */
+    .proceso-track::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(to right, var(--gold), var(--gold2), var(--gold3), var(--gold2), var(--gold));
+      height: 1px;
+      background: var(--border2);
     }
-    .paso {
-      padding: 40px 24px 0;
-      position: relative;
-    }
-    .paso::after {
+    .proceso-track::after {
       content: '';
       position: absolute;
-      top: 0; right: 0;
-      width: 1px;
-      height: 60%;
-      background: var(--rule);
+      top: -1px; left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--gold), var(--gold2));
+      transition: width 1.5s var(--ease);
     }
-    .paso:last-child::after { display: none; }
+    .proceso-track.in::after { width: 100%; }
+    .paso {
+      padding: 48px 28px 0;
+      position: relative;
+    }
+    .paso::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 28px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--gold);
+      z-index: 1;
+      transition: background .4s;
+    }
+    .proceso-track.in .paso::before {
+      background: var(--gold);
+      box-shadow: 0 0 12px var(--gold-glow);
+    }
     .paso-num {
       font-family: var(--mono);
       font-size: 11px;
       color: var(--gold);
-      letter-spacing: .1em;
+      letter-spacing: .12em;
       margin-bottom: 16px;
       display: block;
     }
     .paso-title {
-      font-family: var(--serif);
-      font-size: 17px;
+      font-family: var(--display);
+      font-size: 18px;
       font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 10px;
+      color: var(--white);
+      margin-bottom: 12px;
+      letter-spacing: -.01em;
     }
     .paso-desc {
       font-size: 13px;
       font-weight: 300;
-      color: var(--muted);
-      line-height: 1.65;
+      color: var(--white4);
+      line-height: 1.7;
     }
 
     /* ============================================================
-       8. CLIENTES
+       7. CLIENTES
     ============================================================ */
     #clientes {
-      padding: var(--pad-y) var(--pad-x);
-      background: var(--neg);
+      padding: 140px 0;
+      background: var(--bg2);
     }
     .clients-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
-      background: rgba(255,255,255,.08);
-      margin-top: 56px;
-      border: 1px solid rgba(255,255,255,.08);
+      background: var(--border);
     }
     .client-card {
-      background: var(--neg);
-      padding: 48px 36px;
+      background: var(--bg2);
+      padding: 52px 36px;
       position: relative;
       overflow: hidden;
-      transition: background .2s;
+      transition: background .3s var(--ease);
     }
     .client-card::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: var(--gold);
+      background: linear-gradient(to right, var(--gold), transparent);
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform .3s ease;
+      transition: transform .5s var(--ease);
     }
+    .client-card:hover { background: var(--surface); }
     .client-card:hover::before { transform: scaleX(1); }
-    .client-card:hover { background: #171515; }
     .client-tag {
       font-family: var(--mono);
       font-size: 10px;
-      letter-spacing: .12em;
+      letter-spacing: .14em;
       text-transform: uppercase;
-      color: var(--gold3);
-      margin-bottom: 20px;
+      color: var(--gold);
+      margin-bottom: 24px;
       display: block;
     }
     .client-h3 {
-      font-family: var(--serif);
-      font-size: 24px;
+      font-family: var(--display);
+      font-size: 22px;
       font-weight: 700;
       color: var(--white);
       line-height: 1.2;
       margin-bottom: 16px;
+      letter-spacing: -.01em;
     }
-    .client-h3 em { font-style: italic; color: var(--gold3); }
+    .client-h3 .gold { color: var(--gold); }
     .client-desc {
       font-size: 14px;
       font-weight: 300;
-      color: rgba(255,255,255,.55);
+      color: var(--white3);
       line-height: 1.7;
       margin-bottom: 24px;
     }
@@ -724,60 +793,78 @@
     }
     .client-list li {
       font-size: 13px;
-      font-weight: 400;
-      color: rgba(255,255,255,.45);
-      padding-left: 16px;
+      font-weight: 300;
+      color: var(--white4);
+      padding-left: 18px;
       position: relative;
       line-height: 1.5;
     }
     .client-list li::before {
-      content: '—';
+      content: '';
       position: absolute;
       left: 0;
-      color: var(--gold3);
-      opacity: .6;
+      top: 8px;
+      width: 6px;
+      height: 1px;
+      background: var(--gold);
     }
     .client-service {
       margin-top: 28px;
       padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,.08);
+      border-top: 1px solid var(--border);
       font-family: var(--mono);
       font-size: 11px;
-      color: var(--gold3);
+      color: var(--gold);
       letter-spacing: .06em;
     }
 
     /* ============================================================
-       9. PULL QUOTE
+       8. QUOTE
     ============================================================ */
-    #pullquote {
-      padding: 96px var(--pad-x);
-      background: var(--gold);
+    #quote {
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
     }
-    .quote-inner {
-      max-width: 1200px;
-      margin: 0 auto;
+    #quote::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(200,164,78,.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .quote-grid {
       display: grid;
-      grid-template-columns: 1fr 400px;
+      grid-template-columns: 1fr 340px;
       gap: 80px;
       align-items: center;
     }
     .quote-text {
-      font-family: var(--serif);
-      font-size: clamp(24px, 3vw, 40px);
-      font-weight: 400;
-      font-style: italic;
+      font-family: var(--display);
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 600;
       color: var(--white);
-      line-height: 1.4;
+      line-height: 1.3;
+      letter-spacing: -.01em;
     }
-    .quote-text strong { font-weight: 700; font-style: normal; }
-    .quote-author {
+    .quote-text .gold { color: var(--gold); }
+    .quote-mark {
+      display: block;
+      font-family: var(--display);
+      font-size: 80px;
+      font-weight: 800;
+      color: var(--gold);
+      opacity: .2;
+      line-height: 1;
+      margin-bottom: -20px;
+    }
+    .quote-attr {
       margin-top: 24px;
       font-family: var(--mono);
       font-size: 11px;
-      letter-spacing: .1em;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.65);
+      color: var(--white4);
     }
     .quote-stats {
       display: flex;
@@ -785,72 +872,85 @@
       gap: 0;
     }
     .qstat {
-      padding: 24px 0;
-      border-bottom: 1px solid rgba(255,255,255,.2);
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
     }
     .qstat:last-child { border-bottom: none; }
     .qstat:first-child { padding-top: 0; }
     .qstat-num {
-      font-family: var(--serif);
-      font-size: 44px;
+      font-family: var(--display);
+      font-size: 48px;
       font-weight: 700;
-      color: var(--white);
+      color: var(--gold);
       line-height: 1;
       margin-bottom: 4px;
+      letter-spacing: -.03em;
     }
     .qstat-label {
       font-size: 13px;
-      color: rgba(255,255,255,.7);
+      color: var(--white3);
       font-weight: 300;
     }
 
     /* ============================================================
-       10. CTA
+       9. CTA
     ============================================================ */
     #cta {
-      padding: var(--pad-y) var(--pad-x);
-      background: var(--neg);
+      padding: 160px 0;
       position: relative;
       overflow: hidden;
+      background: var(--bg2);
+    }
+    .cta-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(200,164,78,.08) 0%, transparent 60%);
+      pointer-events: none;
     }
     .cta-ghost {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      font-family: var(--serif);
-      font-size: clamp(80px, 14vw, 220px);
-      font-weight: 700;
-      font-style: italic;
-      color: var(--white);
-      opacity: .03;
+      font-family: var(--display);
+      font-size: clamp(80px, 14vw, 240px);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(240,236,230,.03);
       white-space: nowrap;
       pointer-events: none;
       user-select: none;
     }
     .cta-inner {
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
       text-align: center;
       position: relative;
       z-index: 1;
+      padding: 0 var(--pad-x);
     }
     .cta-h2 {
-      font-family: var(--serif);
-      font-size: clamp(36px, 5vw, 64px);
-      font-weight: 700;
+      font-family: var(--display);
+      font-size: clamp(36px, 5vw, 72px);
+      font-weight: 800;
       color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 20px;
+      line-height: 1.0;
+      letter-spacing: -.03em;
+      margin-bottom: 24px;
     }
-    .cta-h2 em { font-style: italic; color: var(--gold3); }
+    .cta-h2 .gold { color: var(--gold); }
     .cta-sub {
       font-size: 17px;
       font-weight: 300;
-      color: rgba(255,255,255,.55);
-      line-height: 1.6;
-      max-width: 560px;
-      margin: 0 auto 40px;
+      color: var(--white3);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto 44px;
     }
     .cta-actions {
       display: flex;
@@ -860,58 +960,57 @@
       flex-wrap: wrap;
     }
     .cta-note {
-      margin-top: 20px;
+      margin-top: 24px;
       font-family: var(--mono);
       font-size: 11px;
-      color: rgba(255,255,255,.3);
+      color: var(--white4);
       letter-spacing: .04em;
     }
 
     /* ============================================================
-       11. FOOTER
+       10. FOOTER
     ============================================================ */
     #footer {
-      padding: 64px var(--pad-x) 40px;
-      background: var(--neg2);
-      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 72px 0 40px;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
     }
-    .footer-top {
-      max-width: 1200px;
-      margin: 0 auto;
+    .footer-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
       gap: 48px;
       padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid var(--border);
     }
     .footer-logo {
-      font-family: var(--serif);
-      font-size: 18px;
-      font-weight: 700;
+      font-family: var(--display);
+      font-size: 20px;
+      font-weight: 800;
       color: var(--white);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      letter-spacing: -.01em;
     }
-    .footer-logo span { color: var(--gold3); }
+    .footer-logo span { color: var(--gold); }
     .footer-tagline {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 300;
-      color: rgba(255,255,255,.4);
-      line-height: 1.6;
+      color: var(--white4);
+      line-height: 1.65;
       margin-bottom: 20px;
     }
     .footer-cities {
       font-family: var(--mono);
       font-size: 10px;
-      color: rgba(255,255,255,.25);
-      letter-spacing: .08em;
+      color: var(--white4);
+      letter-spacing: .1em;
       text-transform: uppercase;
     }
     .footer-col-title {
       font-family: var(--mono);
       font-size: 10px;
-      letter-spacing: .12em;
+      letter-spacing: .14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.3);
+      color: var(--white4);
       margin-bottom: 20px;
     }
     .footer-links {
@@ -923,30 +1022,29 @@
     .footer-links a {
       font-size: 13px;
       font-weight: 300;
-      color: rgba(255,255,255,.5);
-      transition: color .15s;
+      color: var(--white3);
+      transition: color .2s;
     }
-    .footer-links a:hover { color: var(--gold3); }
+    .footer-links a:hover { color: var(--gold); }
     .footer-contact a {
       display: block;
       font-size: 13px;
       font-weight: 300;
-      color: rgba(255,255,255,.5);
+      color: var(--white3);
       margin-bottom: 8px;
-      transition: color .15s;
+      transition: color .2s;
     }
-    .footer-contact a:hover { color: var(--gold3); }
+    .footer-contact a:hover { color: var(--gold); }
     .footer-bottom {
-      max-width: 1200px;
-      margin: 24px auto 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding-top: 24px;
     }
     .footer-copy {
       font-family: var(--mono);
       font-size: 11px;
-      color: rgba(255,255,255,.2);
+      color: var(--white5);
       letter-spacing: .04em;
     }
 
@@ -956,52 +1054,58 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 64px; left: 0; right: 0;
-      background: var(--white);
-      border-bottom: 1px solid var(--rule);
+      top: 72px; left: 0; right: 0;
+      background: rgba(6,6,6,.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
       padding: 24px var(--pad-x);
       z-index: 99;
       flex-direction: column;
-      gap: 20px;
+      gap: 0;
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a {
       font-size: 15px;
       font-weight: 500;
-      color: var(--ink);
-      padding: 8px 0;
-      border-bottom: 1px solid var(--rule);
+      color: var(--white);
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color .2s;
     }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--gold); }
 
     /* ============================================================
        RESPONSIVE
     ============================================================ */
     @media (max-width: 1024px) {
-      :root { --pad-x: 40px; --pad-y: 96px; }
-      .hero-inner { padding: 0 var(--pad-x); padding-top: 64px; }
-      .hero-stats-bar { display: none; }
+      :root { --pad-x: 40px; }
+      .hero-stats { display: none; }
+      .hero-ghost { display: none; }
       .problem-grid { grid-template-columns: repeat(2, 1fr); }
-      .proceso-steps { grid-template-columns: repeat(3, 1fr); }
+      .proceso-track { grid-template-columns: repeat(3, 1fr); }
       .clients-grid { grid-template-columns: 1fr; }
-      .quote-inner { grid-template-columns: 1fr; gap: 48px; }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .quote-grid { grid-template-columns: 1fr; gap: 48px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
     }
 
     @media (max-width: 768px) {
-      :root { --pad-x: 28px; --pad-y: 80px; }
+      :root { --pad-x: 24px; }
       .nav-links, .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
       #hero { min-height: 100svh; }
-      .hero-stats-bar { grid-template-columns: 1fr; }
+      .hero-content { padding-top: 120px; padding-bottom: 80px; }
       .problem-grid { grid-template-columns: 1fr; }
-      .proceso-steps { grid-template-columns: 1fr 1fr; }
-      .paso::after { display: none; }
+      .proceso-track { grid-template-columns: 1fr 1fr; }
+      .paso::before { display: none; }
+      .proceso-track::before, .proceso-track::after { display: none; }
       .service-row { grid-template-columns: 1fr; }
-      .service-num-col { display: none; }
-      .footer-top { grid-template-columns: 1fr; }
+      .service-idx { display: none; }
+      .service-arrow { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
       .quote-stats { display: grid; grid-template-columns: repeat(3, 1fr); }
-      .qstat { padding: 0 16px; border-bottom: none; border-right: 1px solid rgba(255,255,255,.2); }
+      .qstat { padding: 0 12px; border-bottom: none; border-right: 1px solid var(--border); text-align: center; }
       .qstat:last-child { border-right: none; }
     }
   </style>
@@ -1013,7 +1117,7 @@
   ============================================================ -->
   <nav id="nav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">Innova Black<span>®</span></a>
+      <a href="#" class="nav-logo">INNOVA BLACK<span>®</span></a>
       <ul class="nav-links">
         <li><a href="#problema">El Problema</a></li>
         <li><a href="#servicios">Servicios</a></li>
@@ -1021,7 +1125,7 @@
         <li><a href="#clientes">Clientes</a></li>
         <li><a href="/blog">Blog</a></li>
       </ul>
-      <a href="#cta" class="nav-cta">Agendar Diagnóstico</a>
+      <a href="#cta" class="nav-cta">Agendar DTX Audit™</a>
       <div class="nav-hamburger" id="hamburger" aria-label="Menú">
         <span></span><span></span><span></span>
       </div>
@@ -1034,65 +1138,58 @@
     <a href="#servicios" class="mobile-link">Servicios</a>
     <a href="#proceso" class="mobile-link">Proceso</a>
     <a href="#clientes" class="mobile-link">Clientes</a>
-    <a href="#cta" class="mobile-link" style="color:var(--gold);font-weight:600;">Agendar Diagnóstico</a>
+    <a href="/blog" class="mobile-link">Blog</a>
+    <a href="#cta" class="mobile-link" style="color:var(--gold);font-weight:600;">Agendar DTX Audit™</a>
   </div>
 
   <!-- ============================================================
        2. HERO
   ============================================================ -->
   <section id="hero">
-    <!-- Video background — reemplazar hero.mp4 con video corporativo real -->
     <video class="hero-video" autoplay muted loop playsinline poster="">
       <source src="assets/video/hero.mp4" type="video/mp4" />
     </video>
     <div class="hero-overlay"></div>
+    <div class="hero-ghost" aria-hidden="true">INNOVA BLACK</div>
 
-    <div class="hero-inner">
-      <div class="hero-left">
-        <div class="hero-line"></div>
-        <span class="eyebrow r" style="color:var(--gold3)">Firma de transformación tecnológica financiera · México</span>
-        <h1 class="hero-h1 r d1">
-          Innova Black® moderniza<br />
-          instituciones financieras<br />
-          para <em>operar, cumplir</em><br />
-          y escalar.
-        </h1>
-        <p class="hero-sub r d2">
-          No asesoramos. Construimos el framework tecnológico completo
-          que SOFOMs, SOFIPOs e IFPEs necesitan para operar con la
-          regulación vigente y crecer.
-        </p>
-        <div class="hero-actions r d3">
-          <a href="#cta" class="btn btn-gold">Solicitar DTX Audit™ gratuito</a>
-          <a href="#servicios" class="btn btn-outline">Ver servicios</a>
-        </div>
-        <p class="hero-footnote r d4">Diagnóstico gratuito de 45 min · Sin compromisos · CDMX · MTY · GDL</p>
+    <div class="hero-content">
+      <span class="hero-tag rv">Transformación tecnológica financiera · México</span>
+      <h1 class="hero-h1 rv d1">
+        Modernizamos instituciones financieras para <span class="gold">operar, cumplir</span> y escalar.
+      </h1>
+      <p class="hero-sub rv d2">
+        No asesoramos. Construimos el framework tecnológico completo
+        que SOFOMs, SOFIPOs e IFPEs necesitan para operar con la
+        regulación vigente y crecer.
+      </p>
+      <div class="hero-actions rv d3">
+        <a href="#cta" class="btn btn-gold btn-arrow">Solicitar DTX Audit™ gratuito</a>
+        <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
       </div>
+      <p class="hero-note rv d4">Diagnóstico gratuito de 45 min · Sin compromisos · CDMX · MTY · GDL</p>
     </div>
 
-    <!-- Stats bar bottom -->
-    <div class="hero-stats-bar">
-      <div class="stat-row r">
-        <div class="stat-num">1,340<span style="font-size:22px">+</span></div>
-        <div class="stat-label">SOFOMs en México, 60% sin sistemas especializados</div>
+    <div class="hero-stats">
+      <div class="hero-stat rv">
+        <div class="hero-stat-num" data-count="1340">0</div>
+        <div class="hero-stat-label">SOFOMs en México, 60% sin sistemas especializados</div>
       </div>
-      <div class="stat-row r d1">
-        <div class="stat-num">−70%</div>
-        <div class="stat-label">Reducción en tiempo de compliance con DTX™</div>
+      <div class="hero-stat rv d1">
+        <div class="hero-stat-num">−70%</div>
+        <div class="hero-stat-label">Reducción en tiempo de compliance con DTX™</div>
       </div>
-      <div class="stat-row r d2">
-        <div class="stat-num">Abr 2026</div>
-        <div class="stat-label">Evaluación GAFI + Ley Fintech 2.0 — ¿lista tu institución?</div>
+      <div class="hero-stat rv d2">
+        <div class="hero-stat-num">Abr 2026</div>
+        <div class="hero-stat-label">Evaluación GAFI + Ley Fintech 2.0 — ¿lista tu institución?</div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       3. GOLD BAND
+       3. MARQUEE BAND
   ============================================================ -->
-  <div id="gold-band" aria-hidden="true">
+  <div id="marquee-band" aria-hidden="true">
     <div class="marquee-track">
-      <!-- First copy -->
       <div class="marquee-item"><span class="marquee-text">DTX Launch™</span><div class="marquee-dot"></div></div>
       <div class="marquee-item"><span class="marquee-text">DTX Compliance Engine™</span><div class="marquee-dot"></div></div>
       <div class="marquee-item"><span class="marquee-text">DTX Scale™</span><div class="marquee-dot"></div></div>
@@ -1126,28 +1223,28 @@
   ============================================================ -->
   <section id="problema">
     <div class="sec-inner">
-      <div class="sec-header">
-        <span class="eyebrow r">El Problema</span>
-        <h2 class="s-h2 r d1">El sistema financiero mexicano tiene una crisis tecnológica silenciosa.</h2>
-        <p class="s-lead r d2">Las instituciones reguladas enfrentan una convergencia de presiones que los despachos legales y el software genérico no pueden resolver.</p>
+      <div class="sec-head">
+        <div class="tag rv">El Problema</div>
+        <h2 class="h2 rv d1">El sistema financiero mexicano<br />tiene una crisis tecnológica silenciosa.</h2>
+        <p class="lead rv d2">Las instituciones reguladas enfrentan una convergencia de presiones que los despachos legales y el software genérico no pueden resolver.</p>
       </div>
       <div class="problem-grid">
-        <div class="problem-card r">
+        <div class="problem-card rv">
           <div class="problem-num">60%</div>
           <div class="problem-label">de SOFOMs opera con Excel o sistemas no especializados</div>
           <div class="problem-desc">Fuente CNBV. La mayoría no tiene infraestructura para cumplir los nuevos requisitos regulatorios.</div>
         </div>
-        <div class="problem-card r d1">
+        <div class="problem-card rv d1">
           <div class="problem-num">$35K</div>
           <div class="problem-label">USD al año en compliance manual por institución</div>
           <div class="problem-desc">57% de las fintechs gasta este monto en procesos que pueden automatizarse al 80%.</div>
         </div>
-        <div class="problem-card r d2">
+        <div class="problem-card rv d2">
           <div class="problem-num">781</div>
           <div class="problem-label">días promedio para obtener autorización IFPE</div>
           <div class="problem-desc">Con arquitectura tecnológica correcta desde el inicio, el tiempo se reduce a 416 días — 46% más rápido.</div>
         </div>
-        <div class="problem-card r d3">
+        <div class="problem-card rv d3">
           <div class="problem-num">Abr<br />2026</div>
           <div class="problem-label">Evaluación GAFI y Ley Fintech 2.0 en simultáneo</div>
           <div class="problem-desc">Las instituciones que no modernicen su infraestructura de cumplimiento enfrentan sanciones y pérdida de licencia.</div>
@@ -1156,110 +1253,116 @@
     </div>
   </section>
 
-
   <!-- ============================================================
-       6. SERVICIOS
+       5. SERVICIOS
   ============================================================ -->
   <section id="servicios">
     <div class="sec-inner">
-      <div class="sec-header">
-        <span class="eyebrow r">Metodología DTX™</span>
-        <h2 class="s-h2 r d1">Siete servicios. Un framework. Resultados medibles.</h2>
-        <p class="s-lead r d2">Cada servicio es un módulo de la Metodología DTX™ — diseñada para llevar una institución financiera desde cualquier punto hasta operación plena y cumplimiento regulatorio.</p>
+      <div class="sec-head">
+        <div class="tag rv">Metodología DTX™</div>
+        <h2 class="h2 rv d1">Siete servicios. Un framework.<br />Resultados medibles.</h2>
+        <p class="lead rv d2">Cada servicio es un módulo de la Metodología DTX™ — diseñada para llevar una institución financiera desde cualquier punto hasta operación plena y cumplimiento regulatorio.</p>
       </div>
       <div class="services-list">
-        <div class="service-row r">
-          <div class="service-num-col"><span class="service-num">01</span></div>
+        <a href="/dtx-launch/" class="service-row rv">
+          <div class="service-idx">01</div>
           <div class="service-body">
             <div class="service-for">Para: Constitución de SOFOM / SOFIPO / IFPE nueva</div>
             <div class="service-name">DTX Launch™</div>
             <div class="service-desc">Arquitectura tecnológica completa, flujos operativos, manuales CNBV, setup PLD/KYC desde cero y documentación lista para presentar ante el regulador.</div>
           </div>
-        </div>
-        <div class="service-row r d1">
-          <div class="service-num-col"><span class="service-num">02</span></div>
+          <div class="service-arrow">→</div>
+        </a>
+        <a href="/dtx-compliance/" class="service-row rv d1">
+          <div class="service-idx">02</div>
           <div class="service-body">
             <div class="service-for">Para: Automatización de compliance en institución existente</div>
             <div class="service-name">DTX Compliance Engine™</div>
             <div class="service-desc">Automatización IA de reportes ROU/ROP, monitoreo transaccional inteligente, onboarding digital KYC en minutos e integración CNBV, UIF, SAT.</div>
           </div>
-        </div>
-        <div class="service-row r d2">
-          <div class="service-num-col"><span class="service-num">03</span></div>
+          <div class="service-arrow">→</div>
+        </a>
+        <a href="/dtx-scale/" class="service-row rv d2">
+          <div class="service-idx">03</div>
           <div class="service-body">
             <div class="service-for">Para: Escalar al siguiente nivel regulatorio</div>
             <div class="service-name">DTX Scale™</div>
             <div class="service-desc">Conexión SPEI, BIN sponsor para emisión de tarjetas, onboarding a escala, scoring crediticio con IA y arquitectura multi-producto.</div>
           </div>
-        </div>
-        <div class="service-row r d3">
-          <div class="service-num-col"><span class="service-num">04</span></div>
+          <div class="service-arrow">→</div>
+        </a>
+        <a href="/dtx-upgrade/" class="service-row rv d3">
+          <div class="service-idx">04</div>
           <div class="service-body">
             <div class="service-for">Para: Institución con sistemas legacy o procesos manuales</div>
             <div class="service-name">DTX Upgrade™</div>
             <div class="service-desc">Migración de sistemas legacy, rediseño de procesos manuales, preparación para Ley Fintech 2.0 y evaluación GAFI 2026.</div>
           </div>
-        </div>
-        <div class="service-row r d4">
-          <div class="service-num-col"><span class="service-num">05</span></div>
+          <div class="service-arrow">→</div>
+        </a>
+        <a href="/dtx-retainer/" class="service-row rv d4">
+          <div class="service-idx">05</div>
           <div class="service-body">
             <div class="service-for">Para: Cualquier institución que necesita equipo tech-estratégico externo</div>
             <div class="service-name">DTX Retainer™</div>
             <div class="service-desc">El único CTO/COO externo especializado en instituciones financieras reguladas de México. Monitoreo regulatorio en tiempo real, advisory directo al CEO, gestión de proveedores y respuesta ante autoridades.</div>
           </div>
-        </div>
-        <div class="service-row r d5">
-          <div class="service-num-col"><span class="service-num">06</span></div>
+          <div class="service-arrow">→</div>
+        </a>
+        <a href="/dtx-audit/" class="service-row rv d5">
+          <div class="service-idx">06</div>
           <div class="service-body">
             <div class="service-for">Para: Cualquier institución que quiere conocer su estado actual</div>
             <div class="service-name">DTX Audit™</div>
             <div class="service-desc">Diagnóstico tecnológico y regulatorio gratuito de 45 minutos. Evaluación completa del estado actual de tu institución con entregable: Reporte de Madurez Regulatoria sin costo ni compromiso.</div>
           </div>
-        </div>
-        <div class="service-row r d6">
-          <div class="service-num-col"><span class="service-num">07</span></div>
+          <div class="service-arrow">→</div>
+        </a>
+        <a href="/dtx-intelligence/" class="service-row rv d6">
+          <div class="service-idx">07</div>
           <div class="service-body">
             <div class="service-for">Para: Instituciones que necesitan tomar decisiones basadas en datos</div>
             <div class="service-name">DTX Intelligence™</div>
             <div class="service-desc">Analítica avanzada e inteligencia de datos para instituciones financieras reguladas. Dashboards ejecutivos, scoring crediticio con IA, monitoreo de cartera y análisis predictivo.</div>
           </div>
-        </div>
+          <div class="service-arrow">→</div>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       7. PROCESO
+       6. PROCESO
   ============================================================ -->
   <section id="proceso">
     <div class="sec-inner">
-      <div class="sec-header">
-        <span class="eyebrow r">Cómo trabajamos</span>
-        <h2 class="s-h2 r d1">Cinco fases. De diagnóstico a operación plena.</h2>
-        <p class="s-lead r d2">El mismo proceso estructurado se aplica en todos los servicios — con el detalle y la profundidad que requiere cada institución.</p>
+      <div class="sec-head">
+        <div class="tag rv">Cómo trabajamos</div>
+        <h2 class="h2 rv d1">Cinco fases. De diagnóstico<br />a operación plena.</h2>
+        <p class="lead rv d2">El mismo proceso estructurado se aplica en todos los servicios — con el detalle y la profundidad que requiere cada institución.</p>
       </div>
-      <div class="proceso-steps">
-        <div class="paso r">
+      <div class="proceso-track" id="proceso-track">
+        <div class="paso rv">
           <span class="paso-num">01</span>
           <div class="paso-title">Diagnóstico</div>
           <p class="paso-desc">Evaluación completa del estado actual + reporte ejecutivo + roadmap de 90 días. Entrada gratuita vía DTX Audit™.</p>
         </div>
-        <div class="paso r d1">
+        <div class="paso rv d1">
           <span class="paso-num">02</span>
           <div class="paso-title">Diseño del Framework</div>
           <p class="paso-desc">Arquitectura tecnológica, flujos operativos y estructura regulatoria diseñados a medida de la institución.</p>
         </div>
-        <div class="paso r d2">
+        <div class="paso rv d2">
           <span class="paso-num">03</span>
           <div class="paso-title">Implementación</div>
           <p class="paso-desc">Sistemas, automatización, integraciones con reguladores y documentación CNBV. Construimos, no entregamos PPTs.</p>
         </div>
-        <div class="paso r d3">
+        <div class="paso rv d3">
           <span class="paso-num">04</span>
           <div class="paso-title">Formación</div>
           <p class="paso-desc">Capacitación del equipo operativo, compliance y directivo. La institución queda autosuficiente en la operación diaria.</p>
         </div>
-        <div class="paso r d4">
+        <div class="paso rv d4">
           <span class="paso-num">05</span>
           <div class="paso-title">Retainer</div>
           <p class="paso-desc">Acompañamiento mensual continuo. Monitoreo regulatorio, actualización ante cambios CNBV/UIF y advisory estratégico.</p>
@@ -1269,18 +1372,18 @@
   </section>
 
   <!-- ============================================================
-       8. CLIENTES
+       7. CLIENTES
   ============================================================ -->
-  <section id="clientes" class="on-dark">
+  <section id="clientes">
     <div class="sec-inner">
-      <div class="sec-header">
-        <span class="eyebrow r">¿Para quién es Innova Black®?</span>
-        <h2 class="s-h2 r d1">Tres perfiles. Un mismo objetivo: operar con solidez regulatoria.</h2>
+      <div class="sec-head">
+        <div class="tag rv">¿Para quién es Innova Black®?</div>
+        <h2 class="h2 rv d1">Tres perfiles. Un mismo objetivo:<br />operar con solidez regulatoria.</h2>
       </div>
       <div class="clients-grid">
-        <div class="client-card r">
+        <div class="client-card rv">
           <span class="client-tag">Perfil A — Nacer</span>
-          <h3 class="client-h3">Quieres constituir una <em>SOFOM, SOFIPO o IFPE</em> nueva.</h3>
+          <h3 class="client-h3">Quieres constituir una <span class="gold">SOFOM, SOFIPO o IFPE</span> nueva.</h3>
           <p class="client-desc">Tienes el modelo de negocio. Tienes el capital. Pero no sabes cómo estructurar la tecnología para obtener la autorización y operar desde el día uno.</p>
           <ul class="client-list">
             <li>Emprendedores y fondos con modelo fintech validado</li>
@@ -1289,9 +1392,9 @@
           </ul>
           <div class="client-service">Servicio recomendado: DTX Launch™</div>
         </div>
-        <div class="client-card r d1">
+        <div class="client-card rv d1">
           <span class="client-tag">Perfil B — Cumplir</span>
-          <h3 class="client-h3">Tu institución existe pero <em>no está lista</em> para la nueva regulación.</h3>
+          <h3 class="client-h3">Tu institución existe pero <span class="gold">no está lista</span> para la nueva regulación.</h3>
           <p class="client-desc">Operas con Excel, sistemas genéricos o procesos manuales. La Ley Fintech 2.0 y la evaluación GAFI de abril 2026 te generan incertidumbre real.</p>
           <ul class="client-list">
             <li>SOFOMs existentes con 3–10 años de operación</li>
@@ -1300,9 +1403,9 @@
           </ul>
           <div class="client-service">Servicios recomendados: DTX Upgrade™ + DTX Compliance Engine™</div>
         </div>
-        <div class="client-card r d2">
+        <div class="client-card rv d2">
           <span class="client-tag">Perfil C — Escalar</span>
-          <h3 class="client-h3">Tienes autorización y quieres <em>crecer al siguiente nivel.</em></h3>
+          <h3 class="client-h3">Tienes autorización y quieres <span class="gold">crecer al siguiente nivel.</span></h3>
           <p class="client-desc">Quieres conexión SPEI, emisión de tarjetas, expansión de producto o estás preparando una ronda de inversión Serie A/B.</p>
           <ul class="client-list">
             <li>IFPEs autorizadas que quieren ampliar servicios</li>
@@ -1316,99 +1419,105 @@
   </section>
 
   <!-- ============================================================
-       9. PULL QUOTE
+       8. QUOTE
   ============================================================ -->
-  <section id="pullquote">
-    <div class="quote-inner">
-      <div>
-        <p class="quote-text r">
-          "Somos los únicos en México que <strong>diseñamos e implementamos</strong>
-          el framework tecnológico de instituciones financieras —
-          no lo asesoramos, lo construimos."
-        </p>
-        <p class="quote-author r d1">Innova Black® · Posicionamiento de mercado</p>
-      </div>
-      <div class="quote-stats">
-        <div class="qstat r">
-          <div class="qstat-num">990<span style="font-size:24px">+</span></div>
-          <div class="qstat-label">fintechs operando en México, crecimiento 20% anual</div>
+  <section id="quote">
+    <div class="sec-inner">
+      <div class="quote-grid">
+        <div>
+          <span class="quote-mark rv">"</span>
+          <p class="quote-text rv d1">
+            Somos los únicos en México que <span class="gold">diseñamos e implementamos</span>
+            el framework tecnológico de instituciones financieras —
+            no lo asesoramos, lo construimos.
+          </p>
+          <p class="quote-attr rv d2">Innova Black® · Posicionamiento de mercado</p>
         </div>
-        <div class="qstat r d1">
-          <div class="qstat-num">70%</div>
-          <div class="qstat-label">de financieras medianas migrará a nube para 2026 (CNBV)</div>
-        </div>
-        <div class="qstat r d2">
-          <div class="qstat-num">5</div>
-          <div class="qstat-label">figuras reguladas atendidas: SOFOM · SOFIPO · IFPE · IFC · Banco</div>
+        <div class="quote-stats">
+          <div class="qstat rv">
+            <div class="qstat-num" data-count="990">0</div>
+            <div class="qstat-label">fintechs operando en México, crecimiento 20% anual</div>
+          </div>
+          <div class="qstat rv d1">
+            <div class="qstat-num">70%</div>
+            <div class="qstat-label">de financieras medianas migrará a nube para 2026 (CNBV)</div>
+          </div>
+          <div class="qstat rv d2">
+            <div class="qstat-num">5</div>
+            <div class="qstat-label">figuras reguladas atendidas: SOFOM · SOFIPO · IFPE · IFC · Banco</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       10. CTA
+       9. CTA
   ============================================================ -->
-  <section id="cta" class="on-dark">
-    <div class="cta-ghost" aria-hidden="true">Innova Black</div>
+  <section id="cta">
+    <div class="cta-glow"></div>
+    <div class="cta-ghost" aria-hidden="true">INNOVA BLACK</div>
     <div class="cta-inner">
-      <span class="eyebrow r">DTX Audit™</span>
-      <h2 class="cta-h2 r d1">¿Tu institución está lista<br />para <em>operar, cumplir y escalar</em>?</h2>
-      <p class="cta-sub r d2">Agenda un diagnóstico gratuito de 45 minutos. Analizamos tu situación tecnológica y regulatoria, y te entregamos un Reporte de Madurez Regulatoria con áreas de riesgo identificadas.</p>
-      <div class="cta-actions r d3">
-        <a href="#" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;" class="btn btn-gold">Solicitar DTX Audit™ gratuito</a>
+      <div class="tag rv" style="justify-content:center">DTX Audit™</div>
+      <h2 class="cta-h2 rv d1" style="margin-top:24px">¿Tu institución está lista para <span class="gold">operar, cumplir y escalar</span>?</h2>
+      <p class="cta-sub rv d2">Agenda un diagnóstico gratuito de 45 minutos. Analizamos tu situación tecnológica y regulatoria, y te entregamos un Reporte de Madurez Regulatoria con áreas de riesgo identificadas.</p>
+      <div class="cta-actions rv d3">
+        <a href="#" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;" class="btn btn-gold btn-arrow">Solicitar DTX Audit™ gratuito</a>
       </div>
-      <p class="cta-note r d4">Sin costo · Sin compromiso · Diagnóstico de 45 minutos · Entregable: Reporte de Madurez Regulatoria</p>
+      <p class="cta-note rv d4">Sin costo · Sin compromiso · Diagnóstico de 45 min · Entregable: Reporte de Madurez Regulatoria</p>
     </div>
   </section>
 
   <!-- ============================================================
-       11. FOOTER
+       10. FOOTER
   ============================================================ -->
   <footer id="footer">
-    <div class="footer-top">
-      <div>
-        <div class="footer-logo">Innova Black<span>®</span></div>
-        <p class="footer-tagline">Arquitectos del framework tecnológico para instituciones financieras reguladas en México.</p>
-        <div class="footer-cities">CDMX · Monterrey · Guadalajara</div>
-      </div>
-      <div>
-        <div class="footer-col-title">Servicios</div>
-        <ul class="footer-links">
-          <li><a href="/dtx-audit/">DTX Audit™</a></li>
-          <li><a href="/dtx-launch/">DTX Launch™</a></li>
-          <li><a href="/dtx-compliance/">DTX Compliance Engine™</a></li>
-          <li><a href="/dtx-scale/">DTX Scale™</a></li>
-          <li><a href="/dtx-upgrade/">DTX Upgrade™</a></li>
-          <li><a href="/dtx-retainer/">DTX Retainer™</a></li>
-          <li><a href="/dtx-intelligence/">DTX Intelligence™</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Sectores</div>
-        <ul class="footer-links">
-          <li><a href="#">SOFOM</a></li>
-          <li><a href="#">SOFIPO</a></li>
-          <li><a href="#">IFPE</a></li>
-          <li><a href="#">IFC</a></li>
-          <li><a href="#">Bancos en formación</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Recursos</div>
-        <ul class="footer-links">
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/blog/gafi-evaluacion-mexico-2026-sofom/">Evaluación GAFI 2026</a></li>
-        </ul>
-        <div class="footer-col-title" style="margin-top:24px">Contacto</div>
-        <div class="footer-contact">
-          <a href="mailto:hello@innova.black">hello@innova.black</a>
-          <a href="https://innova.black">innova.black</a>
+    <div class="sec-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">INNOVA BLACK<span>®</span></div>
+          <p class="footer-tagline">Arquitectos del framework tecnológico para instituciones financieras reguladas en México.</p>
+          <div class="footer-cities">CDMX · Monterrey · Guadalajara</div>
+        </div>
+        <div>
+          <div class="footer-col-title">Servicios</div>
+          <ul class="footer-links">
+            <li><a href="/dtx-audit/">DTX Audit™</a></li>
+            <li><a href="/dtx-launch/">DTX Launch™</a></li>
+            <li><a href="/dtx-compliance/">DTX Compliance Engine™</a></li>
+            <li><a href="/dtx-scale/">DTX Scale™</a></li>
+            <li><a href="/dtx-upgrade/">DTX Upgrade™</a></li>
+            <li><a href="/dtx-retainer/">DTX Retainer™</a></li>
+            <li><a href="/dtx-intelligence/">DTX Intelligence™</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Sectores</div>
+          <ul class="footer-links">
+            <li><a href="#">SOFOM</a></li>
+            <li><a href="#">SOFIPO</a></li>
+            <li><a href="#">IFPE</a></li>
+            <li><a href="#">IFC</a></li>
+            <li><a href="#">Bancos en formación</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Recursos</div>
+          <ul class="footer-links">
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/blog/gafi-evaluacion-mexico-2026-sofom/">Evaluación GAFI 2026</a></li>
+          </ul>
+          <div class="footer-col-title" style="margin-top:24px">Contacto</div>
+          <div class="footer-contact">
+            <a href="mailto:hello@innova.black">hello@innova.black</a>
+            <a href="https://innova.black">innova.black</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">© 2026 Innova Black®. Todos los derechos reservados. DTX™ es marca registrada.</p>
-      <p class="footer-copy">Metodología DTX™ · innova.black</p>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Innova Black®. Todos los derechos reservados. DTX™ es marca registrada.</p>
+        <p class="footer-copy">Metodología DTX™ · innova.black</p>
+      </div>
     </div>
   </footer>
 
@@ -1416,20 +1525,36 @@
        JAVASCRIPT
   ============================================================ -->
   <script>
-    // --- Nav scroll shadow ---
+    // --- Nav scroll ---
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    });
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
 
     // --- Mobile hamburger ---
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
     hamburger.addEventListener('click', () => {
       mobileMenu.classList.toggle('open');
+      const spans = hamburger.querySelectorAll('span');
+      if (mobileMenu.classList.contains('open')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      } else {
+        spans[0].style.transform = '';
+        spans[1].style.opacity = '';
+        spans[2].style.transform = '';
+      }
     });
     document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        const spans = hamburger.querySelectorAll('span');
+        spans[0].style.transform = '';
+        spans[1].style.opacity = '';
+        spans[2].style.transform = '';
+      });
     });
 
     // --- Scroll reveal ---
@@ -1440,17 +1565,61 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    document.querySelectorAll('.r').forEach(el => observer.observe(el));
+    document.querySelectorAll('.rv').forEach(el => observer.observe(el));
 
-    // --- Smooth scroll for anchor links ---
+    // --- Proceso track animation ---
+    const procesoTrack = document.getElementById('proceso-track');
+    const procesoObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          procesoObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    if (procesoTrack) procesoObs.observe(procesoTrack);
+
+    // --- Animated counters ---
+    function animateCount(el, target, suffix) {
+      const duration = 1800;
+      const start = performance.now();
+      const update = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(eased * target);
+        el.textContent = current.toLocaleString() + (suffix || '');
+        if (progress < 1) requestAnimationFrame(update);
+      };
+      requestAnimationFrame(update);
+    }
+
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const count = parseInt(el.dataset.count);
+          if (count) {
+            animateCount(el, count, '+');
+          }
+          counterObs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+
+    // --- Smooth scroll ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
-          const offset = 72;
+          const offset = 80;
           const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
           window.scrollTo({ top, behavior: 'smooth' });
         }
