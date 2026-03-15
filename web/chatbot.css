@@ -1,5 +1,5 @@
 /* ============================================================
-   INNOVA BLACK® — CHATBOT VALERIA
+   INNOVA BLACK® — CHATBOT VALERIA v2.0
    Widget de captura de leads conversacional
    ============================================================ */
 
@@ -11,7 +11,7 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: #A8832A;
+  background: #C8A44E;
   border: none;
   cursor: pointer;
   z-index: 9999;
@@ -32,10 +32,10 @@
   object-fit: cover;
 }
 .vbot-bubble-initials {
-  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-family: 'Outfit', 'DM Sans', system-ui, sans-serif;
   font-size: 18px;
   font-weight: 600;
-  color: #111010;
+  color: #060606;
   letter-spacing: .5px;
 }
 
@@ -49,7 +49,7 @@
   border-radius: 50%;
   background: #E53935;
   color: #fff;
-  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 11px;
   font-weight: 600;
   display: none;
@@ -65,14 +65,15 @@
   bottom: 96px;
   right: 28px;
   max-width: 280px;
-  background: #1E1C1C;
-  color: #F5F2EC;
-  font-family: 'Instrument Sans', system-ui, sans-serif;
+  background: #161616;
+  color: #F0ECE6;
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 13px;
   line-height: 1.5;
   padding: 14px 18px;
   border-radius: 16px 16px 4px 16px;
-  box-shadow: 0 4px 24px rgba(0,0,0,.35);
+  border: 1px solid rgba(240,236,230,.06);
+  box-shadow: 0 4px 24px rgba(0,0,0,.45);
   z-index: 9998;
   opacity: 0;
   transform: translateY(10px);
@@ -91,7 +92,7 @@
   right: 10px;
   background: none;
   border: none;
-  color: rgba(245,242,236,.4);
+  color: rgba(240,236,230,.4);
   font-size: 16px;
   cursor: pointer;
   padding: 2px;
@@ -104,10 +105,12 @@
   bottom: 28px;
   right: 28px;
   width: 380px;
-  height: 540px;
-  background: #111010;
+  height: 560px;
+  max-height: calc(100vh - 56px);
+  background: #0C0C0C;
   border-radius: 20px;
-  box-shadow: 0 12px 48px rgba(0,0,0,.5);
+  border: 1px solid rgba(240,236,230,.06);
+  box-shadow: 0 12px 48px rgba(0,0,0,.6);
   z-index: 10000;
   display: none;
   flex-direction: column;
@@ -130,40 +133,41 @@
   align-items: center;
   gap: 12px;
   padding: 16px 18px;
-  border-bottom: 1px solid rgba(245,242,236,.06);
+  border-bottom: 1px solid rgba(240,236,230,.06);
   flex-shrink: 0;
+  background: #0C0C0C;
 }
 .vbot-header-avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #A8832A;
+  background: #C8A44E;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 .vbot-header-avatar-text {
-  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-family: 'Outfit', 'DM Sans', system-ui, sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #111010;
+  color: #060606;
 }
 .vbot-header-info {
   flex: 1;
   min-width: 0;
 }
 .vbot-header-name {
-  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-family: 'Outfit', 'DM Sans', system-ui, sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #F5F2EC;
+  color: #F0ECE6;
   margin: 0;
 }
 .vbot-header-sub {
-  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 11px;
-  color: rgba(245,242,236,.5);
+  color: rgba(240,236,230,.45);
   margin: 2px 0 0;
 }
 .vbot-header-status {
@@ -184,24 +188,25 @@
   50% { opacity: .4; }
 }
 .vbot-status-text {
-  font-family: 'DM Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 9px;
-  color: rgba(245,242,236,.3);
+  color: rgba(240,236,230,.25);
 }
 .vbot-close {
   background: none;
   border: none;
-  color: rgba(245,242,236,.4);
+  color: rgba(240,236,230,.4);
   font-size: 20px;
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 8px;
   transition: color .15s, background .15s;
   flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 .vbot-close:hover {
-  color: #F5F2EC;
-  background: rgba(245,242,236,.06);
+  color: #F0ECE6;
+  background: rgba(240,236,230,.06);
 }
 
 /* --- Messages area --- */
@@ -213,37 +218,39 @@
   flex-direction: column;
   gap: 10px;
   scrollbar-width: thin;
-  scrollbar-color: rgba(245,242,236,.1) transparent;
+  scrollbar-color: rgba(240,236,230,.08) transparent;
+  -webkit-overflow-scrolling: touch;
 }
 .vbot-messages::-webkit-scrollbar { width: 4px; }
 .vbot-messages::-webkit-scrollbar-track { background: transparent; }
-.vbot-messages::-webkit-scrollbar-thumb { background: rgba(245,242,236,.1); border-radius: 4px; }
+.vbot-messages::-webkit-scrollbar-thumb { background: rgba(240,236,230,.08); border-radius: 4px; }
 
 /* --- Message bubbles --- */
 .vbot-msg {
   max-width: 82%;
   padding: 10px 14px;
   border-radius: 16px;
-  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.55;
   animation: vbot-fadein .3s ease-out;
   word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 @keyframes vbot-fadein {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .vbot-msg.bot {
-  background: #1E1C1C;
-  color: #F5F2EC;
+  background: #161616;
+  color: #F0ECE6;
   align-self: flex-start;
   border-bottom-left-radius: 4px;
 }
 .vbot-msg.user {
-  background: #A8832A;
-  color: #111010;
+  background: #C8A44E;
+  color: #060606;
   align-self: flex-end;
   border-bottom-right-radius: 4px;
   font-weight: 500;
@@ -255,7 +262,7 @@
   align-items: center;
   gap: 4px;
   padding: 12px 16px;
-  background: #1E1C1C;
+  background: #161616;
   border-radius: 16px;
   border-bottom-left-radius: 4px;
   align-self: flex-start;
@@ -265,7 +272,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(245,242,236,.4);
+  background: rgba(240,236,230,.4);
   animation: vbot-bounce .6s ease-in-out infinite;
 }
 .vbot-typing-dot:nth-child(2) { animation-delay: .15s; }
@@ -285,24 +292,25 @@
 }
 .vbot-opt {
   background: transparent;
-  border: 1px solid rgba(168,131,42,.3);
-  color: #C49B35;
-  font-family: 'Instrument Sans', system-ui, sans-serif;
-  font-size: 12.5px;
+  border: 1px solid rgba(200,164,78,.25);
+  color: #DAB95F;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 13px;
   font-weight: 500;
-  padding: 9px 14px;
+  padding: 10px 14px;
   border-radius: 12px;
   cursor: pointer;
   text-align: left;
   transition: background .15s, border-color .15s;
   line-height: 1.4;
+  -webkit-tap-highlight-color: transparent;
 }
 .vbot-opt:hover {
-  background: rgba(168,131,42,.1);
-  border-color: rgba(168,131,42,.5);
+  background: rgba(200,164,78,.08);
+  border-color: rgba(200,164,78,.4);
 }
 .vbot-opt:active {
-  background: rgba(168,131,42,.18);
+  background: rgba(200,164,78,.15);
 }
 
 /* --- Input area --- */
@@ -311,33 +319,36 @@
   align-items: center;
   gap: 8px;
   padding: 12px 14px;
-  border-top: 1px solid rgba(245,242,236,.06);
+  border-top: 1px solid rgba(240,236,230,.06);
   flex-shrink: 0;
+  background: #0C0C0C;
 }
 .vbot-input-area.active { display: flex; }
 .vbot-input {
   flex: 1;
-  background: #1E1C1C;
-  border: 1px solid rgba(245,242,236,.1);
+  background: #161616;
+  border: 1px solid rgba(240,236,230,.08);
   border-radius: 12px;
   padding: 10px 14px;
-  font-family: 'Instrument Sans', system-ui, sans-serif;
-  font-size: 14px;
-  color: #F5F2EC;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 16px; /* 16px prevents iOS zoom on focus */
+  color: #F0ECE6;
   outline: none;
   transition: border-color .15s;
+  -webkit-appearance: none;
 }
 .vbot-input::placeholder {
-  color: rgba(245,242,236,.3);
+  color: rgba(240,236,230,.25);
 }
 .vbot-input:focus {
-  border-color: rgba(168,131,42,.4);
+  border-color: rgba(200,164,78,.35);
 }
 .vbot-send {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
   border-radius: 50%;
-  background: #A8832A;
+  background: #C8A44E;
   border: none;
   cursor: pointer;
   display: flex;
@@ -345,23 +356,24 @@
   justify-content: center;
   flex-shrink: 0;
   transition: background .15s;
+  -webkit-tap-highlight-color: transparent;
 }
-.vbot-send:hover { background: #C49B35; }
+.vbot-send:hover { background: #DAB95F; }
 .vbot-send svg {
   width: 16px;
   height: 16px;
-  fill: #111010;
+  fill: #060606;
 }
 
 /* --- CTA button inside chat --- */
 .vbot-cta {
   display: inline-block;
-  background: #A8832A;
-  color: #111010;
-  font-family: 'Instrument Sans', system-ui, sans-serif;
+  background: #C8A44E;
+  color: #060606;
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 13px;
   font-weight: 600;
-  padding: 10px 20px;
+  padding: 12px 20px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
@@ -369,8 +381,9 @@
   transition: background .15s;
   margin-top: 4px;
   width: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
-.vbot-cta:hover { background: #C49B35; }
+.vbot-cta:hover { background: #DAB95F; }
 
 /* --- Powered by --- */
 .vbot-powered {
@@ -379,30 +392,90 @@
   flex-shrink: 0;
 }
 .vbot-powered span {
-  font-family: 'DM Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 8px;
-  color: rgba(245,242,236,.15);
+  color: rgba(240,236,230,.12);
   letter-spacing: .5px;
 }
 
 /* ============================================================
-   MOBILE
+   MOBILE — Full-screen experience
    ============================================================ */
 @media (max-width: 600px) {
   .vbot-window {
     bottom: 0;
     right: 0;
+    left: 0;
     width: 100%;
-    height: 75vh;
-    border-radius: 20px 20px 0 0;
+    height: 100%;
+    height: 100dvh;
+    max-height: none;
+    border-radius: 0;
+    border: none;
+  }
+  .vbot-header {
+    padding: 14px 16px;
+    padding-top: calc(14px + env(safe-area-inset-top, 0px));
+  }
+  .vbot-messages {
+    padding: 16px;
+  }
+  .vbot-input-area {
+    padding: 10px 12px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+  .vbot-msg {
+    max-width: 88%;
+    font-size: 15px;
+  }
+  .vbot-opt {
+    font-size: 14px;
+    padding: 12px 16px;
   }
   .vbot-bubble {
     bottom: 20px;
     right: 20px;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    width: 52px;
+    height: 52px;
+  }
+  .vbot-bubble-initials {
+    font-size: 16px;
   }
   .vbot-preview {
-    bottom: 88px;
-    right: 20px;
-    max-width: 260px;
+    bottom: 84px;
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+    right: 16px;
+    left: 16px;
+    max-width: none;
+  }
+  .vbot-close {
+    font-size: 24px;
+    padding: 8px 12px;
+  }
+  .vbot-input {
+    font-size: 16px;
+    padding: 12px 14px;
+  }
+  .vbot-send {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+  .vbot-send svg {
+    width: 18px;
+    height: 18px;
+  }
+  .vbot-cta {
+    font-size: 15px;
+    padding: 14px 20px;
+  }
+}
+
+/* Handle mobile keyboard — when focused input, shrink messages */
+@media (max-width: 600px) {
+  .vbot-window:has(.vbot-input:focus) .vbot-messages {
+    flex: 1;
+    min-height: 0;
   }
 }

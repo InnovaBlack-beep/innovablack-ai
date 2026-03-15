@@ -1,7 +1,8 @@
 /* ============================================================
-   INNOVA BLACK® — CHATBOT VALERIA v1.0
+   INNOVA BLACK® — CHATBOT VALERIA v2.0
    Bot conversacional de captura de leads
    Flujo determinístico con simulación humana
+   + Rescue flow mejorado: nunca pierde el lead
    ============================================================ */
 (function () {
   'use strict';
@@ -10,19 +11,22 @@
      CONFIGURACIÓN
      -------------------------------------------------------- */
   var CONFIG = {
-    apiUrl: '/api/send-email',  // Vercel serverless function
-    calUrl: '',                 // URL de Cal.com (ej: https://cal.com/innovablack/30min)
+    apiUrl: '/api/send-email',
+    calUrl: '',
 
-    triggerDelay: 15000,        // ms antes de mostrar burbuja proactiva
-    typingMin: 1500,            // ms mínimo de "typing"
-    typingMax: 3000,            // ms máximo de "typing"
-    inactivityTimeout: 30000,   // ms sin respuesta antes de pedir datos
-    closeAfterLead: 6000        // ms para cerrar chat después de capturar lead
+    triggerDelay: 15000,
+    typingMin: 1500,
+    typingMax: 3000,
+    // Tiempos de inactividad por etapa
+    rescueDelay1: 25000,    // 25s → "¿Sigues ahí?"
+    rescueDelay2: 30000,    // 30s después → pedir celular
+    rescueDelay3: 35000,    // 35s después → pedir email
+    rescueDelay4: 40000,    // 40s después → despedida
+    closeAfterLead: 6000
   };
 
   /* --------------------------------------------------------
      IDENTIDAD ROTATIVA
-     Cambia de asesora en cada visita para parecer equipo real
      -------------------------------------------------------- */
   var ASESORAS = [
     { nombre: 'Valeria',  iniciales: 'VR', rol: 'Asesora' },
@@ -66,7 +70,7 @@
     temperatura: '',
     conversation: [],
     inactivityTimer: null,
-    rescueStage: 0          // 0=nada, 1=pidió datos, 2=reenganche, 3=despedida
+    rescueStage: 0    // 0=nada, 1=¿sigues ahí?, 2=pedir cel, 3=pedir email, 4=despedida
   };
 
   /* --------------------------------------------------------
@@ -82,120 +86,175 @@
     return d.innerHTML;
   }
 
-  /* --- Temporizador de inactividad (multi-etapa) --- */
-  function resetInactivityTimer() {
-    if (state.inactivityTimer) clearTimeout(state.inactivityTimer);
-    if (state.stage === 'done' || state.stage === 'idle') return;
-    var delay;
-    if (state.rescueStage === 0) delay = CONFIG.inactivityTimeout;        // 30s — pedir datos
-    else if (state.rescueStage === 1) delay = 45000;                       // 45s — reenganche
-    else if (state.rescueStage === 2) delay = 45000;                       // 45s — despedida
-    else return;
-    state.inactivityTimer = setTimeout(runRescueStage, delay);
-  }
-
-  var rescueMessages = {
-    reengage: [
-      '\u00bfSigues ah\u00ed? Sin presi\u00f3n, solo quer\u00eda saber si tienes alguna duda sobre c\u00f3mo trabajamos.',
-      'Oye, te comento que justo esta semana tuvimos un caso similar al tuyo. \u00bfTe interesa que te platique?',
-      '\u00bfTodo bien? Si prefieres, te puedo mandar un resumen por correo de lo que hablamos.',
-      'Entiendo que est\u00e1s ocupado/a. \u00bfPrefieres que te contactemos en otro momento?'
-    ],
-    goodbye: [
-      'Bueno, parece que est\u00e1s ocupado/a. Me voy a desconectar, pero cuando quieras retomar la conversaci\u00f3n aqu\u00ed vamos a estar. \u00a1\u00c9xito! \ud83d\ude4c',
-      'Voy a cerrar por ahora, pero puedes volver a escribir cuando gustes \u2014 siempre hay alguien del equipo disponible. \u00a1Que tengas excelente d\u00eda! \ud83d\udc4b',
-      'Me tengo que ir a atender otra consulta, pero en cuanto regreses te atendemos. \u00a1Hasta pronto! \ud83d\ude0a'
-    ]
-  };
-
   function randomFrom(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
+  /* --------------------------------------------------------
+     TEMPORIZADOR DE INACTIVIDAD — MULTI-ETAPA
+     Nunca pierde al lead. Siempre intenta capturar datos.
+     -------------------------------------------------------- */
+  function resetInactivityTimer() {
+    if (state.inactivityTimer) clearTimeout(state.inactivityTimer);
+    if (state.stage === 'done' || state.stage === 'idle') return;
+
+    var delay;
+    switch (state.rescueStage) {
+      case 0: delay = CONFIG.rescueDelay1; break;  // → "¿Sigues ahí?"
+      case 1: delay = CONFIG.rescueDelay2; break;  // → pedir celular
+      case 2: delay = CONFIG.rescueDelay3; break;  // → pedir email
+      case 3: delay = CONFIG.rescueDelay4; break;  // → despedida
+      default: return;
+    }
+    state.inactivityTimer = setTimeout(runRescueStage, delay);
+  }
+
+  // Mensajes de rescate por etapa
+  var rescueMsg = {
+    siguesAhi: [
+      '¿Sigues ahí? 😊 No te preocupes, tómate tu tiempo.',
+      'Oye, ¿todo bien? Aquí sigo por si necesitas algo.',
+      '¿Sigues por aquí? Sin presión, solo quería asegurarme de no perderte.',
+      'Noto que estás pensando — ¡está bien! ¿Hay algo en lo que pueda ayudarte?'
+    ],
+    pedirCel: [
+      'Mira, para no quitarte más tiempo — déjame tu WhatsApp y te mando un resumen de lo que platicamos. Así lo revisas cuando puedas. 📱',
+      'Te propongo algo: dame tu número de WhatsApp y te comparto la info por ahí. Es más fácil y rápido. 📲',
+      'Sé que estás ocupado/a. ¿Me dejas tu WhatsApp? Te mando toda la info y nos ponemos de acuerdo cuando tú puedas.'
+    ],
+    pedirEmail: [
+      '¿Y un correo por si acaso? Te mando un PDF con todo lo relevante.',
+      '¿Tienes un email donde te pueda mandar información más detallada?',
+      'También te puedo enviar un resumen por correo. ¿Cuál es tu email?'
+    ],
+    despedida: [
+      'Bueno, te dejo por ahora. Cuando quieras retomar, aquí estamos. ¡Éxito! 🙌',
+      'Me tengo que ir, pero la próxima vez que entres podemos seguir platicando. ¡Que te vaya bien! 👋',
+      'Voy a cerrar por ahora. Puedes volver cuando gustes — siempre hay alguien del equipo. ¡Buen día! 😊'
+    ]
+  };
+
   function runRescueStage() {
     if (state.stage === 'done') return;
 
-    // Etapa 1: Pedir email y cel
-    if (state.rescueStage === 0 && !state.lead.email) {
+    // --- Etapa 1: "¿Sigues ahí?" ---
+    if (state.rescueStage === 0) {
       state.rescueStage = 1;
-      addBotMessage('Oye, no quiero quitarte tiempo. D\u00e9jame tu correo y tu WhatsApp y te mando la info que necesitas \u2014 sin compromiso.', function () {
-        showInput('correo@ejemplo.com', function (email) {
-          state.lead.email = email;
-          addBotMessage('\u00bfY tu n\u00famero de WhatsApp para contactarte r\u00e1pido?', function () {
-            showInput('+52 10 d\u00edgitos\u2026', function (phone) {
-              if (phone.toLowerCase() !== 'no' && phone !== '-' && phone.toLowerCase() !== 'skip' && phone !== 'paso') {
-                state.lead.telefono = phone;
-              }
-              state.lead.nombre = state.lead.nombre || 'Lead r\u00e1pido';
-              state.temperatura = state.temperatura || 'tibio';
-              addBotMessage('\u00a1Perfecto! Te vamos a contactar pronto por WhatsApp. \ud83d\ude4c');
-              sendLead();
-              scheduleReset();
-            });
-          });
-        });
-      });
-      return;
-    }
-
-    // Etapa 2: Reenganche con otro enfoque
-    if (state.rescueStage <= 1) {
-      state.rescueStage = 2;
-      addBotMessage(randomFrom(rescueMessages.reengage), function () {
+      addBotMessage(randomFrom(rescueMsg.siguesAhi), function () {
         showOptions([
-          { label: 'S\u00ed, tengo una duda', action: function () { state.rescueStage = 0; showInput('Escribe tu pregunta\u2026', handleFreeText); } },
-          { label: 'Manda info a mi correo', action: function () { goRescueEmail(); } },
-          { label: 'No gracias', action: function () { goRescueGoodbye(); } }
+          { label: 'Sí, aquí sigo', action: function () {
+            state.rescueStage = 0;
+            resetInactivityTimer();
+            addBotMessage('¡Perfecto! ¿En qué te puedo ayudar?', function () {
+              showInput('Escribe tu pregunta…', handleFreeText);
+            });
+          }},
+          { label: 'Estoy ocupado/a', action: function () {
+            goRescuePhone();
+          }},
+          { label: 'No gracias, solo veía', action: function () {
+            goRescuePhone();
+          }}
         ]);
       });
       return;
     }
 
-    // Etapa 3: Despedida y cierre
+    // --- Etapa 2: Pedir celular ---
+    if (state.rescueStage === 1 && !state.lead.telefono) {
+      goRescuePhone();
+      return;
+    }
+
+    // --- Etapa 3: Pedir email ---
+    if (state.rescueStage <= 2 && !state.lead.email) {
+      goRescueEmail();
+      return;
+    }
+
+    // --- Etapa 4: Despedida ---
     goRescueGoodbye();
   }
 
-  function goRescueEmail() {
-    if (state.lead.email) {
-      state.lead.nombre = state.lead.nombre || 'Lead r\u00e1pido';
-      state.temperatura = state.temperatura || 'frio';
-      addBotMessage('\u00a1Sale! Te mando la info a ' + esc(state.lead.email) + '. \u00a1Que tengas buen d\u00eda! \ud83d\ude0a');
-      sendLead();
-      scheduleReset();
-    } else {
-      addBotMessage('\u00a1Claro! \u00bfA qu\u00e9 correo te lo mando?', function () {
-        showInput('correo@ejemplo.com', function (email) {
-          state.lead.email = email;
-          addBotMessage('\u00bfY tu WhatsApp por si necesitas algo m\u00e1s r\u00e1pido?', function () {
-            showInput('+52 10 d\u00edgitos\u2026', function (phone) {
-              if (phone.toLowerCase() !== 'no' && phone !== '-' && phone.toLowerCase() !== 'skip' && phone !== 'paso') {
-                state.lead.telefono = phone;
-              }
-              state.lead.nombre = state.lead.nombre || 'Lead r\u00e1pido';
-              state.temperatura = state.temperatura || 'frio';
-              addBotMessage('\u00a1Listo, te lo mando! Que tengas excelente d\u00eda. \ud83d\ude4c');
+  function goRescuePhone() {
+    state.rescueStage = 2;
+    if (state.lead.telefono) {
+      // Ya tenemos cel, ir por email
+      goRescueEmail();
+      return;
+    }
+    addBotMessage(randomFrom(rescueMsg.pedirCel), function () {
+      showInput('+52 10 dígitos…', function (phone) {
+        resetInactivityTimer();
+        var cleaned = phone.replace(/\D/g, '');
+        if (cleaned.length >= 10) {
+          state.lead.telefono = phone;
+          state.lead.nombre = state.lead.nombre || 'Lead rápido';
+          state.temperatura = state.temperatura || 'tibio';
+          addBotMessage('¡Listo! Te va a llegar un mensaje por WhatsApp. 🙌', function () {
+            // Ahora intentar capturar email también
+            if (!state.lead.email) {
+              goRescueEmail();
+            } else {
               sendLead();
               scheduleReset();
-            });
+            }
           });
-        });
+        } else {
+          // No dio cel válido, intentar email
+          goRescueEmail();
+        }
       });
+    });
+  }
+
+  function goRescueEmail() {
+    state.rescueStage = 3;
+    if (state.lead.email) {
+      // Ya tenemos email, enviar y cerrar
+      state.lead.nombre = state.lead.nombre || 'Lead rápido';
+      state.temperatura = state.temperatura || 'frio';
+      sendLead();
+      addBotMessage('¡Perfecto, te contactamos pronto! Que tengas excelente día. 😊');
+      scheduleReset();
+      return;
     }
+    addBotMessage(randomFrom(rescueMsg.pedirEmail), function () {
+      showInput('correo@ejemplo.com', function (email) {
+        resetInactivityTimer();
+        if (validateEmail(email)) {
+          state.lead.email = email;
+          state.lead.nombre = state.lead.nombre || 'Lead rápido';
+          state.temperatura = state.temperatura || 'frio';
+          addBotMessage('¡Perfecto! Te mando la información. ¡Éxito! 🙌');
+          sendLead();
+          scheduleReset();
+        } else {
+          // Email inválido → despedida con lo que tengamos
+          if (state.lead.telefono) {
+            sendLead();
+          }
+          goRescueGoodbye();
+        }
+      });
+    });
   }
 
   function goRescueGoodbye() {
-    state.rescueStage = 3;
-    if (state.lead.email) {
+    state.rescueStage = 4;
+    if (state.lead.email || state.lead.telefono) {
       sendLead();
     }
-    addBotMessage(randomFrom(rescueMessages.goodbye));
+    addBotMessage(randomFrom(rescueMsg.despedida));
     setTimeout(function () {
       closeChat();
       scheduleFullReset();
     }, CONFIG.closeAfterLead);
   }
 
-  /* --- Reiniciar chat después de capturar lead o despedida --- */
+  /* --------------------------------------------------------
+     REINICIO
+     -------------------------------------------------------- */
   function scheduleReset() {
     setTimeout(function () {
       closeChat();
@@ -215,7 +274,6 @@
       state.conversation = [];
       state.rescueStage = 0;
       if (state.inactivityTimer) clearTimeout(state.inactivityTimer);
-      // Rotar a nueva asesora para siguiente conversación
       ASESORA = pickAsesora();
       updateIdentityUI();
     }, 500);
@@ -253,21 +311,15 @@
     var container = document.createElement('div');
     container.id = 'vbot-root';
     container.innerHTML =
-      /* Proactive preview */
       '<div class="vbot-preview" id="vbot-preview">' +
         '<button class="vbot-preview-close" id="vbot-preview-close">&times;</button>' +
         'Hola \ud83d\udc4b Soy ' + ASESORA.nombre + ', del equipo de Innova Black\u00ae. \u00bfEst\u00e1s explorando opciones para tu instituci\u00f3n financiera?' +
       '</div>' +
-
-      /* Floating bubble */
       '<button class="vbot-bubble" id="vbot-bubble" aria-label="Abrir chat">' +
         '<span class="vbot-bubble-initials">' + ASESORA.iniciales + '</span>' +
         '<span class="vbot-badge" id="vbot-badge">1</span>' +
       '</button>' +
-
-      /* Chat window */
       '<div class="vbot-window" id="vbot-window">' +
-        /* Header */
         '<div class="vbot-header">' +
           '<div class="vbot-header-avatar"><span class="vbot-header-avatar-text">' + ASESORA.iniciales + '</span></div>' +
           '<div class="vbot-header-info">' +
@@ -280,19 +332,13 @@
           '</div>' +
           '<button class="vbot-close" id="vbot-close" aria-label="Cerrar chat">&times;</button>' +
         '</div>' +
-
-        /* Messages */
         '<div class="vbot-messages" id="vbot-messages"></div>' +
-
-        /* Input */
         '<div class="vbot-input-area" id="vbot-input-area">' +
-          '<input class="vbot-input" id="vbot-input" type="text" placeholder="Escribe un mensaje\u2026" autocomplete="off" />' +
+          '<input class="vbot-input" id="vbot-input" type="text" placeholder="Escribe un mensaje\u2026" autocomplete="off" enterkeyhint="send" />' +
           '<button class="vbot-send" id="vbot-send" aria-label="Enviar">' +
             '<svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>' +
           '</button>' +
         '</div>' +
-
-        /* Footer */
         '<div class="vbot-powered"><span>INNOVA BLACK\u00ae</span></div>' +
       '</div>';
 
@@ -342,7 +388,6 @@
   function addBotMessage(text, callback) {
     var msgs = document.getElementById('vbot-messages');
 
-    // Typing indicator
     var typing = document.createElement('div');
     typing.className = 'vbot-typing';
     typing.innerHTML = '<span class="vbot-typing-dot"></span><span class="vbot-typing-dot"></span><span class="vbot-typing-dot"></span>';
@@ -351,7 +396,7 @@
 
     var delay = randomDelay();
     setTimeout(function () {
-      msgs.removeChild(typing);
+      if (typing.parentNode) typing.parentNode.removeChild(typing);
       var msg = document.createElement('div');
       msg.className = 'vbot-msg bot';
       msg.innerHTML = text;
@@ -402,7 +447,9 @@
     area.classList.add('active');
     input.placeholder = placeholder || 'Escribe un mensaje\u2026';
     input.value = '';
-    input.focus();
+
+    // En mobile, delay el focus para evitar problemas con el teclado
+    setTimeout(function () { input.focus(); }, 100);
 
     var handler = function () {
       var val = input.value.trim();
@@ -417,7 +464,10 @@
     };
 
     var keyHandler = function (e) {
-      if (e.key === 'Enter') handler();
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handler();
+      }
     };
 
     input.addEventListener('keydown', keyHandler);
@@ -483,7 +533,6 @@
     });
   }
 
-  /* --- ETAPA 1A: Institución existente --- */
   function goStage1A() {
     state.stage = '1a';
     addBotMessage('Cu\u00e9ntame, \u00bfqu\u00e9 tipo de instituci\u00f3n tienes?', function () {
@@ -508,7 +557,6 @@
     });
   }
 
-  /* --- ETAPA 1B: Constitución nueva --- */
   function goStage1B() {
     state.stage = '1b';
     addBotMessage('\u00a1Interesante momento para arrancar! \u00bfEn qu\u00e9 etapa est\u00e1s?', function () {
@@ -521,7 +569,6 @@
     });
   }
 
-  /* --- ETAPA 2: Contexto y validación --- */
   var stage2Responses = {
     pld: 'Ese es uno de los problemas m\u00e1s comunes que vemos. El proceso manual no solo es lento \u2014 es un riesgo regulatorio real. Nosotros automatizamos todo el flujo PLD con nuestra metodolog\u00eda DTX\u2122.',
     gafi: 'La evaluaci\u00f3n GAFI est\u00e1 encima \u2014 el tiempo se acorta. Hemos ayudado a varias instituciones a ponerse al d\u00eda con la normativa de forma acelerada.',
@@ -534,13 +581,10 @@
     state.stage = '2';
     var response = stage2Responses[painKey] || stage2Responses.nueva;
     addBotMessage(response, function () {
-      setTimeout(function () {
-        goStage3();
-      }, 500);
+      setTimeout(function () { goStage3(); }, 500);
     });
   }
 
-  /* --- ETAPA 3: Urgencia --- */
   function goStage3() {
     state.stage = '3';
     addBotMessage('Para entender c\u00f3mo podemos ayudarte mejor \u2014 \u00bfqu\u00e9 tan urgente es esto para ti?', function () {
@@ -552,7 +596,6 @@
     });
   }
 
-  /* --- ETAPA 4: Captura de datos --- */
   var stage4Intros = {
     critico: 'Con todo lo que me comentas, creo que vale la pena que hables directamente con nuestro equipo. \u00bfMe das tu nombre para conectarte?',
     importante: 'Podemos hacer un diagn\u00f3stico gratuito de 45 minutos para darte un roadmap claro. \u00bfC\u00f3mo te llamas?',
@@ -565,6 +608,21 @@
     addBotMessage(intro, function () {
       showInput('Tu nombre\u2026', function (name) {
         state.lead.nombre = name;
+        goStage4Phone();
+      });
+    });
+  }
+
+  // CAMBIO: Primero teléfono, luego email (WhatsApp es rey en MX)
+  function goStage4Phone() {
+    state.stage = '4_phone';
+    addBotMessage('Mucho gusto, ' + esc(state.lead.nombre) + '. \u00bfCu\u00e1l es tu WhatsApp para contactarte r\u00e1pido?', function () {
+      showInput('+52 10 d\u00edgitos\u2026', function (phone) {
+        if (phone.toLowerCase() === 'no' || phone === '-' || phone === 'paso' || phone.toLowerCase() === 'skip') {
+          state.lead.telefono = '';
+        } else {
+          state.lead.telefono = phone;
+        }
         goStage4Email();
       });
     });
@@ -572,38 +630,23 @@
 
   function goStage4Email() {
     state.stage = '4_email';
-    addBotMessage('Mucho gusto, ' + esc(state.lead.nombre) + '. \u00bfCu\u00e1l es tu correo?', function () {
+    addBotMessage('\u00bfY un correo para mandarte la informaci\u00f3n detallada?', function () {
       showInput('correo@ejemplo.com', function (email) {
         if (!validateEmail(email)) {
           addBotMessage('Hmm, ese correo no parece v\u00e1lido. \u00bfMe lo puedes escribir de nuevo?', function () {
             showInput('correo@ejemplo.com', function (email2) {
               state.lead.email = email2;
-              goStage4Phone();
+              goStage5();
             });
           });
         } else {
           state.lead.email = email;
-          goStage4Phone();
+          goStage5();
         }
       });
     });
   }
 
-  function goStage4Phone() {
-    state.stage = '4_phone';
-    addBotMessage('\u00bfY un n\u00famero de WhatsApp o tel\u00e9fono por si acaso? (opcional)', function () {
-      showInput('10 d\u00edgitos\u2026', function (phone) {
-        if (phone.toLowerCase() === 'no' || phone === '-' || phone === 'paso' || phone.toLowerCase() === 'skip') {
-          state.lead.telefono = '';
-        } else {
-          state.lead.telefono = phone;
-        }
-        goStage5();
-      });
-    });
-  }
-
-  /* --- ETAPA 5: Cierre --- */
   function goStage5() {
     state.stage = '5';
     var nombre = esc(state.lead.nombre.split(' ')[0]);
@@ -623,7 +666,6 @@
   function handleFreeText(text) {
     var lower = text.toLowerCase();
 
-    // Detección de intención: precios
     if (lower.indexOf('precio') !== -1 || lower.indexOf('costo') !== -1 || lower.indexOf('cuanto') !== -1 || lower.indexOf('cu\u00e1nto') !== -1 || lower.indexOf('tarifa') !== -1) {
       addBotMessage('Los costos dependen del alcance espec\u00edfico de cada proyecto. Lo que s\u00ed puedo decirte es que el diagn\u00f3stico inicial es completamente gratuito. \u00bfAgendamos ese primer paso?', function () {
         showOptions([
@@ -634,7 +676,6 @@
       return;
     }
 
-    // Detección: ya tiene proveedor
     if (lower.indexOf('proveedor') !== -1 || lower.indexOf('ya tengo') !== -1 || lower.indexOf('ya cuento') !== -1) {
       addBotMessage('Tiene mucho sentido. \u00bfQu\u00e9 es lo que sientes que tu proveedor actual no est\u00e1 resolviendo del todo? A veces vale la pena tener una segunda opini\u00f3n t\u00e9cnica.', function () {
         showInput('Cu\u00e9ntame m\u00e1s\u2026', function (resp) {
@@ -652,7 +693,6 @@
       return;
     }
 
-    // Detección: bot?
     if (lower.indexOf('bot') !== -1 || lower.indexOf('robot') !== -1 || lower.indexOf('ia') !== -1 || lower.indexOf('inteligencia artificial') !== -1 || lower.indexOf('automatiz') !== -1) {
       addBotMessage('Soy ' + ASESORA.nombre + ', parte del equipo de Innova Black\u00ae. Estoy aqu\u00ed para entender tu situaci\u00f3n antes de conectarte con la persona indicada. \u00bfQu\u00e9 tipo de instituci\u00f3n tienes?', function () {
         showOptions([
@@ -663,21 +703,51 @@
       return;
     }
 
-    // Detección: cierre / rechazo — respetar y terminar
     var closeWords = ['no me interesa', 'no quiero', 'no gracias', 'no, gracias', 'basta',
       'deja', 'callate', 'c\u00e1llate', 'adios', 'adi\u00f3s', 'bye', 'chao', 'hasta luego',
       'no necesito', 'dejame', 'd\u00e9jame', 'ya no', 'me voy', 'stop', 'para', 'suficiente'];
     var isClose = closeWords.some(function (w) { return lower.indexOf(w) !== -1; });
     if (isClose) {
+      // Incluso al cerrar, intentar capturar datos si no tenemos
+      if (!state.lead.telefono && !state.lead.email) {
+        addBotMessage('Entendido, sin problema. Antes de irte — ¿te dejo mi WhatsApp por si algún día necesitas orientación? Solo déjame tu número y te mando un mensaje.', function () {
+          showOptions([
+            { label: 'Ok, anota mi número', action: function () {
+              showInput('+52 10 dígitos…', function (phone) {
+                var cleaned = phone.replace(/\D/g, '');
+                if (cleaned.length >= 10) {
+                  state.lead.telefono = phone;
+                  state.lead.nombre = state.lead.nombre || 'Lead rápido';
+                  state.temperatura = 'frio';
+                  addBotMessage('¡Listo! Te mando un mensaje. ¡Éxito! 🙌');
+                  sendLead();
+                  scheduleReset();
+                } else {
+                  state.stage = 'done';
+                  addBotMessage('Sin problema. ¡Que te vaya muy bien! 😊');
+                  scheduleReset();
+                }
+              });
+            }},
+            { label: 'No gracias', action: function () {
+              state.stage = 'done';
+              if (state.inactivityTimer) clearTimeout(state.inactivityTimer);
+              addBotMessage('Entendido. ¡Que te vaya muy bien! Si cambias de opinión, aquí estamos. 😊');
+              if (state.lead.email || state.lead.telefono) sendLead();
+              scheduleReset();
+            }}
+          ]);
+        });
+        return;
+      }
       state.stage = 'done';
       if (state.inactivityTimer) clearTimeout(state.inactivityTimer);
       addBotMessage('Entendido, sin problema. Si en alg\u00fan momento necesitas orientaci\u00f3n, aqu\u00ed estamos. \u00a1Que te vaya muy bien! \ud83d\ude42');
-      if (state.lead.email) sendLead();
+      if (state.lead.email || state.lead.telefono) sendLead();
       scheduleReset();
       return;
     }
 
-    // Default: redirigir al flujo
     state.lead.notas = (state.lead.notas ? state.lead.notas + ' | ' : '') + text;
     addBotMessage('Entiendo. Para darte la mejor orientaci\u00f3n, \u00bfme podr\u00edas decir qu\u00e9 tipo de instituci\u00f3n tienes?', function () {
       showOptions([
@@ -693,6 +763,8 @@
      -------------------------------------------------------- */
   function sendLead() {
     state.stage = 'done';
+    if (state.inactivityTimer) clearTimeout(state.inactivityTimer);
+
     var leadData = {
       timestamp: new Date().toISOString(),
       agente: ASESORA.nombre,
@@ -703,7 +775,6 @@
       conversacion_completa: state.conversation
     };
 
-    // Guardar en localStorage como respaldo
     var leads = [];
     try {
       leads = JSON.parse(localStorage.getItem('vbot_leads') || '[]');
@@ -711,7 +782,6 @@
     leads.push(leadData);
     localStorage.setItem('vbot_leads', JSON.stringify(leads));
 
-    // Enviar al API serverless
     var payload = {
       nombre: state.lead.nombre,
       email: state.lead.email,
@@ -756,19 +826,16 @@
     preview.classList.add('show');
     badge.classList.add('show');
 
-    // Vibrar en mobile
     if (navigator.vibrate) {
       navigator.vibrate([100]);
     }
   }
 
   function setupTriggers() {
-    // Trigger por tiempo
     setTimeout(function () {
       if (!state.hasTriggered && !state.isOpen) triggerProactive();
     }, CONFIG.triggerDelay);
 
-    // Trigger por scroll a sección de servicios
     var servicesSection = document.getElementById('servicios');
     if (servicesSection) {
       var triggerObserver = new IntersectionObserver(function (entries) {
@@ -782,7 +849,6 @@
       triggerObserver.observe(servicesSection);
     }
 
-    // Interceptar TODOS los CTAs del sitio (capture phase para ganarle al smooth scroll)
     document.addEventListener('click', function (e) {
       var target = e.target.closest('a[href="#cta"], a[href*="mailto:hello@innova.black"], .btn-gold, .nav-cta');
       if (target) {
@@ -798,28 +864,44 @@
      EVENT LISTENERS
      -------------------------------------------------------- */
   function bindEvents() {
-    // Bubble → open
     document.getElementById('vbot-bubble').addEventListener('click', openChat);
 
-    // Preview → open
     document.getElementById('vbot-preview').addEventListener('click', function (e) {
       if (e.target.id !== 'vbot-preview-close') openChat();
     });
 
-    // Preview close
     document.getElementById('vbot-preview-close').addEventListener('click', function (e) {
       e.stopPropagation();
       document.getElementById('vbot-preview').classList.remove('show');
       state.previewDismissed = true;
     });
 
-    // Close button
     document.getElementById('vbot-close').addEventListener('click', closeChat);
 
-    // Escape key
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && state.isOpen) closeChat();
     });
+
+    // Handle visual viewport resize on mobile (keyboard open/close)
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', function () {
+        if (state.isOpen) {
+          var win = document.getElementById('vbot-window');
+          if (window.innerWidth <= 600 && win) {
+            win.style.height = window.visualViewport.height + 'px';
+          }
+        }
+      });
+      window.visualViewport.addEventListener('scroll', function () {
+        if (state.isOpen && window.innerWidth <= 600) {
+          var win = document.getElementById('vbot-window');
+          if (win) {
+            win.style.height = window.visualViewport.height + 'px';
+            win.style.transform = 'translateY(0)';
+          }
+        }
+      });
+    }
   }
 
   /* --------------------------------------------------------
@@ -831,7 +913,6 @@
     setupTriggers();
   }
 
-  // Esperar a que el DOM esté listo
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
