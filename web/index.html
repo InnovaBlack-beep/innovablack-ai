@@ -36,7 +36,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="chatbot.css" />
 
-  <!-- Schema.org JSON-LD -->
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Schema.org — Organization -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -55,6 +60,72 @@
     "telephone": "+52-56-6297-5626",
     "email": "hello@innova.black",
     "sameAs": ["https://linkedin.com/company/innova-black"]
+  }
+  </script>
+
+  <!-- Schema.org — BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://innovablack.ai/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org — FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué es Innova Black® y qué hace?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Innova Black® es una firma de transformación tecnológica financiera en México. Construimos el framework tecnológico completo que SOFOMs, SOFIPOs e IFPEs necesitan para operar con la regulación vigente y crecer — no asesoramos, construimos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué es el DTX Audit™ y cuánto cuesta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El DTX Audit™ es un diagnóstico tecnológico y regulatorio gratuito de 45 minutos. Evaluamos el estado actual de tu institución y entregamos un Reporte de Madurez Regulatoria sin costo ni compromiso."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Para qué tipo de instituciones financieras trabajan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Trabajamos con SOFOMs, SOFIPOs, IFPEs, IFCs y bancos en formación. Atendemos tres perfiles: instituciones nuevas que quieren constituirse, existentes que necesitan cumplir con la nueva regulación, y autorizadas que quieren escalar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo funciona la Metodología DTX™?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La Metodología DTX™ consta de siete servicios modulares: DTX Launch™ (constitución), DTX Compliance Engine™ (automatización de compliance), DTX Scale™ (escalamiento), DTX Upgrade™ (migración legacy), DTX Retainer™ (CTO externo), DTX Audit™ (diagnóstico gratuito) y DTX Intelligence™ (analítica de datos)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Están preparados para la evaluación GAFI 2026 y la Ley Fintech 2.0?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Nuestros servicios DTX Upgrade™ y DTX Compliance Engine™ están diseñados específicamente para preparar a instituciones financieras ante la evaluación GAFI de abril 2026 y los nuevos requisitos de la Ley Fintech 2.0."
+        }
+      }
+    ]
   }
   </script>
 
@@ -1146,7 +1217,7 @@
        2. HERO
   ============================================================ -->
   <section id="hero">
-    <video class="hero-video" autoplay muted loop playsinline poster="">
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/video/hero-poster.jpg">
       <source src="assets/video/hero.mp4" type="video/mp4" />
     </video>
     <div class="hero-overlay"></div>
@@ -1494,11 +1565,11 @@
         <div>
           <div class="footer-col-title">Sectores</div>
           <ul class="footer-links">
-            <li><a href="#">SOFOM</a></li>
-            <li><a href="#">SOFIPO</a></li>
-            <li><a href="#">IFPE</a></li>
-            <li><a href="#">IFC</a></li>
-            <li><a href="#">Bancos en formación</a></li>
+            <li><a href="/blog/como-constituir-sofom-mexico-2026/">SOFOM</a></li>
+            <li><a href="/blog/guia-kyc-pld-sofom-mexico/">SOFIPO</a></li>
+            <li><a href="/dtx-launch/">IFPE</a></li>
+            <li><a href="/dtx-scale/">IFC</a></li>
+            <li><a href="/dtx-launch/">Bancos en formación</a></li>
           </ul>
         </div>
         <div>
