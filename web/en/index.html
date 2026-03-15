@@ -1,23 +1,20 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Language auto-detect: redirect English speakers to /en/ -->
+  <!-- Auto-detect: redirect Spanish speakers to / -->
   <script>
     (function(){
-      if (sessionStorage.getItem('lang_es')) return;
-      var lang = (navigator.language || navigator.userLanguage || '').substring(0,2);
-      if (lang !== 'es') { window.location.replace('/en/'); return; }
-      sessionStorage.setItem('lang_es', '1');
+      if (window.__langOverride) return;
+      var lang = navigator.language || navigator.userLanguage || '';
+      if (lang.substring(0,2) === 'es' && !sessionStorage.getItem('lang_en')) {
+        window.location.replace('/');
+      }
+      sessionStorage.setItem('lang_en', '1');
     })();
   </script>
-
-  <!-- Hreflang -->
-  <link rel="alternate" hreflang="es" href="https://innovablack.ai/" />
-  <link rel="alternate" hreflang="en" href="https://innovablack.ai/en/" />
-  <link rel="alternate" hreflang="x-default" href="https://innovablack.ai/en/" />
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E0Y70WW412"></script>
@@ -27,29 +24,33 @@
     gtag('js', new Date());
     gtag('config', 'G-E0Y70WW412');
   </script>
-  <title>Innova Black® | Transformación Tecnológica para SOFOMs e IFPEs</title>
-  <meta name="description" content="Construimos el framework tecnológico financiero de tu institución. Compliance CNBV, PLD automatizado, KYC inteligente. DTX Audit™ gratuito — 45 min." />
-  <link rel="canonical" href="https://innovablack.ai/" />
+  <title>Innova Black® | Technology Transformation for SOFOMs & IFPEs</title>
+  <meta name="description" content="We build the complete financial technology framework for your institution. CNBV compliance, automated AML, intelligent KYC. Free DTX Audit™ — 45 min." />
+  <link rel="canonical" href="https://innovablack.ai/en/" />
+
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="es" href="https://innovablack.ai/" />
+  <link rel="alternate" hreflang="en" href="https://innovablack.ai/en/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://innovablack.ai/" />
-  <meta property="og:title" content="Innova Black® | Transformación Tecnológica Financiera" />
-  <meta property="og:description" content="Construimos el framework tecnológico de tu SOFOM o IFPE." />
+  <meta property="og:url" content="https://innovablack.ai/en/" />
+  <meta property="og:title" content="Innova Black® | Financial Technology Transformation" />
+  <meta property="og:description" content="We build the complete technology framework for your SOFOM or IFPE." />
   <meta property="og:image" content="https://innovablack.ai/og-home.jpg" />
-  <meta property="og:locale" content="es_MX" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="Innova Black®" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Innova Black® | Transformación Tecnológica Financiera" />
-  <meta name="twitter:description" content="Construimos el framework tecnológico de tu SOFOM o IFPE." />
+  <meta name="twitter:title" content="Innova Black® | Financial Technology Transformation" />
+  <meta name="twitter:description" content="We build the complete technology framework for your SOFOM or IFPE." />
   <meta name="twitter:image" content="https://innovablack.ai/og-home.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="chatbot.css" />
+  <link rel="stylesheet" href="../chatbot.css" />
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -64,7 +65,7 @@
     "name": "Innova Black®",
     "url": "https://innovablack.ai",
     "logo": "https://innovablack.ai/logo.png",
-    "description": "Consultoría especializada en transformación tecnológica para instituciones financieras reguladas en México: SOFOMs, SOFIPOs e IFPEs.",
+    "description": "Specialized consultancy in technology transformation for regulated financial institutions in Mexico: SOFOMs, SOFIPOs, and IFPEs.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Guadalajara",
@@ -87,8 +88,8 @@
       {
         "@type": "ListItem",
         "position": 1,
-        "name": "Inicio",
-        "item": "https://innovablack.ai/"
+        "name": "Home",
+        "item": "https://innovablack.ai/en/"
       }
     ]
   }
@@ -102,42 +103,42 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "¿Qué es Innova Black® y qué hace?",
+        "name": "What is Innova Black® and what does it do?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Innova Black® es una firma de transformación tecnológica financiera en México. Construimos el framework tecnológico completo que SOFOMs, SOFIPOs e IFPEs necesitan para operar con la regulación vigente y crecer — no asesoramos, construimos."
+          "text": "Innova Black® is a financial technology transformation firm in Mexico. We build the complete technology framework that SOFOMs, SOFIPOs, and IFPEs need to operate under current regulations and grow — we don't advise, we build."
         }
       },
       {
         "@type": "Question",
-        "name": "¿Qué es el DTX Audit™ y cuánto cuesta?",
+        "name": "What is the DTX Audit™ and how much does it cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "El DTX Audit™ es un diagnóstico tecnológico y regulatorio gratuito de 45 minutos. Evaluamos el estado actual de tu institución y entregamos un Reporte de Madurez Regulatoria sin costo ni compromiso."
+          "text": "The DTX Audit™ is a free 45-minute technology and regulatory assessment. We evaluate the current state of your institution and deliver a Regulatory Maturity Report at no cost or commitment."
         }
       },
       {
         "@type": "Question",
-        "name": "¿Para qué tipo de instituciones financieras trabajan?",
+        "name": "What types of financial institutions do you work with?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Trabajamos con SOFOMs, SOFIPOs, IFPEs, IFCs y bancos en formación. Atendemos tres perfiles: instituciones nuevas que quieren constituirse, existentes que necesitan cumplir con la nueva regulación, y autorizadas que quieren escalar."
+          "text": "We work with SOFOMs, SOFIPOs, IFPEs, IFCs, and banks in formation. We serve three profiles: new institutions seeking incorporation, existing ones that need to comply with new regulations, and authorized ones that want to scale."
         }
       },
       {
         "@type": "Question",
-        "name": "¿Cómo funciona la Metodología DTX™?",
+        "name": "How does the DTX™ Methodology work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "La Metodología DTX™ consta de siete servicios modulares: DTX Launch™ (constitución), DTX Compliance Engine™ (automatización de compliance), DTX Scale™ (escalamiento), DTX Upgrade™ (migración legacy), DTX Retainer™ (CTO externo), DTX Audit™ (diagnóstico gratuito) y DTX Intelligence™ (analítica de datos)."
+          "text": "The DTX™ Methodology consists of seven modular services: DTX Launch™ (incorporation), DTX Compliance Engine™ (compliance automation), DTX Scale™ (scaling), DTX Upgrade™ (legacy migration), DTX Retainer™ (external CTO), DTX Audit™ (free assessment), and DTX Intelligence™ (data analytics)."
         }
       },
       {
         "@type": "Question",
-        "name": "¿Están preparados para la evaluación GAFI 2026 y la Ley Fintech 2.0?",
+        "name": "Are you prepared for the FATF 2026 evaluation and Fintech Law 2.0?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sí. Nuestros servicios DTX Upgrade™ y DTX Compliance Engine™ están diseñados específicamente para preparar a instituciones financieras ante la evaluación GAFI de abril 2026 y los nuevos requisitos de la Ley Fintech 2.0."
+          "text": "Yes. Our DTX Upgrade™ and DTX Compliance Engine™ services are specifically designed to prepare financial institutions for the FATF evaluation in April 2026 and the new requirements of Fintech Law 2.0."
         }
       }
     ]
@@ -294,7 +295,7 @@
       color: var(--gold);
     }
     .btn-arrow::after {
-      content: '→';
+      content: '\2192';
       transition: transform .3s var(--ease);
     }
     .btn-arrow:hover::after { transform: translateX(4px); }
@@ -589,7 +590,7 @@
     }
 
     /* ============================================================
-       4. EL PROBLEMA
+       4. THE PROBLEM
     ============================================================ */
     #problema {
       padding: 140px 0;
@@ -654,7 +655,7 @@
     }
 
     /* ============================================================
-       5. SERVICIOS
+       5. SERVICES
     ============================================================ */
     #servicios {
       padding: 140px 0;
@@ -738,7 +739,7 @@
     }
 
     /* ============================================================
-       6. PROCESO
+       6. PROCESS
     ============================================================ */
     #proceso {
       padding: 140px 0;
@@ -814,7 +815,7 @@
     }
 
     /* ============================================================
-       7. CLIENTES
+       7. CLIENTS
     ============================================================ */
     #clientes {
       padding: 140px 0;
@@ -1203,17 +1204,17 @@
   ============================================================ -->
   <nav id="nav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">INNOVA BLACK<span>®</span></a>
+      <a href="/en/" class="nav-logo">INNOVA BLACK<span>®</span></a>
       <ul class="nav-links">
-        <li><a href="#problema">El Problema</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#proceso">Proceso</a></li>
-        <li><a href="#clientes">Clientes</a></li>
+        <li><a href="#problema">The Problem</a></li>
+        <li><a href="#servicios">Services</a></li>
+        <li><a href="#proceso">Process</a></li>
+        <li><a href="#clientes">Clients</a></li>
         <li><a href="/blog">Blog</a></li>
-        <li><a href="/en/" style="opacity:.5;font-size:11px;letter-spacing:.08em">EN</a></li>
+        <li><a href="/">ES</a></li>
       </ul>
-      <a href="#cta" class="nav-cta">Agendar DTX Audit™</a>
-      <div class="nav-hamburger" id="hamburger" aria-label="Menú">
+      <a href="#cta" class="nav-cta">Schedule DTX Audit™</a>
+      <div class="nav-hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </div>
     </div>
@@ -1221,54 +1222,54 @@
 
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobile-menu">
-    <a href="#problema" class="mobile-link">El Problema</a>
-    <a href="#servicios" class="mobile-link">Servicios</a>
-    <a href="#proceso" class="mobile-link">Proceso</a>
-    <a href="#clientes" class="mobile-link">Clientes</a>
+    <a href="#problema" class="mobile-link">The Problem</a>
+    <a href="#servicios" class="mobile-link">Services</a>
+    <a href="#proceso" class="mobile-link">Process</a>
+    <a href="#clientes" class="mobile-link">Clients</a>
     <a href="/blog" class="mobile-link">Blog</a>
-    <a href="/en/" class="mobile-link" style="opacity:.5">English</a>
-    <a href="#cta" class="mobile-link" style="color:var(--gold);font-weight:600;">Agendar DTX Audit™</a>
+    <a href="/" class="mobile-link">ES</a>
+    <a href="#cta" class="mobile-link" style="color:var(--gold);font-weight:600;">Schedule DTX Audit™</a>
   </div>
 
   <!-- ============================================================
        2. HERO
   ============================================================ -->
   <section id="hero">
-    <video class="hero-video" autoplay muted loop playsinline poster="assets/video/hero-poster.jpg">
-      <source src="assets/video/hero.mp4" type="video/mp4" />
+    <video class="hero-video" autoplay muted loop playsinline poster="../assets/video/hero-poster.jpg">
+      <source src="../assets/video/hero.mp4" type="video/mp4" />
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-ghost" aria-hidden="true">INNOVA BLACK</div>
 
     <div class="hero-content">
-      <span class="hero-tag rv">Transformación tecnológica financiera · México</span>
+      <span class="hero-tag rv">Financial technology transformation · Mexico</span>
       <h1 class="hero-h1 rv d1">
-        Modernizamos instituciones financieras para <span class="gold">operar, cumplir</span> y escalar.
+        We modernize financial institutions to <span class="gold">operate, comply,</span> and scale.
       </h1>
       <p class="hero-sub rv d2">
-        No asesoramos. Construimos el framework tecnológico completo
-        que SOFOMs, SOFIPOs e IFPEs necesitan para operar con la
-        regulación vigente y crecer.
+        We don't advise. We build the complete technology framework
+        that SOFOMs, SOFIPOs, and IFPEs need to operate under
+        current regulations and grow.
       </p>
       <div class="hero-actions rv d3">
-        <a href="#cta" class="btn btn-gold btn-arrow">Solicitar DTX Audit™ gratuito</a>
-        <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+        <a href="#cta" class="btn btn-gold btn-arrow">Request free DTX Audit™</a>
+        <a href="#servicios" class="btn btn-ghost">View services</a>
       </div>
-      <p class="hero-note rv d4">Diagnóstico gratuito de 45 min · Sin compromisos · CDMX · MTY · GDL</p>
+      <p class="hero-note rv d4">Free 45-min assessment · No commitments · CDMX · MTY · GDL</p>
     </div>
 
     <div class="hero-stats">
       <div class="hero-stat rv">
         <div class="hero-stat-num" data-count="1340">0</div>
-        <div class="hero-stat-label">SOFOMs en México, 60% sin sistemas especializados</div>
+        <div class="hero-stat-label">SOFOMs in Mexico, 60% without specialized systems</div>
       </div>
       <div class="hero-stat rv d1">
         <div class="hero-stat-num">−70%</div>
-        <div class="hero-stat-label">Reducción en tiempo de compliance con DTX™</div>
+        <div class="hero-stat-label">Reduction in compliance time with DTX™</div>
       </div>
       <div class="hero-stat rv d2">
-        <div class="hero-stat-num">Abr 2026</div>
-        <div class="hero-stat-label">Evaluación GAFI + Ley Fintech 2.0 — ¿lista tu institución?</div>
+        <div class="hero-stat-num">Apr 2026</div>
+        <div class="hero-stat-label">FATF evaluation + Fintech Law 2.0 — is your institution ready?</div>
       </div>
     </div>
   </section>
@@ -1286,9 +1287,9 @@
       <div class="marquee-item"><span class="marquee-text">DTX Audit™</span><div class="marquee-dot"></div></div>
       <div class="marquee-item"><span class="marquee-text">DTX Intelligence™</span><div class="marquee-dot"></div></div>
       <div class="marquee-item"><span class="marquee-text">SOFOM · SOFIPO · IFPE</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span class="marquee-text">PLD / KYC Automatizado</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span class="marquee-text">Ley Fintech 2.0</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span class="marquee-text">Cumplimiento GAFI</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span class="marquee-text">Automated AML / KYC</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span class="marquee-text">Fintech Law 2.0</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span class="marquee-text">FATF Compliance</span><div class="marquee-dot"></div></div>
       <div class="marquee-item"><span class="marquee-text">CNBV · UIF · Banxico</span><div class="marquee-dot"></div></div>
       <!-- Duplicate for seamless loop -->
       <div class="marquee-item"><span class="marquee-text">DTX Launch™</span><div class="marquee-dot"></div></div>
@@ -1299,119 +1300,119 @@
       <div class="marquee-item"><span class="marquee-text">DTX Audit™</span><div class="marquee-dot"></div></div>
       <div class="marquee-item"><span class="marquee-text">DTX Intelligence™</span><div class="marquee-dot"></div></div>
       <div class="marquee-item"><span class="marquee-text">SOFOM · SOFIPO · IFPE</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span class="marquee-text">PLD / KYC Automatizado</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span class="marquee-text">Ley Fintech 2.0</span><div class="marquee-dot"></div></div>
-      <div class="marquee-item"><span class="marquee-text">Cumplimiento GAFI</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span class="marquee-text">Automated AML / KYC</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span class="marquee-text">Fintech Law 2.0</span><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><span class="marquee-text">FATF Compliance</span><div class="marquee-dot"></div></div>
       <div class="marquee-item"><span class="marquee-text">CNBV · UIF · Banxico</span><div class="marquee-dot"></div></div>
     </div>
   </div>
 
   <!-- ============================================================
-       4. EL PROBLEMA
+       4. THE PROBLEM
   ============================================================ -->
   <section id="problema">
     <div class="sec-inner">
       <div class="sec-head">
-        <div class="tag rv">El Problema</div>
-        <h2 class="h2 rv d1">El sistema financiero mexicano<br />tiene una crisis tecnológica silenciosa.</h2>
-        <p class="lead rv d2">Las instituciones reguladas enfrentan una convergencia de presiones que los despachos legales y el software genérico no pueden resolver.</p>
+        <div class="tag rv">The Problem</div>
+        <h2 class="h2 rv d1">Mexico's financial system has<br />a silent technology crisis.</h2>
+        <p class="lead rv d2">Regulated institutions face a convergence of pressures that law firms and generic software cannot solve.</p>
       </div>
       <div class="problem-grid">
         <div class="problem-card rv">
           <div class="problem-num">60%</div>
-          <div class="problem-label">de SOFOMs opera con Excel o sistemas no especializados</div>
-          <div class="problem-desc">Fuente CNBV. La mayoría no tiene infraestructura para cumplir los nuevos requisitos regulatorios.</div>
+          <div class="problem-label">of SOFOMs operate with Excel or non-specialized systems</div>
+          <div class="problem-desc">Source: CNBV. Most lack the infrastructure to meet new regulatory requirements.</div>
         </div>
         <div class="problem-card rv d1">
           <div class="problem-num">$35K</div>
-          <div class="problem-label">USD al año en compliance manual por institución</div>
-          <div class="problem-desc">57% de las fintechs gasta este monto en procesos que pueden automatizarse al 80%.</div>
+          <div class="problem-label">USD per year in manual compliance per institution</div>
+          <div class="problem-desc">57% of fintechs spend this amount on processes that can be 80% automated.</div>
         </div>
         <div class="problem-card rv d2">
           <div class="problem-num">781</div>
-          <div class="problem-label">días promedio para obtener autorización IFPE</div>
-          <div class="problem-desc">Con arquitectura tecnológica correcta desde el inicio, el tiempo se reduce a 416 días — 46% más rápido.</div>
+          <div class="problem-label">average days to obtain IFPE authorization</div>
+          <div class="problem-desc">With the right technology architecture from the start, the timeline drops to 416 days — 46% faster.</div>
         </div>
         <div class="problem-card rv d3">
-          <div class="problem-num">Abr<br />2026</div>
-          <div class="problem-label">Evaluación GAFI y Ley Fintech 2.0 en simultáneo</div>
-          <div class="problem-desc">Las instituciones que no modernicen su infraestructura de cumplimiento enfrentan sanciones y pérdida de licencia.</div>
+          <div class="problem-num">Apr<br />2026</div>
+          <div class="problem-label">FATF evaluation and Fintech Law 2.0 simultaneously</div>
+          <div class="problem-desc">Institutions that don't modernize their compliance infrastructure face sanctions and license revocation.</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       5. SERVICIOS
+       5. SERVICES
   ============================================================ -->
   <section id="servicios">
     <div class="sec-inner">
       <div class="sec-head">
-        <div class="tag rv">Metodología DTX™</div>
-        <h2 class="h2 rv d1">Siete servicios. Un framework.<br />Resultados medibles.</h2>
-        <p class="lead rv d2">Cada servicio es un módulo de la Metodología DTX™ — diseñada para llevar una institución financiera desde cualquier punto hasta operación plena y cumplimiento regulatorio.</p>
+        <div class="tag rv">DTX™ Methodology</div>
+        <h2 class="h2 rv d1">Seven services. One framework.<br />Measurable results.</h2>
+        <p class="lead rv d2">Each service is a module of the DTX™ Methodology — designed to take a financial institution from any starting point to full operation and regulatory compliance.</p>
       </div>
       <div class="services-list">
-        <a href="/dtx-launch/" class="service-row rv">
+        <a href="/en/dtx-launch/" class="service-row rv">
           <div class="service-idx">01</div>
           <div class="service-body">
-            <div class="service-for">Para: Constitución de SOFOM / SOFIPO / IFPE nueva</div>
+            <div class="service-for">For: Incorporating a new SOFOM / SOFIPO / IFPE</div>
             <div class="service-name">DTX Launch™</div>
-            <div class="service-desc">Arquitectura tecnológica completa, flujos operativos, manuales CNBV, setup PLD/KYC desde cero y documentación lista para presentar ante el regulador.</div>
+            <div class="service-desc">Complete technology architecture, operational workflows, CNBV manuals, AML/KYC setup from scratch, and documentation ready to submit to the regulator.</div>
           </div>
           <div class="service-arrow">→</div>
         </a>
-        <a href="/dtx-compliance/" class="service-row rv d1">
+        <a href="/en/dtx-compliance/" class="service-row rv d1">
           <div class="service-idx">02</div>
           <div class="service-body">
-            <div class="service-for">Para: Automatización de compliance en institución existente</div>
+            <div class="service-for">For: Compliance automation in an existing institution</div>
             <div class="service-name">DTX Compliance Engine™</div>
-            <div class="service-desc">Automatización IA de reportes ROU/ROP, monitoreo transaccional inteligente, onboarding digital KYC en minutos e integración CNBV, UIF, SAT.</div>
+            <div class="service-desc">AI-powered automation of ROU/ROP reports, intelligent transaction monitoring, digital KYC onboarding in minutes, and CNBV, UIF, SAT integration.</div>
           </div>
           <div class="service-arrow">→</div>
         </a>
-        <a href="/dtx-scale/" class="service-row rv d2">
+        <a href="/en/dtx-scale/" class="service-row rv d2">
           <div class="service-idx">03</div>
           <div class="service-body">
-            <div class="service-for">Para: Escalar al siguiente nivel regulatorio</div>
+            <div class="service-for">For: Scaling to the next regulatory level</div>
             <div class="service-name">DTX Scale™</div>
-            <div class="service-desc">Conexión SPEI, BIN sponsor para emisión de tarjetas, onboarding a escala, scoring crediticio con IA y arquitectura multi-producto.</div>
+            <div class="service-desc">SPEI connection, BIN sponsor for card issuance, onboarding at scale, AI credit scoring, and multi-product architecture.</div>
           </div>
           <div class="service-arrow">→</div>
         </a>
-        <a href="/dtx-upgrade/" class="service-row rv d3">
+        <a href="/en/dtx-upgrade/" class="service-row rv d3">
           <div class="service-idx">04</div>
           <div class="service-body">
-            <div class="service-for">Para: Institución con sistemas legacy o procesos manuales</div>
+            <div class="service-for">For: Institutions with legacy systems or manual processes</div>
             <div class="service-name">DTX Upgrade™</div>
-            <div class="service-desc">Migración de sistemas legacy, rediseño de procesos manuales, preparación para Ley Fintech 2.0 y evaluación GAFI 2026.</div>
+            <div class="service-desc">Legacy system migration, manual process redesign, preparation for Fintech Law 2.0 and the FATF 2026 evaluation.</div>
           </div>
           <div class="service-arrow">→</div>
         </a>
-        <a href="/dtx-retainer/" class="service-row rv d4">
+        <a href="/en/dtx-retainer/" class="service-row rv d4">
           <div class="service-idx">05</div>
           <div class="service-body">
-            <div class="service-for">Para: Cualquier institución que necesita equipo tech-estratégico externo</div>
+            <div class="service-for">For: Any institution needing an external tech-strategic team</div>
             <div class="service-name">DTX Retainer™</div>
-            <div class="service-desc">El único CTO/COO externo especializado en instituciones financieras reguladas de México. Monitoreo regulatorio en tiempo real, advisory directo al CEO, gestión de proveedores y respuesta ante autoridades.</div>
+            <div class="service-desc">The only external CTO/COO specialized in regulated financial institutions in Mexico. Real-time regulatory monitoring, direct CEO advisory, vendor management, and authority response.</div>
           </div>
           <div class="service-arrow">→</div>
         </a>
-        <a href="/dtx-audit/" class="service-row rv d5">
+        <a href="/en/dtx-audit/" class="service-row rv d5">
           <div class="service-idx">06</div>
           <div class="service-body">
-            <div class="service-for">Para: Cualquier institución que quiere conocer su estado actual</div>
+            <div class="service-for">For: Any institution that wants to know its current state</div>
             <div class="service-name">DTX Audit™</div>
-            <div class="service-desc">Diagnóstico tecnológico y regulatorio gratuito de 45 minutos. Evaluación completa del estado actual de tu institución con entregable: Reporte de Madurez Regulatoria sin costo ni compromiso.</div>
+            <div class="service-desc">Free 45-minute technology and regulatory assessment. Full evaluation of your institution's current state with deliverable: Regulatory Maturity Report at no cost or commitment.</div>
           </div>
           <div class="service-arrow">→</div>
         </a>
-        <a href="/dtx-intelligence/" class="service-row rv d6">
+        <a href="/en/dtx-intelligence/" class="service-row rv d6">
           <div class="service-idx">07</div>
           <div class="service-body">
-            <div class="service-for">Para: Instituciones que necesitan tomar decisiones basadas en datos</div>
+            <div class="service-for">For: Institutions that need data-driven decision making</div>
             <div class="service-name">DTX Intelligence™</div>
-            <div class="service-desc">Analítica avanzada e inteligencia de datos para instituciones financieras reguladas. Dashboards ejecutivos, scoring crediticio con IA, monitoreo de cartera y análisis predictivo.</div>
+            <div class="service-desc">Advanced analytics and data intelligence for regulated financial institutions. Executive dashboards, AI credit scoring, portfolio monitoring, and predictive analysis.</div>
           </div>
           <div class="service-arrow">→</div>
         </a>
@@ -1420,87 +1421,87 @@
   </section>
 
   <!-- ============================================================
-       6. PROCESO
+       6. PROCESS
   ============================================================ -->
   <section id="proceso">
     <div class="sec-inner">
       <div class="sec-head">
-        <div class="tag rv">Cómo trabajamos</div>
-        <h2 class="h2 rv d1">Cinco fases. De diagnóstico<br />a operación plena.</h2>
-        <p class="lead rv d2">El mismo proceso estructurado se aplica en todos los servicios — con el detalle y la profundidad que requiere cada institución.</p>
+        <div class="tag rv">How we work</div>
+        <h2 class="h2 rv d1">Five phases. From diagnosis<br />to full operation.</h2>
+        <p class="lead rv d2">The same structured process applies across all services — with the detail and depth each institution requires.</p>
       </div>
       <div class="proceso-track" id="proceso-track">
         <div class="paso rv">
           <span class="paso-num">01</span>
-          <div class="paso-title">Diagnóstico</div>
-          <p class="paso-desc">Evaluación completa del estado actual + reporte ejecutivo + roadmap de 90 días. Entrada gratuita vía DTX Audit™.</p>
+          <div class="paso-title">Diagnosis</div>
+          <p class="paso-desc">Full evaluation of current state + executive report + 90-day roadmap. Free entry via DTX Audit™.</p>
         </div>
         <div class="paso rv d1">
           <span class="paso-num">02</span>
-          <div class="paso-title">Diseño del Framework</div>
-          <p class="paso-desc">Arquitectura tecnológica, flujos operativos y estructura regulatoria diseñados a medida de la institución.</p>
+          <div class="paso-title">Framework Design</div>
+          <p class="paso-desc">Technology architecture, operational workflows, and regulatory structure custom-designed for the institution.</p>
         </div>
         <div class="paso rv d2">
           <span class="paso-num">03</span>
-          <div class="paso-title">Implementación</div>
-          <p class="paso-desc">Sistemas, automatización, integraciones con reguladores y documentación CNBV. Construimos, no entregamos PPTs.</p>
+          <div class="paso-title">Implementation</div>
+          <p class="paso-desc">Systems, automation, regulator integrations, and CNBV documentation. We build, we don't deliver slide decks.</p>
         </div>
         <div class="paso rv d3">
           <span class="paso-num">04</span>
-          <div class="paso-title">Formación</div>
-          <p class="paso-desc">Capacitación del equipo operativo, compliance y directivo. La institución queda autosuficiente en la operación diaria.</p>
+          <div class="paso-title">Training</div>
+          <p class="paso-desc">Training for the operations, compliance, and executive teams. The institution becomes self-sufficient in daily operations.</p>
         </div>
         <div class="paso rv d4">
           <span class="paso-num">05</span>
           <div class="paso-title">Retainer</div>
-          <p class="paso-desc">Acompañamiento mensual continuo. Monitoreo regulatorio, actualización ante cambios CNBV/UIF y advisory estratégico.</p>
+          <p class="paso-desc">Ongoing monthly support. Regulatory monitoring, updates for CNBV/UIF changes, and strategic advisory.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       7. CLIENTES
+       7. CLIENTS
   ============================================================ -->
   <section id="clientes">
     <div class="sec-inner">
       <div class="sec-head">
-        <div class="tag rv">¿Para quién es Innova Black®?</div>
-        <h2 class="h2 rv d1">Tres perfiles. Un mismo objetivo:<br />operar con solidez regulatoria.</h2>
+        <div class="tag rv">Who is Innova Black® for?</div>
+        <h2 class="h2 rv d1">Three profiles. One goal:<br />operating with regulatory strength.</h2>
       </div>
       <div class="clients-grid">
         <div class="client-card rv">
-          <span class="client-tag">Perfil A — Nacer</span>
-          <h3 class="client-h3">Quieres constituir una <span class="gold">SOFOM, SOFIPO o IFPE</span> nueva.</h3>
-          <p class="client-desc">Tienes el modelo de negocio. Tienes el capital. Pero no sabes cómo estructurar la tecnología para obtener la autorización y operar desde el día uno.</p>
+          <span class="client-tag">Profile A — Launch</span>
+          <h3 class="client-h3">You want to incorporate a new <span class="gold">SOFOM, SOFIPO, or IFPE.</span></h3>
+          <p class="client-desc">You have the business model. You have the capital. But you don't know how to structure the technology to obtain authorization and operate from day one.</p>
           <ul class="client-list">
-            <li>Emprendedores y fondos con modelo fintech validado</li>
-            <li>Familias o grupos empresariales que quieren ofrecer crédito</li>
-            <li>Empresas que quieren constituir su propia SOFOM de financiamiento</li>
+            <li>Entrepreneurs and funds with a validated fintech model</li>
+            <li>Families or business groups looking to offer credit</li>
+            <li>Companies wanting to incorporate their own financing SOFOM</li>
           </ul>
-          <div class="client-service">Servicio recomendado: DTX Launch™</div>
+          <div class="client-service">Recommended service: DTX Launch™</div>
         </div>
         <div class="client-card rv d1">
-          <span class="client-tag">Perfil B — Cumplir</span>
-          <h3 class="client-h3">Tu institución existe pero <span class="gold">no está lista</span> para la nueva regulación.</h3>
-          <p class="client-desc">Operas con Excel, sistemas genéricos o procesos manuales. La Ley Fintech 2.0 y la evaluación GAFI de abril 2026 te generan incertidumbre real.</p>
+          <span class="client-tag">Profile B — Comply</span>
+          <h3 class="client-h3">Your institution exists but <span class="gold">is not ready</span> for the new regulation.</h3>
+          <p class="client-desc">You operate with Excel, generic systems, or manual processes. Fintech Law 2.0 and the April 2026 FATF evaluation create real uncertainty for you.</p>
           <ul class="client-list">
-            <li>SOFOMs existentes con 3–10 años de operación</li>
-            <li>Instituciones que ya recibieron observaciones de la CNBV</li>
-            <li>Fintechs que crecieron rápido y tienen deuda tecnológica</li>
+            <li>Existing SOFOMs with 3–10 years of operation</li>
+            <li>Institutions that have already received CNBV observations</li>
+            <li>Fintechs that grew fast and have technology debt</li>
           </ul>
-          <div class="client-service">Servicios recomendados: DTX Upgrade™ + DTX Compliance Engine™</div>
+          <div class="client-service">Recommended services: DTX Upgrade™ + DTX Compliance Engine™</div>
         </div>
         <div class="client-card rv d2">
-          <span class="client-tag">Perfil C — Escalar</span>
-          <h3 class="client-h3">Tienes autorización y quieres <span class="gold">crecer al siguiente nivel.</span></h3>
-          <p class="client-desc">Quieres conexión SPEI, emisión de tarjetas, expansión de producto o estás preparando una ronda de inversión Serie A/B.</p>
+          <span class="client-tag">Profile C — Scale</span>
+          <h3 class="client-h3">You have authorization and want to <span class="gold">grow to the next level.</span></h3>
+          <p class="client-desc">You want SPEI connection, card issuance, product expansion, or you're preparing a Series A/B investment round.</p>
           <ul class="client-list">
-            <li>IFPEs autorizadas que quieren ampliar servicios</li>
-            <li>Fintechs en proceso de levantar capital institucional</li>
-            <li>Instituciones que quieren SPEI o BIN sponsor</li>
+            <li>Authorized IFPEs looking to expand services</li>
+            <li>Fintechs in the process of raising institutional capital</li>
+            <li>Institutions that want SPEI or BIN sponsor</li>
           </ul>
-          <div class="client-service">Servicio recomendado: DTX Scale™</div>
+          <div class="client-service">Recommended service: DTX Scale™</div>
         </div>
       </div>
     </div>
@@ -1515,24 +1516,24 @@
         <div>
           <span class="quote-mark rv">"</span>
           <p class="quote-text rv d1">
-            Somos los únicos en México que <span class="gold">diseñamos e implementamos</span>
-            el framework tecnológico de instituciones financieras —
-            no lo asesoramos, lo construimos.
+            We are the only firm in Mexico that <span class="gold">designs and implements</span>
+            the technology framework for financial institutions —
+            we don't advise on it, we build it.
           </p>
-          <p class="quote-attr rv d2">Innova Black® · Posicionamiento de mercado</p>
+          <p class="quote-attr rv d2">Innova Black® · Market positioning</p>
         </div>
         <div class="quote-stats">
           <div class="qstat rv">
             <div class="qstat-num" data-count="990">0</div>
-            <div class="qstat-label">fintechs operando en México, crecimiento 20% anual</div>
+            <div class="qstat-label">fintechs operating in Mexico, 20% annual growth</div>
           </div>
           <div class="qstat rv d1">
             <div class="qstat-num">70%</div>
-            <div class="qstat-label">de financieras medianas migrará a nube para 2026 (CNBV)</div>
+            <div class="qstat-label">of mid-size financial firms will migrate to cloud by 2026 (CNBV)</div>
           </div>
           <div class="qstat rv d2">
             <div class="qstat-num">5</div>
-            <div class="qstat-label">figuras reguladas atendidas: SOFOM · SOFIPO · IFPE · IFC · Banco</div>
+            <div class="qstat-label">regulated entity types served: SOFOM · SOFIPO · IFPE · IFC · Bank</div>
           </div>
         </div>
       </div>
@@ -1547,12 +1548,12 @@
     <div class="cta-ghost" aria-hidden="true">INNOVA BLACK</div>
     <div class="cta-inner">
       <div class="tag rv" style="justify-content:center">DTX Audit™</div>
-      <h2 class="cta-h2 rv d1" style="margin-top:24px">¿Tu institución está lista para <span class="gold">operar, cumplir y escalar</span>?</h2>
-      <p class="cta-sub rv d2">Agenda un diagnóstico gratuito de 45 minutos. Analizamos tu situación tecnológica y regulatoria, y te entregamos un Reporte de Madurez Regulatoria con áreas de riesgo identificadas.</p>
+      <h2 class="cta-h2 rv d1" style="margin-top:24px">Is your institution ready to <span class="gold">operate, comply, and scale</span>?</h2>
+      <p class="cta-sub rv d2">Schedule a free 45-minute assessment. We analyze your technology and regulatory situation, and deliver a Regulatory Maturity Report with identified risk areas.</p>
       <div class="cta-actions rv d3">
-        <a href="#" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;" class="btn btn-gold btn-arrow">Solicitar DTX Audit™ gratuito</a>
+        <a href="#" onclick="var b=document.getElementById('vbot-bubble');if(b)b.click();return false;" class="btn btn-gold btn-arrow">Request free DTX Audit™</a>
       </div>
-      <p class="cta-note rv d4">Sin costo · Sin compromiso · Diagnóstico de 45 min · Entregable: Reporte de Madurez Regulatoria</p>
+      <p class="cta-note rv d4">No cost · No commitment · 45-min assessment · Deliverable: Regulatory Maturity Report</p>
     </div>
   </section>
 
@@ -1564,38 +1565,38 @@
       <div class="footer-grid">
         <div>
           <div class="footer-logo">INNOVA BLACK<span>®</span></div>
-          <p class="footer-tagline">Arquitectos del framework tecnológico para instituciones financieras reguladas en México.</p>
+          <p class="footer-tagline">Architects of the technology framework for regulated financial institutions in Mexico.</p>
           <div class="footer-cities">CDMX · Monterrey · Guadalajara</div>
         </div>
         <div>
-          <div class="footer-col-title">Servicios</div>
+          <div class="footer-col-title">Services</div>
           <ul class="footer-links">
-            <li><a href="/dtx-audit/">DTX Audit™</a></li>
-            <li><a href="/dtx-launch/">DTX Launch™</a></li>
-            <li><a href="/dtx-compliance/">DTX Compliance Engine™</a></li>
-            <li><a href="/dtx-scale/">DTX Scale™</a></li>
-            <li><a href="/dtx-upgrade/">DTX Upgrade™</a></li>
-            <li><a href="/dtx-retainer/">DTX Retainer™</a></li>
-            <li><a href="/dtx-intelligence/">DTX Intelligence™</a></li>
+            <li><a href="/en/dtx-audit/">DTX Audit™</a></li>
+            <li><a href="/en/dtx-launch/">DTX Launch™</a></li>
+            <li><a href="/en/dtx-compliance/">DTX Compliance Engine™</a></li>
+            <li><a href="/en/dtx-scale/">DTX Scale™</a></li>
+            <li><a href="/en/dtx-upgrade/">DTX Upgrade™</a></li>
+            <li><a href="/en/dtx-retainer/">DTX Retainer™</a></li>
+            <li><a href="/en/dtx-intelligence/">DTX Intelligence™</a></li>
           </ul>
         </div>
         <div>
-          <div class="footer-col-title">Sectores</div>
+          <div class="footer-col-title">Sectors</div>
           <ul class="footer-links">
             <li><a href="/blog/como-constituir-sofom-mexico-2026/">SOFOM</a></li>
             <li><a href="/blog/guia-kyc-pld-sofom-mexico/">SOFIPO</a></li>
-            <li><a href="/dtx-launch/">IFPE</a></li>
-            <li><a href="/dtx-scale/">IFC</a></li>
-            <li><a href="/dtx-launch/">Bancos en formación</a></li>
+            <li><a href="/en/dtx-launch/">IFPE</a></li>
+            <li><a href="/en/dtx-scale/">IFC</a></li>
+            <li><a href="/en/dtx-launch/">Banks in formation</a></li>
           </ul>
         </div>
         <div>
-          <div class="footer-col-title">Recursos</div>
+          <div class="footer-col-title">Resources</div>
           <ul class="footer-links">
             <li><a href="/blog/">Blog</a></li>
-            <li><a href="/blog/gafi-evaluacion-mexico-2026-sofom/">Evaluación GAFI 2026</a></li>
+            <li><a href="/blog/gafi-evaluacion-mexico-2026-sofom/">FATF Evaluation 2026</a></li>
           </ul>
-          <div class="footer-col-title" style="margin-top:24px">Contacto</div>
+          <div class="footer-col-title" style="margin-top:24px">Contact</div>
           <div class="footer-contact">
             <a href="mailto:hello@innova.black">hello@innova.black</a>
             <a href="https://innova.black">innova.black</a>
@@ -1603,8 +1604,8 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copy">© 2026 Innova Black®. Todos los derechos reservados. DTX™ es marca registrada.</p>
-        <p class="footer-copy">Metodología DTX™ · innova.black</p>
+        <p class="footer-copy">© 2026 Innova Black®. All rights reserved. DTX™ is a registered trademark.</p>
+        <p class="footer-copy">DTX™ Methodology · innova.black</p>
       </div>
     </div>
   </footer>
@@ -1714,6 +1715,6 @@
       });
     });
   </script>
-  <script src="chatbot.js"></script>
+  <script src="../chatbot.js"></script>
 </body>
 </html>
